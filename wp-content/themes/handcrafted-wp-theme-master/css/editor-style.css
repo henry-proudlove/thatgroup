@@ -6,3 +6,9 @@ All your awesome Editor Styles go here, we like WYSIWYG
 */
 
 body{}
+
+/* Metabox Styles */
+
+.wp-admin .my_meta_control h4{
+	margin: 1.33em 0 0.5em !important;
+}
