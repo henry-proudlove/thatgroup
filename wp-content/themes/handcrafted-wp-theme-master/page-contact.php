@@ -14,7 +14,7 @@ get_header(); ?>
 
 				
 				<div id="contact-wrapper">
-					<form method="post" action="<?php echo get_template_directory_uri() . '/mail.php'; ?>" id="contactform">
+					<form method="post" action="mail.php" id="contactform">
 						<div>
 							<label for="name">Name</label>
 							<input type="text" placeholder="You Name" class="required" size="50" name="contactname" id="contactname" value="" />
@@ -26,7 +26,7 @@ get_header(); ?>
 						</div>
 						
 						<div>
-							<select required id="subject">
+							<select required id="subject" name="subject">
 							  <option value="">What is the nature of your contact</label>
 							  <option value="neighbour">Neighbour</option>
 							  <option value="supplier">Supplier</option>
@@ -34,14 +34,20 @@ get_header(); ?>
 							  <option value="investor">Investor</option>
 							  <option value="general">General</option>
 							</select>
-
-				
 						<div>
 							<label for="message">Message</label>
 							<textarea rows="5" cols="50" class="required" name="message" id="message"></textarea>
 						</div>
 						<input type="submit" value="Send Message" name="submit" />
 					</form>
+					<?php if(isset($hasError)) { //If errors are found ?>
+						<p>Please check if you've filled all the fields with valid information. Thank you.</p>
+					<?php } ?>
+					
+					<?php if(isset($emailSent) && $emailSent == true) { //If email is sent ?>
+						<p><strong>Email Successfully Sent!</strong></p>
+						<p>Thank you <strong><?php echo $name;?></strong> for using my contact form! Your email was successfully sent and I will be in touch with you soon.</p>
+					<?php } ?>
 				</div>
 				
 				<?php the_post(); ?>

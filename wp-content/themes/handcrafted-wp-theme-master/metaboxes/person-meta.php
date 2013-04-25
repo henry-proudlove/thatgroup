@@ -20,7 +20,7 @@
 		<div>
 			<h4>Qualifications</strong></h4>
 			<?php $options = array('length' => 1, 'limit' => 3); ?>
-			<?php while($mb->have_fields_and_multi('reviews', $options)): ?>
+			<?php while($mb->have_fields_and_multi('quali', $options)): ?>
 			<?php $mb->the_group_open(); ?>
 		
 				<?php $mb->the_field('quali'); ?>
@@ -30,7 +30,7 @@
 			<?php endwhile; ?>
 			<label><em>Acronym of Person's Qualification</em><br></label>
 			
-			<a href="#" class="docopy-reviews button">Add Qualification</a>
+			<a href="#" class="docopy-quali button">Add Qualification</a>
 		</div>
 	
 </div>

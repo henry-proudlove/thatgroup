@@ -138,13 +138,13 @@ if (isset($_GET['activated']) && is_admin()){
 					'menu_order' => 0,
 				),
 				array(
-					'page_title' => 'Projects',
-					'page_template' => 'page-projects.php',
+					'page_title' => 'About us',
+					'page_template' => 'page-about.php',
 					'menu_order' => 1,
 				),
 				array(
-					'page_title' => 'Contact',
-					'page_template' => 'page-contact.php',
+					'page_title' => 'Projects',
+					'page_template' => 'page-projects.php',
 					'menu_order' => 2,
 				),
 				array(
@@ -153,8 +153,8 @@ if (isset($_GET['activated']) && is_admin()){
 					'menu_order' => 3,
 				),
 				array(
-					'page_title' => 'About',
-					'page_template' => 'page-about.php',
+					'page_title' => 'Contact',
+					'page_template' => 'page-contact.php',
 					'menu_order' => 4,
 				)
 		);
@@ -192,6 +192,12 @@ function tg_pages_excerpt	() {
      add_post_type_support( 'page', 'excerpt' );
 }
 
+// Add Image Sizes
+
+if ( function_exists( 'add_image_size' ) ) { 
+	add_image_size( 'tg-projectthumb', 346, 260, true );
+}
+
 // Metaboxes
 
 include_once WP_CONTENT_DIR . '/wpalchemy/MetaBox.php';
@@ -218,5 +224,37 @@ $project_mb = new WPAlchemy_MetaBox(array
 	'types' => array('tg_project'),
 	'template' => get_stylesheet_directory() . '/metaboxes/projects-meta.php',
 ));
+
+
+// Create category on project publish
+
+function create_artist_term($post_ID) {
+	$this_post = get_post($post_ID); 
+	$title = $this_post->post_title;
+	
+	wp_insert_term($title, 'category');
+}
+
+add_action('publish_tg_project', 'create_artist_term');
+
+function post_extender($post){
+	switch ($post->post_type){
+		case 'tg_project':
+			$meta = get_post_meta($post->ID, '_project_meta' , true);
+			foreach ($meta as $key=>$value){
+				$post->$key = $value;
+			}
+			break;
+		case 'tg_people':
+			$meta = get_post_meta($post->ID, '_person_meta', true);
+			foreach ($meta as $key=>$value){
+				$post->$key = $value;
+			}
+		default:
+			break;
+	}
+}
+
+add_action( 'the_post', 'post_extender' );
 
 ?>

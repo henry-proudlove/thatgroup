@@ -1,11 +1,9 @@
 <?php
 /**
- * Template Name: About Page
- * Description: Holder for About Page
- *
  * @package WordPress
  * @subpackage themename
  */
+
 get_header(); ?>
 
 		<div id="primary">
@@ -24,7 +22,11 @@ get_header(); ?>
 						<?php edit_post_link( __( 'Edit', 'themename' ), '<span class="edit-link">', '</span>' ); ?>
 					</div><!-- .entry-content -->
 				</article><!-- #post-<?php the_ID(); ?> -->
+
+				<?php comments_template( '', true ); ?>
+
 			</div><!-- #content -->
 		</div><!-- #primary -->
 
+<?php get_sidebar(); ?>
 <?php get_footer(); ?>

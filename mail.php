@@ -5,13 +5,13 @@
  * @subpackage themename
  */
 
-get_header(); ?>
+//get_header(); ?>
 
-		<div id="primary">
+		<!--<div id="primary">
 			<div id="content">
 
 				
-				<div id="message-wrapper"> <?php
+				<div id="message-wrapper">--> <?php
 
 //If the form is submitted
 if(isset($_POST['submit'])) {
@@ -65,9 +65,4 @@ if(isset($_POST['submit'])) {
 }
 ?>
 
-</div><!--message-wrapper-->
-
-</div><!-- #content -->
-		</div><!-- #primary -->
-
-<?php get_footer(); ?>
+<?php // get_footer(); ?>
