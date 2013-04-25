@@ -12,6 +12,22 @@ get_header(); ?>
 		<div id="primary">
 			<div id="content">
 
+				<section id="load">
+					<address>
+						<span class="co-name">THAT Group</span></br>
+						6a St Pancras Way</br>
+						London</br>
+						NW1 0TB</br>
+						<a href="tel:+4402035442696">0203 544 2696</a></br>
+					</address>
+					<nav id="contact-nav">
+						<a href="http://goo.gl/maps/K2UkO" target="_blank">Find Us</a>
+						<a href="#">Email Us</a>
+						<a href="#" target="_blank">Twitter</a>
+						<a href="#" target="_blank">LinkedIn</a>
+						<a href="#" target="_blank">Facebook</a>
+					</nav>
+				</section><!--#load-->
 				
 				<div id="contact-wrapper">
 					<form method="post" action="mail.php" id="contactform">

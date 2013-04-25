@@ -1,5 +1,5 @@
 <div class="my_meta_control">
-	<?php $mb->the_field('job-title'); ?>
+	<?php $mb->the_field('jobtitle'); ?>
 		<div>
 			<h4>Job Title </h4>
 			<input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>"/>

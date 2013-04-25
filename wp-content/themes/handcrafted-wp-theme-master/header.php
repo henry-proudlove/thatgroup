@@ -62,31 +62,25 @@
 						echo '</h2>';
 					}
 					?>
-				</hgroup>
-				
+				</hgroup>			
 				<nav id="utility" role="article">
-					<?php // wp_nav_menu( array( 'theme_location' => 'utility' ) ); ?>
-					<?php 
-						 $frontpage_id = get_option('page_on_front'); 
+					<ul>
+						<?php
+						$frontpage_id = get_option('page_on_front');
 						$args = array(
-							'depth'        => 0,
-							'show_date'    => '',
-							'date_format'  => get_option('date_format'),
-							'child_of'     => 0,
 							'exclude'      => $frontpage_id,
-							'include'      => '',
 							'title_li'     => __(''),
-							'echo'         => 1,
-							'authors'      => '',
-							'sort_column'  => 'menu_order, post_title',
-							'link_before'  => '',
-							'link_after'   => '',
-							'walker'       => '',
-							'post_type'    => 'page',
-								'post_status'  => 'publish' 
+							'link_after'   => 'fuck'
 						);
-						wp_list_pages( $args ); ?>
-						
+						$pages = get_pages( $args );
+						foreach ($pages as $page){
+							echo '<li class="nav-link">';
+							//echo $page->post_title;
+							echo '<a href="' . get_permalink($page->ID) . '">' . $page->post_title . '</a></li>';
+							echo '<li class="nav-content"></li>';
+						}
+						?>
+					</ul>
 				</nav><!-- #utility -->
 	
 		</header><!-- #branding -->

@@ -69,8 +69,8 @@ add_filter('admin_bar_menu', 'admin_bar_replace_howdy', 25);
 
 $cpts_args	= array(
 				
-		'tg_projects' => array(
-			'name' => 'tg_project',
+		'project' => array(
+			'name' => 'project',
 			'label' => 'Projects',
 			'sing' => 'Project' ,
 			'edit' => 'Project',
@@ -78,8 +78,8 @@ $cpts_args	= array(
 			'menu_pos' => 5,
 			'supports' => array( 'title', 'editor', 'thumbnail')
 		),
-		'tg_people' => array(
-			'name' => 'tg_people',
+		'people' => array(
+			'name' => 'people',
 			'label' => 'People',
 			'sing' => 'Person' ,
 			'edit' => 'Person',
@@ -213,7 +213,7 @@ $people_mb = new WPAlchemy_MetaBox(array
 (
 	'id' => '_person_meta',
 	'title' => 'Person Details',
-	'types' => array('tg_people'),
+	'types' => array('people'),
 	'template' => get_stylesheet_directory() . '/metaboxes/person-meta.php',
 ));
 
@@ -221,7 +221,7 @@ $project_mb = new WPAlchemy_MetaBox(array
 (
 	'id' => '_project_meta',
 	'title' => 'Project Location',
-	'types' => array('tg_project'),
+	'types' => array('project'),
 	'template' => get_stylesheet_directory() . '/metaboxes/projects-meta.php',
 ));
 
@@ -239,13 +239,13 @@ add_action('publish_tg_project', 'create_artist_term');
 
 function post_extender($post){
 	switch ($post->post_type){
-		case 'tg_project':
+		case 'project':
 			$meta = get_post_meta($post->ID, '_project_meta' , true);
 			foreach ($meta as $key=>$value){
 				$post->$key = $value;
 			}
 			break;
-		case 'tg_people':
+		case 'people':
 			$meta = get_post_meta($post->ID, '_person_meta', true);
 			foreach ($meta as $key=>$value){
 				$post->$key = $value;
@@ -256,5 +256,13 @@ function post_extender($post){
 }
 
 add_action( 'the_post', 'post_extender' );
+
+function clean_quali($quali){
+	$quali_arr = array();
+	foreach ($quali as $qual){
+		array_push($quali_arr, $qual['quali']);
+	}
+	return $quali_arr;
+}
 
 ?>
