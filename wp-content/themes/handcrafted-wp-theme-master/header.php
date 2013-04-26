@@ -47,7 +47,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	
 	<script src="<?php echo get_template_directory_uri();?>/js/modernizr.custom.43351.js"></script>
-
+	<script type="text/javascript" src="http://fast.fonts.com/jsapi/1abaa99c-ef54-4ae8-83b7-dcb11503cf62.js"></script>
 	<?php wp_head(); ?>
 	</head>
 	

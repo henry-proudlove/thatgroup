@@ -49,9 +49,22 @@ input, select { vertical-align:middle; }
  * Base Typography 
  *
  */
-body { font:13px/1.231 sans-serif; *font-size:small; }
-select, input, textarea, button { font:99% sans-serif; }
-pre, code, kbd, samp { font-family: monospace, sans-serif; }
+body { 
+	font:24px/1.231 'Trade Gothic W01 Roman' , sans-serif; 
+	*font-size:small;
+}
+
+h1, h2, h3, h4, h5, h6, .nav-link{
+	font-family:'TradeGothicW01-BoldCn20 675334', sans-serif;
+	text-transform: uppercase;
+}
+
+select, input, textarea, button {
+	font:99% sans-serif;
+}
+pre, code, kbd, samp {
+	font-family: monospace, sans-serif;
+}
 
 /*
  *
@@ -195,16 +208,25 @@ button {width: auto; overflow: visible;}
  * Structure
  *
  */
+html{
+	height: 100%;
+	border: 5px solid white;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+body {
+	background: #ededed;
+}
+
 #page {
 	display: block;
 }
 #primary {
 	float: left;
-	margin: 0 -240px 0 0;
 	width: 100%;
 }
 #content {
-	margin: 0 280px 0 0;
 }
 #main .widget-area {
 	float: right;
@@ -435,8 +457,28 @@ article.comment {
 	padding: 1em 0 0;
 }
 
+.home #utility{
+	position: fixed;
+	bottom: 5px;
+	width: 100%;
+	z-index: 3;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border-width: 0 5px;
+	border-style: solid;
+	border-color: white;
+	left: 0;
+}
+
+.nav-content{
+	background: #333;
+	height: 0;
+	-webkit-transition: height 1s;
+	-moz-transition: height 1s;
+	-o-transition: height 1s;
+	-ms-transition: height 1s;
+}
 .nav-content.active{
-	background: red;
 	height: 260px;
 }
 
@@ -476,5 +518,18 @@ to {background: 1;}
 
 #primary.outgoing{
 	opacity: 0;
+}
+
+/* main menu */
+
+#utility .nav-link{
+	display: block;
+	color: white;
+	background: black;
+	padding: 23px 44px;
+	font-size: 1.25em;
+	text-decoration: none;
+	border-bottom: 1px solid white;
+	line-height: 0.75em;
 }
 
