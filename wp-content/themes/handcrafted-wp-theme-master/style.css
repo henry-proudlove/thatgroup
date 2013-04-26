@@ -57,6 +57,7 @@ body {
 h1, h2, h3, h4, h5, h6, .nav-link{
 	font-family:'TradeGothicW01-BoldCn20 675334', sans-serif;
 	text-transform: uppercase;
+	font-weight: normal;
 }
 
 select, input, textarea, button {
@@ -73,7 +74,7 @@ pre, code, kbd, samp {
  */
 body, select, input, textarea { 
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
-  color: #444; 
+  color: black; 
   /* set your base font here, to apply evenly */
   /* font-family: Georgia, serif;  */   
 }
@@ -210,7 +211,9 @@ button {width: auto; overflow: visible;}
  */
 html{
 	height: 100%;
-	border: 5px solid white;
+	border-style: solid;
+	border-color: white;
+	border-width: 5px 5px 25px 5px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
@@ -237,6 +240,7 @@ body {
 	clear: both;
 	display: block;
 	width: 100%;
+	font-size: 0.5em;
 }
 
 /* Increase the size of the content area for templates without sidebars */
@@ -269,14 +273,16 @@ body {
  *
  */
 #site-title {
-	font-size: 2em;
-	font-weight: bold;
-	margin: .67em 0;
+	position: absolute;
+	text-indent: -9000px;
+	width: 171px;
+	height: 61px;
+	background: url('images/thatgroup-logo.svg');
 }
 #site-description {
-	font-size: 1em;
+	font-size: 1.5em;
 	font-weight: normal;
-	margin: 0 0 1em;
+	padding: 100px 40px;
 }
 
 
@@ -453,13 +459,21 @@ article.comment {
  * Footer
  *
  */
-#colophon {
+#tag {
 	padding: 1em 0 0;
+	position: fixed;
+	bottom: 7px;
+}
+
+#cr{
+	position: fixed;
+	bottom: 7px;
+	right: 5px;
 }
 
 .home #utility{
 	position: fixed;
-	bottom: 5px;
+	bottom: 25px;
 	width: 100%;
 	z-index: 3;
 	box-sizing: border-box;
@@ -473,22 +487,23 @@ article.comment {
 .nav-content{
 	background: #333;
 	height: 0;
-	-webkit-transition: height 1s;
-	-moz-transition: height 1s;
-	-o-transition: height 1s;
-	-ms-transition: height 1s;
+	-webkit-transition: height 0.4s ease 0.1s;
+	-moz-transition: height 0.4s ease 0.1s;
+	-o-transition: height 0.4s ease 0.1s;
+	-ms-transition: height 0.4s ease 0.1s;
+	overflow:hidden;
 }
 .nav-content.active{
 	height: 260px;
 }
 
-.nav-content > section{
+/*.nav-content > section{
 	display: none;
 }
 
 .nav-content.active > section{
 	display: block;
-}
+}*/
 
 #primary{
 	transition: opacity 1s;
@@ -526,10 +541,25 @@ to {background: 1;}
 	display: block;
 	color: white;
 	background: black;
-	padding: 23px 44px;
+	padding: 23px 40px;
 	font-size: 1.25em;
 	text-decoration: none;
 	border-bottom: 1px solid white;
 	line-height: 0.75em;
+	box-sizing: border-box;
+	-moz-box-sizing: border-sizing;
+}
+
+#utility #load .ajax-link{
+	width: 346px;
+	height: 260px;
+	display:block;
+	float: left;
+	background: #ccc;
+}
+
+#load{
+	overflow-y: scroll;
+	width: 10000px;
 }
 

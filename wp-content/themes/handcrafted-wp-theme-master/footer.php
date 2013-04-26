@@ -9,7 +9,7 @@
 
 	<footer id="colophon" role="contentinfo">
 			<div id="site-generator">
-				<small><span>THAT Group: All Style, All Substance.</span> 	<span>&copy Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?></span></small>
+				<small><span id="tag">THAT Group: All Style, All Substance.</span> 	<span id="cr">&copy Copyright <?php echo date('Y') . " " . esc_attr( get_bloginfo( 'name', 'display' ) ); ?></span></small>
 			</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
