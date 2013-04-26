@@ -1,30 +1,36 @@
 jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
 		e.preventDefault();
+		console.log('FIRE');
 		target = $(this).attr('href');
-		target += ' #primary';
-		console.log(target);
-		$('#main').load(target);
+		$.ajax({
+			url: target,
+			data: {},
+			beforeSend: function(){
+						 $('body').append('<p class="loader">Loading</p>');
+			},
+			success: function (data) {
+				html = $(data).find('#primary').addClass('incoming'); 
+				$('#main').children().addClass('outgoing').parent().append(html);
+				$('.outgoing').on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
+					$(this).remove();
+					$('#primary').removeClass('incoming');
+				})
+			},
+			complete: function(){
+						$('.loader').remove();
+			},
+			dataType: 'html'
+		});
 	});
 };
 
 $(document).ready(function(){
 	
-	// Global loader
-	$("body").on({
-		ajaxStart: function() { 
-			$(this).append('<p class="loader">Loading</p>');
-		},
-		ajaxStop: function() { 
-			$('.loader').remove();
-			$('.ajax-link').ajaxLink();
-		}    
-	});
-	
 	//Validate contact form
 	$("#contactform").validate({
 		rules: {
-			select: "required" }
+		select: "required" }
 	});
 	
 	// Load in posts of each section on nav item roll
@@ -34,8 +40,21 @@ $(document).ready(function(){
 			var content = $(this).find('.nav-content');
 			if (content.is(':empty')){
 				var target = $(this).find('.nav-link').attr('href');
-				target += ' #load';
-				content.addClass('active').load(target, function() {
+				content.addClass('active');
+				$.ajax({
+					url: target,
+					data: {},
+					beforeSend: function(){
+						 $('body').append('<p class="loader">Loading</p>');
+				   },
+					success: function (data) {
+						content.append($(data).find('#load'));
+						$('.ajax-link').unbind('click').ajaxLink();
+					},
+					complete: function(){
+						$('.loader').remove();
+					},
+					dataType: 'html'
 				});
 			}else{
 				content.addClass('active').children();

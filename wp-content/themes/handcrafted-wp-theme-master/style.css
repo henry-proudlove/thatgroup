@@ -448,3 +448,33 @@ article.comment {
 	display: block;
 }
 
+#primary{
+	transition: opacity 1s;
+	-webkit-transition: opacity 1s;
+	-moz-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	-ms-transition: opacity 1s;
+	opacity: 1;
+}
+
+#primary.incoming{
+	animation: fadein 1s;
+	-webkit-animation: fadein 1s;
+}
+
+@keyframes fadein
+{
+from {opacity: 0;}
+to {background: 1;}
+}
+
+@-webkit-keyframes fadein /* Safari and Chrome */
+{
+from {opacity: 0;}
+to {background: 1;}
+}
+
+#primary.outgoing{
+	opacity: 0;
+}
+
