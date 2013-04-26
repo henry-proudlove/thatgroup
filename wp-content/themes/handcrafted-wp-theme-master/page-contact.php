@@ -22,7 +22,7 @@ get_header(); ?>
 					</address>
 					<nav id="contact-nav">
 						<a href="http://goo.gl/maps/K2UkO" target="_blank">Find Us</a>
-						<a href="#">Email Us</a>
+						<a class="ajax-link" href="#">Email Us</a>
 						<a href="#" target="_blank">Twitter</a>
 						<a href="#" target="_blank">LinkedIn</a>
 						<a href="#" target="_blank">Facebook</a>

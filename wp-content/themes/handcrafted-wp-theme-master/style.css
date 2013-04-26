@@ -434,3 +434,17 @@ article.comment {
 #colophon {
 	padding: 1em 0 0;
 }
+
+.nav-content.active{
+	background: red;
+	height: 260px;
+}
+
+.nav-content > section{
+	display: none;
+}
+
+.nav-content.active > section{
+	display: block;
+}
+

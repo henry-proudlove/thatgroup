@@ -70,14 +70,14 @@
 						$args = array(
 							'exclude'      => $frontpage_id,
 							'title_li'     => __(''),
-							'link_after'   => 'fuck'
+							'sort_column'  => 'menu_order'
 						);
 						$pages = get_pages( $args );
 						foreach ($pages as $page){
-							echo '<li class="nav-link">';
+							echo '<ul class="nav-holder">';
 							//echo $page->post_title;
-							echo '<a href="' . get_permalink($page->ID) . '">' . $page->post_title . '</a></li>';
-							echo '<li class="nav-content"></li>';
+							echo '<li><a class="nav-link" href="' . get_permalink($page->ID) . '">' . $page->post_title . '</a></li>';
+							echo '<li class="nav-content"></li></ul>';
 						}
 						?>
 					</ul>
