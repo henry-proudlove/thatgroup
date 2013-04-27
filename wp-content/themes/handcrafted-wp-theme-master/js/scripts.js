@@ -1,3 +1,5 @@
+
+
 jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
 		e.preventDefault();
@@ -7,18 +9,20 @@ jQuery.fn.ajaxLink = function(){
 			url: target,
 			data: {},
 			beforeSend: function(){
-						 $('body').append('<p class="loader">Loading</p>');
+				$('body').append('<p class="loader">Loading</p>');
 			},
 			success: function (data) {
-				html = $(data).find('#primary').addClass('incoming'); 
+				html = $(data).find('#primary');
 				$('#main').children().addClass('outgoing').parent().append(html);
+				bodyclass = $(data).find('#main').attr('data');
+				$('body').removeClass().addClass(bodyclass);				
 				$('.outgoing').on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
 					$(this).remove();
 					$('#primary').removeClass('incoming');
 				})
 			},
 			complete: function(){
-						$('.loader').remove();
+				$('.loader').remove();
 			},
 			dataType: 'html'
 		});

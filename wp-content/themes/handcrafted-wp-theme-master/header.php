@@ -86,4 +86,4 @@
 		</header><!-- #branding -->
 	
 	
-		<div id="main">
+		<div id="main" data="<?php echo implode(' ' , get_body_class()); ?>">
