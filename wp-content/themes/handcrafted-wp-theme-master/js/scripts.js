@@ -1,5 +1,3 @@
-
-
 jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
 		e.preventDefault();
