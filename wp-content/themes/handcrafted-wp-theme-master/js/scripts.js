@@ -15,10 +15,14 @@ jQuery.fn.ajaxLink = function(){
 				html = $(data).find('#primary').addClass('incoming');
 				$('#main').children().addClass('outgoing').parent().append(html);
 				bodyclass = $(data).find('#main').attr('data');
-				$('body').removeClass().addClass(bodyclass);				
+				$('body').removeClass().addClass(bodyclass).trigger('mousemove');
 				$('.outgoing').on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
 					$(this).remove();
 					$('#primary').removeClass('incoming');
+					$('body:not(.home) #nav-container').addClass('drop').mouseleave(function(){
+						console.log('Yeah BOI!!');
+						$(this).removeClass('down').addClass('up');
+					});
 				})
 			},
 			complete: function(){
@@ -73,5 +77,14 @@ $(document).ready(function(){
 		e.preventDefault();
 	});
 	$('.nav-link:first').ajaxLink();
+	
+	$('.nav-title').hover(function(){
+		$('#nav-container').removeClass('up').addClass('down');
+	});
+	
+	$('#nav-container.drop').mouseleave(function(){
+		//
+		console.log('Yeah BOI!!');
+	});
 });
 

@@ -63,9 +63,9 @@
 					}
 					?>
 				</hgroup>			
-				<nav id="utility" role="article">
+				<nav id="utility" role="article" class="clearfix">
 					<h3 class="nav-title">Menu</h3>
-					<ul>
+					<ul id="nav-container">
 						<?php
 						$frontpage_id = get_option('page_on_front');
 						$args = array(
