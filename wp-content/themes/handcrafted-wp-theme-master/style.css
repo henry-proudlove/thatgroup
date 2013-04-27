@@ -297,6 +297,8 @@ body {
 }
 
 #site-description {
+	font-size: 1.5em;
+	font-weight: normal;
 	left: -100%;
 	-webkit-transition: left 1s;
 	-moz-transition: left 1s;
@@ -304,19 +306,13 @@ body {
 	-ms-transition: left 1s;
 	color: white;
 	z-index: 99;
+	position: absolute;
+	width: 100%;
+	padding: 100px 40px;
 }
 
 .home #site-description {
 	left: 0;
-	font-size: 1.5em;
-	font-weight: normal;
-	padding: 100px 40px;
-	position: absolute;
-	text-indent: 0;
-	-webkit-transition: left 1s;
-	-moz-transition: left 1s;
-	-o-transition: left 1s;
-	-ms-transition: left 1s;
 }
 
 
