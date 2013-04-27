@@ -73,10 +73,14 @@
 							'title_li'     => __(''),
 							'sort_column'  => 'menu_order'
 						);
+						
 						$pages = get_pages( $args );
 						foreach ($pages as $page){
-							echo '<ul class="nav-holder">';
-							//echo $page->post_title;
+							if($page->post_title == 'About Us'){
+								echo '<ul class="nav-holder about">';
+							}else{
+								echo '<ul class="nav-holder">';
+							}
 							echo '<li><a class="nav-link" href="' . get_permalink($page->ID) . '">' . $page->post_title . '</a></li>';
 							echo '<li class="nav-content"></li></ul>';
 						}

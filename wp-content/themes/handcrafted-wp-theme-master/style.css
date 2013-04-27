@@ -524,31 +524,44 @@ article.comment {
 
 #nav-container{
 	position: fixed;
-	transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
-	-webkit-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
-	-moz-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
-	-o-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
-	-ms-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
-	left: -100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	z-index: 3;
 	width: 100%;
-	bottom: 25px;
 	border-width: 0 0 0 5px;
 	border-style: solid;
 	border-color: white;
 	background: black;
 }
 
-.home #nav-container{
+#nav-container.home{
+	left: -100%;
+	bottom: 25px;
+	transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-webkit-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-moz-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-o-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-ms-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+}
+
+.home #nav-container.home{
 	left: 0;
 }
 
-#utility .nav-title, #utility .nav-link{
+.nav-title, .nav-link{
 	font-size: 1.25em;
 	line-height: 0.75em;
 	padding: 22px 40px;
+}
+
+.nav-title{
+	position: fixed;
+	top: -10px;
+	right: 0;
+	z-index: 5;
+	background: white;
+	color: black;
+	padding: 32px 40px 22px	;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1) 1.2s;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
 	   -moz-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
@@ -557,26 +570,11 @@ article.comment {
 			transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
 }
 
-#utility .nav-title{
-	position: fixed;
-	top: -10px;
-	right: 0;
-	z-index: 5;
-	background: white;
-	color: black;
-	padding: 32px 40px 22px	;
-}
-
-.home #utility .nav-title{
+.home .nav-title{
 	top: -76px;
 }
 
-#utility .nav-title{
-	display: block;
-	position:fixed;
-}
-
-#utility .nav-link{
+a.nav-link{
 	display: block;
 	color: white;
 	background: black;
@@ -586,7 +584,7 @@ article.comment {
 	-moz-box-sizing: border-sizing;
 }
 
-#utility #load .ajax-link{
+#load .ajax-link{
 	width: 346px;
 	height: 260px;
 	display:block;
@@ -595,36 +593,26 @@ article.comment {
 }
 
 #nav-container.drop{
-	-webkit-transition: none;
-	-moz-transition: none;
-	-o-transition: none;
-	-ms-transition: none;
 	left: 0;
-	top: -300px;
 	bottom: auto;
-	z-index: 100;
+	z-index: 1000;
 	padding-top: 30px;
+	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+	   -moz-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+		-ms-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+		 -o-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+			transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 #nav-container.down{
 	left: 0;
 	bottom: auto;
 	top: -25px;
-	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1);
-	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-	   -moz-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-		-ms-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-		 -o-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-			transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 #nav-container.up{
-	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1);
-	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-	   -moz-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-		-ms-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-		 -o-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-			transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+	top: -300px;
 }
 
 #load{
@@ -639,7 +627,6 @@ article.comment {
 	background: #2b2b2b;
 	border-left: 5px solid white;
 	padding: 5px 5px 5px 0;
-	position: relative;
 	min-height: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -648,7 +635,6 @@ article.comment {
 
 #primary.incoming{
 	position: absolute;
-	/*left: 100%;*/
 	animation: incoming 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 	-webkit-animation: incoming 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 }
@@ -675,6 +661,45 @@ to {left: 0;}
 	left: -100%;
 }
 
+/* Home Transition*/
+
+#primary.outgoing-home{
+	position: absolute;
+	transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-webkit-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-moz-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-o-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-ms-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	left: -100%;
+}
+
+#primary.incoming-home{
+	position: absolute;
+	animation: incoming-home 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-webkit-animation: incoming-home 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+}
+
+@keyframes incoming-home
+{
+from {left: -100%;}
+to {left: 0;}
+}
+
+@-webkit-keyframes incoming-home
+{
+from {left: -100%;}
+to {left: 0;}
+}
+
+#primary.outgoing-home{
+	position: absolute;
+	transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-webkit-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-moz-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-o-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	-ms-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	left: 100%;
+}
 
 /* Disgusting border solution */
 
