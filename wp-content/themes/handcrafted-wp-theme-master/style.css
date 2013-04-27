@@ -74,7 +74,7 @@ pre, code, kbd, samp {
  */
 body, select, input, textarea { 
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
-  color: black; 
+  color: white; 
   /* set your base font here, to apply evenly */
   /* font-family: Georgia, serif;  */   
 }
@@ -130,7 +130,7 @@ input:invalid, textarea:invalid {
    No text-shadow: twitter.com/miketaylr/status/12228805301 
    Also: hot pink. */
 ::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; } 
+::selection { background:white; color:#444; text-shadow: none; } 
 /*  j.mp/webkit-tap-highlight-color */
 a:link { -webkit-tap-highlight-color: #FF5E99; } 
 /* make buttons play nice in IE:    
@@ -285,7 +285,7 @@ body {
 	position: absolute;
 	width: 100%;
 }
-#site-title {
+#site-title a {
 	position: absolute;
 	text-indent: -9000px;
 	width: 171px;
@@ -309,6 +309,8 @@ body {
 	position: absolute;
 	width: 100%;
 	padding: 100px 40px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .home #site-description {
@@ -500,19 +502,6 @@ article.comment {
 	bottom: 7px;
 	right: 5px;
 }
-
-#utility{
-	position: fixed;
-	bottom: 25px;
-	width: 100%;
-	z-index: 3;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border-width: 0 5px;
-	border-style: solid;
-	border-color: white;
-	left: 0;
-}
 .nav-content{
 	background: #333;
 	height: 0;
@@ -566,15 +555,49 @@ to {background: 1;}
 
 /* main menu */
 
+#utility > ul{
+	position: fixed;
+	transition: left 1s;
+	-webkit-transition: left 1s;
+	-moz-transition: left 1s;
+	-o-transition: left 1s;
+	-ms-transition: left 1s;
+	left: -100%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	z-index: 3;
+	width: 100%;
+	bottom: 25px;
+	border-width: 0 0 0 5px;
+	border-style: solid;
+	border-color: white;
+}
+
+.home #utility > ul{
+	left: 0;
+}
+
+#utility .nav-title, #utility .nav-link{
+	font-size: 1.25em;
+	line-height: 0.75em;
+	padding: 23px 40px;
+}
+
+.home #utility .nav-title{
+	display:none;
+}
+
+#utility .nav-title{
+	display: block;
+	position:fixed;
+}
+
 #utility .nav-link{
 	display: block;
 	color: white;
 	background: black;
-	padding: 23px 40px;
-	font-size: 1.25em;
 	text-decoration: none;
 	border-bottom: 1px solid white;
-	line-height: 0.75em;
 	box-sizing: border-box;
 	-moz-box-sizing: border-sizing;
 }
@@ -603,6 +626,7 @@ to {background: 1;}
 	min-height: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	position:relative;
 }
 
 #primary.incoming{
@@ -633,6 +657,9 @@ to {left: 0;}
 	-ms-transition: left 1s;
 	left: -100%;
 }
+
+
+/* Disgusting border solution */
 
 #border div{
 	background: white;
