@@ -12,7 +12,7 @@ jQuery.fn.ajaxLink = function(){
 				$('body').append('<p class="loader">Loading</p>');
 			},
 			success: function (data) {
-				html = $(data).find('#primary');
+				html = $(data).find('#primary').addClass('incoming');
 				$('#main').children().addClass('outgoing').parent().append(html);
 				bodyclass = $(data).find('#main').attr('data');
 				$('body').removeClass().addClass(bodyclass);				

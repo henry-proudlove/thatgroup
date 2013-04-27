@@ -225,10 +225,8 @@ body {
 #page {
 	display: block;
 }
-#primary {
-	float: left;
-	width: 100%;
-}
+
+
 #content {
 }
 #main .widget-area {
@@ -471,7 +469,7 @@ article.comment {
 	right: 5px;
 }
 
-.home #utility{
+#utility{
 	position: fixed;
 	bottom: 25px;
 	width: 100%;
@@ -483,7 +481,6 @@ article.comment {
 	border-color: white;
 	left: 0;
 }
-
 .nav-content{
 	background: #333;
 	height: 0;
@@ -505,16 +502,16 @@ article.comment {
 	display: block;
 }*/
 
-#primary{
+/*#primary{
 	transition: opacity 1s;
 	-webkit-transition: opacity 1s;
 	-moz-transition: opacity 1s;
 	-o-transition: opacity 1s;
 	-ms-transition: opacity 1s;
 	opacity: 1;
-}
+}*/
 
-#primary.incoming{
+/*#primary.incoming{
 	animation: fadein 1s;
 	-webkit-animation: fadein 1s;
 }
@@ -525,7 +522,7 @@ from {opacity: 0;}
 to {background: 1;}
 }
 
-@-webkit-keyframes fadein /* Safari and Chrome */
+@-webkit-keyframes fadein
 {
 from {opacity: 0;}
 to {background: 1;}
@@ -533,7 +530,7 @@ to {background: 1;}
 
 #primary.outgoing{
 	opacity: 0;
-}
+}*/
 
 /* main menu */
 
@@ -563,3 +560,38 @@ to {background: 1;}
 	width: 10000px;
 }
 
+/* Page Transition */
+
+#primary{
+	width: 100%;
+	position: relative;
+}
+
+#primary.incoming{
+	/*left: 100%;*/
+	position:absolute;
+	animation: incoming 1s;
+	-webkit-animation: incoming 1s;
+}
+
+@keyframes incoming
+{
+from {left: 100%;}
+to {left: 0;}
+}
+
+@-webkit-keyframes incoming
+{
+from {left: 100%;}
+to {left: 5px;}
+}
+
+#primary.outgoing{
+	position:absolute;
+	transition: left 1s;
+	-webkit-transition: left 1s;
+	-moz-transition: left 1s;
+	-o-transition: left 1s;
+	-ms-transition: left 1s;
+	left: -100%;
+}
