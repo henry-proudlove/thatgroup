@@ -2,7 +2,6 @@ jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
 		e.preventDefault();
 		target = $(this).attr('href');
-		console.log(target);
 		$.ajax({
 			url: target,
 			data: {},
@@ -39,22 +38,6 @@ function pageTrans(data , home){
 			$('#primary').removeClass('incoming' + home);
 	})
 }
-
-/*function homeTrans(data){
-	$('#main')
-		.children()
-		.addClass('outgoing-home')
-		.parent()
-		.append($(data).find('#primary').addClass('incoming-home'));
-	$('body')
-		.removeClass()
-		.addClass($(data).find('#main').attr('data'));
-	$('.outgoing-home')
-		.on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
-			$(this).remove();
-			$('#primary').removeClass('incoming-home');
-	})
-}*/
 
 $(document).ready(function(){
 	
