@@ -21,12 +21,6 @@ get_header(); ?>
 						<h1 class="entry-title"><?php echo the_title(); ?></h1>
 						<h2 class="entry-location"><?php echo $post->location; ?></h2>
 					</header><!-- .entry-header -->
-					<div class="lead-img">
-						<?php if ( has_post_thumbnail() ) { 
-								  the_post_thumbnail('tg-leadimg');
-								} 
-						?>
-					</div><!--.lead-image-->
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'themename' ), 'after' => '</div>' ) ); ?>

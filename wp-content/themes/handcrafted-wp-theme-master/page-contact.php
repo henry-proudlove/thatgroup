@@ -22,11 +22,11 @@ get_header(); ?>
 							<a href="tel:+4402035442696">0203 544 2696</a></br>
 						</address>
 						<nav id="contact-nav">
-							<a href="http://goo.gl/maps/K2UkO" target="_blank">Find Us</a>
-							<a href="#">Email Us</a>
-							<a href="#" target="_blank">Twitter</a>
-							<a href="#" target="_blank">LinkedIn</a>
-							<a href="#" target="_blank">Facebook</a>
+							<a class="map" href="http://goo.gl/maps/K2UkO" target="_blank">Find Us</a>
+							<a class="email" href="#">Email Us</a>
+							<a class="twitter" href="#" target="_blank">Twitter</a>
+							<a class="linkedin" href="#" target="_blank">LinkedIn</a>
+							<a class="facebook " href="#" target="_blank">Facebook</a>
 						</nav>
 					</div><!--#contact-->
 				</section><!--#load-->

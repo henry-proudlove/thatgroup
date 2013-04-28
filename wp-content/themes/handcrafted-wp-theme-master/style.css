@@ -335,7 +335,7 @@ body {
 	-o-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 	-ms-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 	color: white;
-	z-index: 99;
+	z-index: 3;
 	position: absolute;
 	width: 100%;
 	padding: 100px 34px;
@@ -817,22 +817,54 @@ a.nav-link{
 	float: left;
 }
 
-#contact #contact-nav a{
-	width: 20%;
-	height: 260px;
-	display: block;
-	float: left;
-	padding-top: 176px;
-}
-
-
 .nav-holder:last-child #load{
 	width: 100%;
 }
 
+#contact #contact-nav a{
+	width: 20%;
+	display: block;
+	float: left;
+	padding-top: 176px;
+	text-align: center;
+	background-position: center 55%;
+	background-repeat: no-repeat;
+	-webkit-transition: background-size 0.4s;
+	   -moz-transition: background-size 0.4s;
+		-ms-transition: background-size 0.4s;
+		 -o-transition: background-size 0.4s;
+			transition: background-size 0.4s;
+	background-size: 50%;
+}
 
+#contact #contact-nav a.map{
+	background-image: url('images/ico-map.svg');
+}
 
+#contact #contact-nav a.email{
+	background-image: url('images/ico-mail.svg');
+}
 
+#contact #contact-nav a.twitter{
+	background-image: url('images/ico-tw.svg');
+}
+
+#contact #contact-nav a.linkedin{
+	background-image: url('images/ico-in.svg');
+}
+
+#contact #contact-nav a.facebook{
+	background-image: url('images/ico-fb.svg');
+}
+
+#contact #contact-nav a:hover{
+	background-size: 60%;
+	-webkit-transition: background-size 0.2s ease-in;;
+	   -moz-transition: background-size 0.2s ease-in;;
+		-ms-transition: background-size 0.2s ease-in;;
+		 -o-transition: background-size 0.2s ease-in;;
+			transition: background-size 0.2s ease-in;;
+}
 
 
 #nav-container.drop{

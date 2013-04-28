@@ -1,6 +1,6 @@
 jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
-		//e.preventDefault();
+		e.preventDefault();
 		target = $(this).attr('href');
 		$.ajax({
 			url: target,
@@ -44,6 +44,7 @@ function pageTrans(data , home){
 		.on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
 			$(this).remove();
 			$('#primary').removeClass('incoming' + home);
+			$('#carousel-images').cycleInit();
 	})
 }
 
@@ -90,7 +91,7 @@ $(document).ready(function(){
 			}
 		}, 
 		function(){
-			//$(this).find('.nav-content').removeClass('active');
+			$(this).find('.nav-content').removeClass('active');
 		}	
 	);
 	
