@@ -60,7 +60,8 @@ h1, h2, h3, h4, h5, h6,
 .page-template-page-about-php .main-article ul,
 .page-template-page-about-php .main-article .entry-content p:last-child,
 .main-article .entry-meta,
-.main-article .entry-content p.wp-caption-text
+.main-article .entry-content p.wp-caption-text,
+#nav-below
 {
 	font-family:'TradeGothicW01-BoldCn20 675334', sans-serif;
 	text-transform: uppercase;
@@ -414,28 +415,122 @@ body {
  * Content
  *
  */
-#content nav {
+#nav-below {
 	display: block;
 	overflow: hidden;
+	top: 50%;
+	width: 100%;
+	font-size: 1.25em;
 }
-#content nav .nav-previous {
-	float: left;
-	width: 50%;
+
+#nav-below .nav-next a, #nav-below .nav-previous a{
+	border: none;
+	display: inline-block;
+	z-index: 100;
+	position: fixed;
+	top: 50%;
+	
 }
-#content nav .nav-next {
-	float: right;
-	text-align: right;
-	width: 50%;
+
+#nav-below .nav-next a{
+	right: 5px;
+	/*padding: 8px 4px 4px 22px;*/
 }
-#content #nav-above {
-	display: none;
+/*
+#nav-below .nav-previous a{
+	padding: 8px 22px 4px 4px;
+}*/
+
+
+
+#nav-below .meta-nav{
+	display: inline-block;
+	width: 45px;
+	padding: 0 5px;
+	text-indent: -9000px;
+	position: relative;
+	z-index: 5;
+		-webkit-transition: background-color 0.2s ease 0.3s;
+       -moz-transition: background-color 0.2s ease 0.3s;
+        -ms-transition: background-color 0.2s ease 0.3s;
+         -o-transition: background-color 0.2s ease 0.3s;
+            transition: background-color 0.2s ease 0.3s;
 }
-.paged #content #nav-above,
-.single #content #nav-above {
-	display: block;
+
+#nav-below .nav-text{
+	background: red;
+	display: inline-block;
+	line-height: 56px;
+	padding: 0 25px;
+	z-index: 4;
+    -webkit-transition: all 0.3s ease 0.2s;
+       -moz-transition: all 0.3s ease 0.2s;
+        -ms-transition: all 0.3s ease 0.2s;
+         -o-transition: all 0.3s ease 0.2s;
+            transition: all 0.3s ease 0.2s;
+} 
+
+#nav-below .nav-text, #nav-below .meta-nav{
+	height: 55px;
+	vertical-align: middle;
 }
-#nav-below {
-	margin: 1em 0 0;
+
+#nav-below .nav-next a .nav-text{
+	left: 100%;
+	color: red;
+}
+
+#nav-below .nav-previous a .nav-text{
+	left: -100%;
+	color: red;
+}
+
+#nav-below .nav-next a:hover .nav-text,
+#nav-below .nav-previous a:hover .nav-text{
+	-webkit-transition: all 0.3s ease;
+       -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+         -o-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+}
+
+#nav-below .nav-next a:hover .nav-text{
+	left: 25px;
+	color: white;
+}
+
+#nav-below .nav-previous a:hover .nav-text{
+	left: -25px;
+	color: white;
+}
+
+#nav-below .nav-text{
+	position: relative;
+}
+
+#nav-below .nav-next a .meta-nav{
+	background: url('images/next-post.svg') no-repeat 60% center ;
+}
+
+#nav-below .nav-previous a .meta-nav{
+	background: url('images/previous-post.svg') no-repeat 40% center ;
+}
+
+#nav-below .nav-next a:hover .meta-nav,
+#nav-below .nav-previous a:hover .meta-nav{
+    -webkit-transition: background-color 0.2s;
+       -moz-transition: background-color 0.2s;
+        -ms-transition: background-color 0.2s;
+         -o-transition: background-color 0.2s;
+            transition: background-color 0.2s;
+}
+
+#nav-below .nav-next a:hover .meta-nav{
+	background: red url('images/next-post.svg') no-repeat 60% center ;
+}
+
+#nav-below .nav-previous a:hover .meta-nav{
+	background: red url('images/previous-post.svg') no-repeat 40% center ;
 }
 .page-link {
 	margin: 0 0 1em;
@@ -854,5 +949,4 @@ to {left: 0;}
 .main-article .entry-meta{
 	font-size: 0.8em;
 }
-
 
