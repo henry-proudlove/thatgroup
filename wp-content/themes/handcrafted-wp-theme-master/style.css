@@ -50,11 +50,17 @@ input, select { vertical-align:middle; }
  *
  */
 body { 
-	font:24px/1.231 'Trade Gothic W01 Roman' , sans-serif; 
+	font:24px/1.231 'Trade Gothic W01 Light' , sans-serif; 
 	*font-size:small;
 }
 
-h1, h2, h3, h4, h5, h6, .nav-link{
+h1, h2, h3, h4, h5, h6, 
+.nav-link, 
+.page-template-page-about-php .entry-content p:first-child,
+.page-template-page-about-php .main-article ul,
+.page-template-page-about-php .main-article .entry-content p:last-child,
+.main-article .entry-meta
+{
 	font-family:'TradeGothicW01-BoldCn20 675334', sans-serif;
 	text-transform: uppercase;
 	font-weight: normal;
@@ -66,7 +72,15 @@ select, input, textarea, button {
 pre, code, kbd, samp {
 	font-family: monospace, sans-serif;
 }
-
+#site-description, 
+.page-template-page-about-php .entry-content p:first-child,
+.page-template-page-about-php .main-article ul,
+.page-template-page-about-php .endline
+	{
+	font-size: 1.5em;
+	font-weight: normal;
+	line-height: 1.231;
+}
 /*
  *
  * Base Styles 
@@ -84,9 +98,22 @@ h1,h2,h3,h4,h5,h6 { font-weight: bold; }
 /* always force a scrollbar in non-IE */ 
 html { overflow-y: scroll; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
-a:hover, a:active { outline: none; }
-a, a:active, a:visited { color: #607890; }
-a:hover { color: #036; }
+
+a:hover, a:active { 
+	outline: none;
+}
+a, a:active, a:visited {
+	color: white;
+	text-decoration: none;
+}
+a:hover { 
+	color: white;
+}
+
+#content a{
+	border-bottom: 1px solid white;
+}
+
 ul, ol { margin-left: 1.8em; }
 ol { list-style-type: decimal; }
 /* Remove margins for navigation lists */
@@ -288,7 +315,7 @@ body {
 	width: 100%;
 }
 #site-title a {
-	position: absolute;
+	position: fixed;
 	text-indent: -9000px;
 	width: 171px;
 	height: 61px;
@@ -299,8 +326,6 @@ body {
 }
 
 #site-description {
-	font-size: 1.5em;
-	font-weight: normal;
 	left: -100%;
 	-webkit-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 	-moz-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
@@ -729,6 +754,85 @@ to {left: 0;}
 	height: 5px;
 	top:0;
 	left: 0;
+}
+
+
+/* Single Page */
+
+#content{
+	padding: 90px 0;
+}
+.main-article .entry-title, 
+.main-article .entry-content,
+.main-article .entry-meta{
+	margin: 0 auto;
+	width: 800px;
+}
+
+.main-article .entry-title{
+	font-size: 2.5em;
+	line-height: 1em;
+}
+
+.main-article, .main-article header{
+	padding-bottom: 40px;
+	margin-bottom: 45px;
+	border-width: 0 0 1px 0;
+	-webkit-border-image:url('images/dotted-border.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border.svg') 10 1 round;
+}
+
+.main-article .entry-content p{
+	margin-bottom: 0.9em;
+	line-height: 1.4em;
+}
+
+.page-template-page-about-php .main-article ul{
+	text-align: center;
+	list-style: none;
+	margin: 40px 0;
+	line-height: 0.75em;
+}
+
+.page-template-page-about-php .main-article li{
+	border-width: 0 0 1px 0;
+	padding: 15px 0;
+	background: url('images/dotted-border.svg') center center;
+	background-repeat:repeat-x;
+}
+
+.page-template-page-about-php .main-article li .item{
+	padding: 0 15px;
+	background: #2b2b2b;
+	position: relative;
+}
+
+.page-template-page-about-php .main-article li:nth-child(1) .item{
+	left: 33px;
+}
+
+.page-template-page-about-php .main-article li:nth-child(2) .item{
+	left: -12px;
+}
+
+.page-template-page-about-php .main-article li:nth-child(3) .item{
+	left: -24px;
+}
+
+.page-template-page-about-php .main-article li:nth-child(4) .item{
+	left: 18px;
+}
+.page-template-page-about-php .main-article li:nth-child(5) .item{
+	left: 0;
+}
+
+.page-template-page-about-php .endline{
+	font-size: 1.35em;	
+}
+
+.main-article .entry-meta{
+	font-size: 0.8em;
 }
 
 

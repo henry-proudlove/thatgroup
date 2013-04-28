@@ -1,6 +1,6 @@
 jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
-		e.preventDefault();
+		//e.preventDefault();
 		target = $(this).attr('href');
 		$.ajax({
 			url: target,
