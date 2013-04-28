@@ -295,4 +295,17 @@ function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg =
 	//echo '</div><!--.images-->';
 	
 }
+
+function tg_excerpt_length($length) {
+	return 25;
+}
+
+add_filter('excerpt_length', 'tg_excerpt_length');
+
+function tg_excerpt_more($more) {
+	global $post;
+	return '...';
+}
+add_filter('excerpt_more', 'tg_excerpt_more');
+
 ?>

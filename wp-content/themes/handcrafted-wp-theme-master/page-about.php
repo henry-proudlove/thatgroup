@@ -33,7 +33,7 @@ get_header(); ?>
 					
 					if( $wp_query->have_posts() ): while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
-								<a class="ajax-link" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+								<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 								<?php if(has_post_thumbnail()){
 									the_post_thumbnail('tg-projectthumb');
 								}

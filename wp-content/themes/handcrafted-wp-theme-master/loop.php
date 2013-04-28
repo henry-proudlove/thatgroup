@@ -18,14 +18,16 @@
 	<?php while ( have_posts() ) : the_post(); ?>
 	
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
-			<a class="ajax-link" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
-				<header class="entry-header">
-					<time class="entry-date"><?php the_date('d.m.y'); ?></time>
-					<h1 class="entry-title"><?php the_title(); ?></h1>
-				</header><!-- .entry-header -->	
-				<div class="entry-summary">
-					<?php the_excerpt(); ?>
-				</div><!-- .entry-summary -->
+			<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+				<div class="thumb-content">
+					<header class="entry-header">
+						<time class="entry-date"><?php the_date('d.m.y'); ?></time>
+						<h1 class="entry-title"><?php the_title(); ?></h1>
+					</header><!-- .entry-header -->	
+					<div class="entry-summary">
+						<?php the_excerpt(); ?>
+					</div><!-- .entry-summary -->
+				</div><!--.thumb-content-->
 			</a>
 		</article><!-- #post-<?php the_ID(); ?> -->
 	

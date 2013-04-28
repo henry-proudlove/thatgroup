@@ -61,7 +61,8 @@ h1, h2, h3, h4, h5, h6,
 .page-template-page-about-php .main-article .entry-content p:last-child,
 .main-article .entry-meta,
 .main-article .entry-content p.wp-caption-text,
-#nav-below
+#nav-below,
+.thumb-box time
 {
 	font-family:'TradeGothicW01-BoldCn20 675334', sans-serif;
 	text-transform: uppercase;
@@ -337,7 +338,7 @@ body {
 	z-index: 99;
 	position: absolute;
 	width: 100%;
-	padding: 100px 40px;
+	padding: 100px 34px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
@@ -605,7 +606,7 @@ article.comment {
 	right: 5px;
 }
 .nav-content{
-	background: #333;
+	background: black;
 	height: 0;
 	-webkit-transition: height 0.4s ease 0.1s;
 	-moz-transition: height 0.4s ease 0.1s;
@@ -649,7 +650,7 @@ article.comment {
 .nav-title, .nav-link{
 	font-size: 1.25em;
 	line-height: 0.75em;
-	padding: 22px 40px;
+	padding: 22px 29px;
 }
 
 .nav-title{
@@ -682,13 +683,157 @@ a.nav-link{
 	-moz-box-sizing: border-sizing;
 }
 
-#load .ajax-link{
+.thumb-box{
 	width: 346px;
 	height: 260px;
 	display:block;
 	float: left;
-	background: #ccc;
+	position: relative;
+	border-right: 1px solid black;
+	overflow: hidden;
 }
+
+.thumb-box img{
+	position: absolute;
+}
+
+.thumb-box .thumb-content{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	font-size: 1.25em;
+	line-height: 1em;
+	padding: 10px 29px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.type-project .thumb-box .thumb-content header{
+	position: absolute;
+	bottom: 29px;
+	opacity: 0;
+	-webkit-transition: all 0.3s ease-out;
+	   -moz-transition: all 0.3s ease-out;
+		-ms-transition: all 0.3s ease-out;
+		 -o-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+	left: -22px;
+}
+
+.type-project .thumb-box:hover .thumb-content header{
+	opacity: 1;
+	left: 29px;
+}
+
+.type-project .thumb-box .thumb-content{
+	background-image: url('images/roll-mask.svg');
+	background-position: 0 0;
+	-webkit-transition: opacity 0.5s;
+	   -moz-transition: opacity 0.5s;
+		-ms-transition: opacity 0.5s;
+		 -o-transition: opacity 0.5s;
+			transition: opacity 0.5s;
+	opacity:0;
+}
+
+.type-project .thumb-box:hover .thumb-content{
+	background: url('images/roll-mask.svg');
+	background-repeat: no-repeat;
+	animation: polyslide 0.3s;
+	-webkit-animation: polyslide 0.3s;
+	opacity:1;
+	
+}
+
+@keyframes polyslide
+{
+	from{
+		background-position: -410px 0;
+	}
+	to{
+		background-position: 0 0;
+	}
+}
+
+@-webkit-keyframes polyslide{
+	from{
+		background-position: -410px 0;
+	}
+	to{
+		background-position: 0 0;
+	}
+}
+
+.type-post .thumb-box .entry-summary{
+	font-size: 0.525em;
+	line-height: 1.3em;
+	padding-top: 18px;
+}
+
+.thumb-box time{
+	font-size: 0.5em;
+	line-height: 0.5em;
+	color: #38da7d;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+		-ms-transition: all 0.3s;
+		 -o-transition: all 0.3s;
+			transition: all 0.3s;
+}
+
+.type-post .thumb-box{
+	color: white;
+	background: #2b2b2b;
+	-webkit-transition: all 0.3s;
+	   -moz-transition: all 0.3s;
+		-ms-transition: all 0.3s;
+		 -o-transition: all 0.3s;
+			transition: all 0.3s;
+}
+
+.type-post .thumb-box:hover{
+	color: #2b2b2b;
+	background: #38da7d;
+}
+
+.type-post .thumb-box:hover time{
+	color: white;
+}
+
+#contact address{
+	font-style: normal;
+	display: block;
+	float: left;
+	width: 25%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding: 46px 29px;
+	line-height: 1.35em;
+}
+
+#contact #contact-nav{
+	width: 75%;
+	display: block;
+	float: left;
+}
+
+#contact #contact-nav a{
+	width: 20%;
+	height: 260px;
+	display: block;
+	float: left;
+	padding-top: 176px;
+}
+
+
+.nav-holder:last-child #load{
+	width: 100%;
+}
+
+
+
+
+
 
 #nav-container.drop{
 	left: 0;
@@ -715,6 +860,7 @@ a.nav-link{
 
 #load{
 	overflow-y: scroll;
+	overflow-x: hidden;
 	width: 10000px;
 }
 

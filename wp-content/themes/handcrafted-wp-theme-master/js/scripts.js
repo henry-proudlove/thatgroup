@@ -90,7 +90,7 @@ $(document).ready(function(){
 			}
 		}, 
 		function(){
-			$(this).find('.nav-content').removeClass('active');
+			//$(this).find('.nav-content').removeClass('active');
 		}	
 	);
 	
