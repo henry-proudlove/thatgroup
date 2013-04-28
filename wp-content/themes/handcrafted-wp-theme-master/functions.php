@@ -197,6 +197,7 @@ function tg_pages_excerpt	() {
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'tg-projectthumb', 346, 260, true );
 	add_image_size( 'tg-leadimg', 800, 345, true );
+	add_image_size( 'tg-carouselimg', 1280, 440, true );
 }
 
 // Metaboxes
@@ -266,4 +267,32 @@ function clean_quali($quali){
 	return $quali_arr;
 }
 
+function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg = false) {
+
+	global $post;
+	
+	if(!isset($post_id)){
+		$post_id = $post->ID;
+	}
+	
+	//echo '<div class="images">';
+	
+
+	if ($images = get_children(array(
+
+		'post_parent' => $post_id,
+		'post_type' => 'attachment',
+		'order' => 'menu_order',
+		'numberposts' => $limit,
+		'post_mime_type' => 'image'))):
+		
+		
+		foreach($images as $image) {
+			$attachment=wp_get_attachment_image_src($image->ID, $size); ?>
+			<div style="background-image: url('<?php echo $attachment[0]; ?>');"></div><?php
+		}
+	endif;
+	//echo '</div><!--.images-->';
+	
+}
 ?>

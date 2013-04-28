@@ -434,13 +434,11 @@ body {
 
 #nav-below .nav-next a{
 	right: 5px;
-	/*padding: 8px 4px 4px 22px;*/
 }
-/*
-#nav-below .nav-previous a{
-	padding: 8px 22px 4px 4px;
-}*/
 
+#nav-below .nav-next a{
+	right: 5px;
+}
 
 
 #nav-below .meta-nav{
@@ -484,6 +482,7 @@ body {
 	left: -100%;
 	color: red;
 }
+
 
 #nav-below .nav-next a:hover .nav-text,
 #nav-below .nav-previous a:hover .nav-text{
@@ -657,7 +656,7 @@ article.comment {
 	position: fixed;
 	top: -10px;
 	right: 0;
-	z-index: 5;
+	z-index: 100;
 	background: white;
 	color: black;
 	padding: 32px 40px 22px	;
@@ -833,10 +832,11 @@ to {left: 0;}
 
 /* Single Page */
 
-#content{
+.main-article{
 	padding: 90px 0;
 }
-.main-article .entry-title, 
+.main-article .entry-title,
+.main-article .entry-location,
 .main-article .entry-content,
 .main-article .entry-meta,
 .main-article .lead-img{
@@ -844,7 +844,9 @@ to {left: 0;}
 	width: 800px;
 }
 
-.main-article .entry-title{
+.main-article .entry-title,
+.main-article .entry-location
+{
 	font-size: 2.5em;
 	line-height: 1em;
 }
@@ -943,10 +945,75 @@ to {left: 0;}
 }
 
 .page-template-page-about-php .endline{
-	font-size: 1.35em;	
+	font-size: 1.35em;
+	display: block;
+	text-align: center;
 }
 
 .main-article .entry-meta{
 	font-size: 0.8em;
+}
+
+/* Carsouel */
+
+#carousel-holder{
+	width: 100%;
+	height: 440px;
+	overflow: hidden;
+	position: relative;
+}
+
+.gradient{
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.3) 0%, rgba(0,0,0,0) 15%, rgba(0,0,0,0) 85%, rgba(0,0,0,0.3) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.3)), color-stop(15%,rgba(0,0,0,0)), color-stop(85%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.3))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 15%,rgba(0,0,0,0) 85%,rgba(0,0,0,0.3) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 15%,rgba(0,0,0,0) 85%,rgba(0,0,0,0.3) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 15%,rgba(0,0,0,0) 85%,rgba(0,0,0,0.3) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.3) 0%,rgba(0,0,0,0) 15%,rgba(0,0,0,0) 85%,rgba(0,0,0,0.3) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d000000', endColorstr='#4d000000',GradientType=0 ); /* IE6-9 */
+	z-index: 99;
+}
+
+#carousel-images, .gradient{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#carousel-images div{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-size: cover;
+	background-position: 50% 50%;
+}
+
+#pager{
+	position: absolute;
+	bottom: 16px;
+	z-index: 10000;
+	width: 100%;
+	text-align: center;
+}
+
+#pager a{
+	border: none;
+	width: 9px;
+	height: 9px;
+	display: inline-block;
+	text-indent: -9000px;
+	background: white;
+	-webkit-box-shadow:  0px 0px 5px  rgba(0, 0, 0, 0.3);
+    box-shadow:  0px 0px 5px  rgba(0, 0, 0, 0.3);
+    margin: 4px;
+    -webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+#pager a.activeSlide, #pager a:hover{
+	background: #CD2029;
 }
 

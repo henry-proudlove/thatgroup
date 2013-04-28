@@ -23,6 +23,14 @@ jQuery.fn.ajaxLink = function(){
 	});
 };
 
+jQuery.fn.cycleInit = function(){
+	if(this.children().size() > 1){	
+		$(this).addClass('cycle').after('<nav id="pager">').cycle({
+			pager:  '#pager'
+		});
+	}
+};
+
 function pageTrans(data , home){
 	$('#main')
 		.children()
@@ -40,6 +48,8 @@ function pageTrans(data , home){
 }
 
 $(document).ready(function(){
+	
+	$('#carousel-images').cycleInit();
 	
 	$('#nav-container')
 		.addClass('home')
