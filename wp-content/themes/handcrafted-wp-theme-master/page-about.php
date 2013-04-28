@@ -18,7 +18,11 @@ get_header(); ?>
 					<header class="entry-header">
 						<h1 class="entry-title"><span id="all-sty">All Style. </span><span id="all-sub">All Substance</span></h1>
 					</header><!-- .entry-header -->
-
+					<div class="lead-image">
+						<?php if(has_post_thumbnail()){
+							
+						}
+					</div>
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'themename' ), 'after' => '</div>' ) ); ?>

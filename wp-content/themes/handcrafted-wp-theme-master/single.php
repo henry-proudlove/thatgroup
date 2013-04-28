@@ -15,7 +15,12 @@ get_header(); ?>
 					<header class="entry-header">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header><!-- .entry-header -->
-
+					<div class="lead-img">
+						<?php if ( has_post_thumbnail() ) { 
+								  the_post_thumbnail('tg-leadimg');
+								} 
+						?>
+					</div><!--.lead-image-->
 					<div class="entry-content">
 						<?php the_content(); ?>
 						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'themename' ), 'after' => '</div>' ) ); ?>
@@ -28,7 +33,6 @@ get_header(); ?>
 				</article><!-- #post-<?php the_ID(); ?> -->
 
 				<nav id="nav-below" role="article">
-					<h1 class="section-heading"><?php _e( 'Post navigation', 'themename' ); ?></h1>
 					<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'themename' ) . '</span> %title' ); ?></div>
 					<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'themename' ) . '</span>' ); ?></div>
 				</nav><!-- #nav-below -->

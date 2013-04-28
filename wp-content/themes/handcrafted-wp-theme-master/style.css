@@ -59,7 +59,8 @@ h1, h2, h3, h4, h5, h6,
 .page-template-page-about-php .entry-content p:first-child,
 .page-template-page-about-php .main-article ul,
 .page-template-page-about-php .main-article .entry-content p:last-child,
-.main-article .entry-meta
+.main-article .entry-meta,
+.main-article .entry-content p.wp-caption-text
 {
 	font-family:'TradeGothicW01-BoldCn20 675334', sans-serif;
 	text-transform: uppercase;
@@ -460,28 +461,6 @@ img.size-medium,
 	max-width: 100%; /* When images are too wide for containing element, force them to fit. */
 	height: auto; /* Override height to match resized width for correct aspect ratio. */
 }
-img.alignleft {
-	margin-right: 1em;
-}
-img.alignright {
-	margin-left: 1em;
-}
-.wp-caption {
-	padding: .5em;
-	text-align: center;
-}
-.wp-caption img {
-	margin: .25em;
-}
-.wp-caption .wp-caption-text {
-	margin: .5em;
-}
-
-/* Forms - Class for labelling required form items */
-.required {
-	color: #cc0033;
-}
-
 
 /*
  *
@@ -764,7 +743,8 @@ to {left: 0;}
 }
 .main-article .entry-title, 
 .main-article .entry-content,
-.main-article .entry-meta{
+.main-article .entry-meta,
+.main-article .lead-img{
 	margin: 0 auto;
 	width: 800px;
 }
@@ -783,9 +763,49 @@ to {left: 0;}
 	border-image:url('images/dotted-border.svg') 10 1 round;
 }
 
-.main-article .entry-content p{
+.main-article .lead-img img{
+	padding-bottom: 35px;
+}
+
+.main-article img,
+{
+	display: block;
+}
+
+.main-article .entry-content img, .wp-caption{
+	float: right;
+	margin: 40px;
+	margin-right: 0;
+}
+
+.main-article .wp-caption img{
+	margin: 0;
+	float: none;
+}
+
+.main-article .entry-content p.wp-caption-text {
+	font-size: 0.7em;
+	margin-bottom: 0;
+	color: white;
+	text-transform: uppercase;
+	padding: 3px 0;
+}
+
+.main-article .entry-content p,
+.main-article .entry-content ul,
+.main-article .entry-content ol{
 	margin-bottom: 0.9em;
 	line-height: 1.4em;
+}
+
+.main-article .entry-content li{
+	font-size: 0.8em;
+	margin-bottom: 0.5em;
+	line-height: 1.2em;
+}
+
+.main-article footer.entry-meta{
+	margin-bottom: 0.9em;
 }
 
 .page-template-page-about-php .main-article ul{
