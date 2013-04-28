@@ -56,9 +56,9 @@ body {
 
 h1, h2, h3, h4, h5, h6, 
 .nav-link, 
-.page-template-page-about-php .entry-content p:first-child,
-.page-template-page-about-php .main-article ul,
-.page-template-page-about-php .main-article .entry-content p:last-child,
+#about-page .entry-content p:first-child,
+#about-page.main-article ul,
+#about-page.main-article .entry-content p:last-child,
 .main-article .entry-meta,
 .main-article .entry-content p.wp-caption-text,
 #nav-below,
@@ -76,9 +76,9 @@ pre, code, kbd, samp {
 	font-family: monospace, sans-serif;
 }
 #site-description, 
-.page-template-page-about-php .entry-content p:first-child,
-.page-template-page-about-php .main-article ul,
-.page-template-page-about-php .endline
+#about-page .entry-content p:first-child,
+#about-page.main-article ul,
+#about-page .endline
 	{
 	font-size: 1.5em;
 	font-weight: normal;
@@ -281,6 +281,7 @@ body {
 	background: white;
 	position: fixed;
 	bottom: 0;
+	color: black;
 }
 
 /* Increase the size of the content area for templates without sidebars */
@@ -598,6 +599,7 @@ article.comment {
 	padding: 1em 0 0;
 	position: fixed;
 	bottom: 7px;
+	left: 5px;
 }
 
 #cr{
@@ -607,6 +609,7 @@ article.comment {
 }
 .nav-content{
 	background: black;
+	border-bottom: 1px solid;
 	height: 0;
 	-webkit-transition: height 0.4s ease 0.1s;
 	-moz-transition: height 0.4s ease 0.1s;
@@ -627,7 +630,7 @@ article.comment {
 	-moz-box-sizing: border-box;
 	z-index: 3;
 	width: 100%;
-	border-width: 0 0 0 5px;
+	border-width: 1px 0 0 5px;
 	border-style: solid;
 	border-color: white;
 	background: black;
@@ -650,7 +653,10 @@ article.comment {
 .nav-title, .nav-link{
 	font-size: 1.25em;
 	line-height: 0.75em;
-	padding: 22px 29px;
+	padding: 22px 60px;
+}
+
+.nav-link{
 }
 
 .nav-title{
@@ -658,9 +664,9 @@ article.comment {
 	top: -10px;
 	right: 0;
 	z-index: 100;
-	background: white;
+	background: white url('images/chevron.svg') no-repeat 22px 37px;
 	color: black;
-	padding: 32px 40px 22px	;
+	padding: 32px 40px 22px 53px;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1) 1.2s;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
 	   -moz-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
@@ -676,7 +682,8 @@ article.comment {
 a.nav-link{
 	display: block;
 	color: white;
-	background: black;
+	background: black url('images/plus.svg') no-repeat;
+	background-position: 29px center;
 	text-decoration: none;
 	border-bottom: 1px solid white;
 	box-sizing: border-box;
@@ -783,7 +790,7 @@ a.nav-link{
 
 .type-post .thumb-box{
 	color: white;
-	background: #2b2b2b;
+	background: black;
 	-webkit-transition: all 0.3s;
 	   -moz-transition: all 0.3s;
 		-ms-transition: all 0.3s;
@@ -792,7 +799,7 @@ a.nav-link{
 }
 
 .type-post .thumb-box:hover{
-	color: #2b2b2b;
+	color: black;
 	background: #38da7d;
 }
 
@@ -900,7 +907,7 @@ a.nav-link{
 
 #primary{
 	width: 100%;
-	background: #2b2b2b;
+	background: black;
 	border-left: 5px solid white;
 	padding: 5px 5px 5px 0;
 	min-height: 100%;
@@ -1083,46 +1090,47 @@ to {left: 0;}
 	margin-bottom: 0.9em;
 }
 
-.page-template-page-about-php .main-article ul{
+#about-page.main-article ul{
 	text-align: center;
 	list-style: none;
 	margin: 40px 0;
 	line-height: 0.75em;
 }
 
-.page-template-page-about-php .main-article li{
+#about-page.main-article li{
 	border-width: 0 0 1px 0;
 	padding: 15px 0;
 	background: url('images/dotted-border.svg') center center;
 	background-repeat:repeat-x;
+	font-size: 1em;
 }
 
-.page-template-page-about-php .main-article li .item{
+#about-page.main-article li .item{
 	padding: 0 15px;
-	background: #2b2b2b;
+	background: black;
 	position: relative;
 }
 
-.page-template-page-about-php .main-article li:nth-child(1) .item{
+#about-page.main-article li:nth-child(1) .item{
 	left: 33px;
 }
 
-.page-template-page-about-php .main-article li:nth-child(2) .item{
+#about-page.main-article li:nth-child(2) .item{
 	left: -12px;
 }
 
-.page-template-page-about-php .main-article li:nth-child(3) .item{
+#about-page.main-article li:nth-child(3) .item{
 	left: -24px;
 }
 
-.page-template-page-about-php .main-article li:nth-child(4) .item{
+#about-page.main-article li:nth-child(4) .item{
 	left: 18px;
 }
-.page-template-page-about-php .main-article li:nth-child(5) .item{
+#about-page.main-article li:nth-child(5) .item{
 	left: 0;
 }
 
-.page-template-page-about-php .endline{
+#about-page .endline{
 	font-size: 1.35em;
 	display: block;
 	text-align: center;
@@ -1139,6 +1147,7 @@ to {left: 0;}
 	height: 440px;
 	overflow: hidden;
 	position: relative;
+	margin-bottom: -45px;
 }
 
 .gradient{
@@ -1168,10 +1177,11 @@ to {left: 0;}
 	background-position: 50% 50%;
 }
 
+
 #pager{
 	position: absolute;
 	bottom: 16px;
-	z-index: 10000;
+	z-index: 50;
 	width: 100%;
 	text-align: center;
 }

@@ -127,7 +127,7 @@ foreach($cpts_args as $cpt){
 		register_post_type($cpt['name'], $args);
 	}
 	
-// Add Pages on Theme Activation
+/* Add Pages on Theme Activation
 
 if (isset($_GET['activated']) && is_admin()){
 	
@@ -190,7 +190,7 @@ if (isset($_GET['activated']) && is_admin()){
 add_action( 'init', 'tg_pages_excerpt' );
 function tg_pages_excerpt	() {
      add_post_type_support( 'page', 'excerpt' );
-}
+}*/
 
 // Add Image Sizes
 
@@ -277,7 +277,6 @@ function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg =
 	
 	//echo '<div class="images">';
 	
-
 	if ($images = get_children(array(
 
 		'post_parent' => $post_id,
@@ -286,10 +285,12 @@ function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg =
 		'numberposts' => $limit,
 		'post_mime_type' => 'image'))):
 		
+		$length = count($images);
 		
 		foreach($images as $image) {
 			$attachment=wp_get_attachment_image_src($image->ID, $size); ?>
-			<div style="background-image: url('<?php echo $attachment[0]; ?>');"></div><?php
+			<div style="z-index: <?php echo $length ?>; background-image: url('<?php echo $attachment[0]; ?>');"></div><?php
+			$length--;
 		}
 	endif;
 	//echo '</div><!--.images-->';

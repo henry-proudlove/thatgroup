@@ -7,6 +7,7 @@ jQuery.fn.ajaxLink = function(){
 			data: {},
 			beforeSend: function(){
 				$('body').append('<p class="loader">Loading</p>');
+				$('#nav-below').addClass('hidden');
 			},
 			success: function (data) {
 				if(target == siteURL + '/'){
@@ -44,7 +45,10 @@ function pageTrans(data , home){
 		.on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
 			$(this).remove();
 			$('#primary').removeClass('incoming' + home);
-			$('#carousel-images').cycleInit();
+			setTimeout(function() {
+				  $('#carousel-images').cycleInit();
+			}, 1000);
+			$('#nav-below').removeClass('hidden');
 	})
 }
 

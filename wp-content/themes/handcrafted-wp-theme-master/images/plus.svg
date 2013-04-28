@@ -4,10 +4,11 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
 <g>
-	<rect x="0.5" y="6.5" width="15" height="3"/>
-	<rect x="6.5" y="0.5" width="3" height="15">
-	<animate attributeType="CSS" attributeName="height"
-	from="15" to="1" dur="1s" repeatCount="indefinite" />
+	<rect x="0.5" y="6.5" fill="#FFFFFF" width="15" height="3"/>
+	<rect x="6.5" y="0.5" fill="#FFFFFF" width="3" height="15">
+	
+		<animate  fill="remove" attributeType="CSS" repeatCount="indefinite" restart="always" calcMode="linear" from="15" to="1" dur="1s" additive="replace" attributeName="height" accumulate="none">
+		</animate>
 	</rect>
 </g>
 </svg>
