@@ -1187,7 +1187,7 @@ to {left: 0;}
 #about-page.main-article li{
 	border-width: 0 0 1px 0;
 	padding: 15px 0;
-	background: url('images/dotted-border.svg') center center;
+	background: url('images/dotted-border-about.svg') center center;
 	background-repeat:repeat-x;
 	font-size: 1em;
 }
