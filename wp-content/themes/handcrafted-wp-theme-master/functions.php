@@ -309,4 +309,18 @@ function tg_excerpt_more($more) {
 }
 add_filter('excerpt_more', 'tg_excerpt_more');
 
+function tg_nav_below(){ ?>
+	<nav id="nav-below" role="article">
+		<div class="nav-previous clearfix"><?php previous_post_link( '%link', page_chevron('previous') . '<span class="nav-text">' . _x( '', 'Previous post link', 'themename' ) . '%title</span>' ); ?></div>
+		<div class="nav-next clearfix"><?php next_post_link( '%link', '<span class="nav-text"> %title ' . _x( '', 'Next post link', 'themename' ) . '</span>' . page_chevron('next') ); ?></div>
+	</nav><!--#nav-below -->
+<?php }
+
+function page_chevron($direction){
+	$image = get_template_directory_uri() . '/images/post-' . $direction . '.svg';
+	$arrow = file_get_contents($image);
+	$span = '<span class="meta-nav">' . $arrow . '</span>';
+	return $span;
+}
+
 ?>

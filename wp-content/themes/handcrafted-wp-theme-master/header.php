@@ -56,17 +56,18 @@
 		<header id="branding" role="banner">
 				<hgroup>
 					<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
-					<?php if(is_front_page()){
-						echo '<h2 id="site-description">'; 
-						bloginfo( 'description' );
-						echo '</h2>';
-					}
-					?>
+					<div id="site-description">
+						<h2><?php echo bloginfo( 'description' ) ?></h2>
+					</div>
 				</hgroup>			
 				<nav id="utility" role="article" class="clearfix">
-					<h3 class="nav-title">Menu</h3>
+						<?php 
+						$chevron_icon = file_get_contents(get_template_directory_uri() . '/images/chevron.svg');
+						?>
+					<h3 class="nav-title"><span class="nav-title-icon"><?php echo $chevron_icon ?> </span>Menu</h3>
 					<ul id="nav-container">
 						<?php
+						
 						$frontpage_id = get_option('page_on_front');
 						$args = array(
 							'exclude'      => $frontpage_id,
@@ -74,15 +75,19 @@
 							'sort_column'  => 'menu_order'
 						);
 						
+						$plus_icon = file_get_contents(get_template_directory_uri() . '/images/plus.svg');
+												
 						$pages = get_pages( $args );
-						foreach ($pages as $page){
-							if($page->post_title == 'About Us'){
-								echo '<ul class="nav-holder about">';
-							}else{
-								echo '<ul class="nav-holder">';
-							}
-							echo '<li><a class="nav-link" href="' . get_permalink($page->ID) . '">' . $page->post_title . '</a></li>';
-							echo '<li class="nav-content"></li></ul>';
+						foreach ($pages as $page){ ?>
+							<ul class="nav-holder <?php echo $page->post_name; ?>">
+							<li>
+								<a class="nav-link" href="<?php echo get_permalink($page->ID);?>">
+									<span class="nav-icon"><?php echo $plus_icon; ?></span>
+									<?php echo $page->post_title; ?>
+								</a>
+							</li>
+							<li class="nav-content"></li></ul>
+							<?php
 						}
 						?>
 					</ul>

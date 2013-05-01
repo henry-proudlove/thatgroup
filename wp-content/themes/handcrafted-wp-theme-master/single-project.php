@@ -29,10 +29,7 @@ get_header(); ?>
 					<?php edit_post_link( __( 'Edit', 'themename' ), '<span class="edit-link">', '</span>' ); ?>
 				</footer><!-- .entry-meta -->
 				</article><!-- #post-<?php the_ID(); ?> -->
-				<!--<nav id="nav-below" role="article">
-					<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav"></span><span class="nav-text">' . _x( '', 'Previous post link', 'themename' ) . '%title</span>' ); ?></div>
-					<div class="nav-next"><?php next_post_link( '%link', '<span class="nav-text"> %title ' . _x( '', 'Next post link', 'themename' ) . '</span><span class="meta-nav"></span>' ); ?></div>
-				</nav> #nav-below -->
+				<?php tg_nav_below(); ?>
 			<?php endwhile; // end of the loop. ?>
 
 			</div><!-- #content -->

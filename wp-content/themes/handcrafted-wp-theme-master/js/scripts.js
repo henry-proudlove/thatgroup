@@ -52,16 +52,24 @@ function pageTrans(data , home){
 	})
 }
 
+$(document).on('navswitch' , function(){
+	$('#nav-container.home')
+		.find('.nav-holder.about')
+		.appendTo('#site-description');
+});
+
 $(document).ready(function(){
-	
-	$('#carousel-images').cycleInit();
-	
+
 	$('#nav-container')
 		.addClass('home')
 		.clone()
 		.removeClass('home')
 		.addClass('drop up')
-		.appendTo('#utility');
+		.appendTo('#utility')
+		.trigger('navswitch');
+	
+	$('#carousel-images').cycleInit();
+		
 	$("#contactform").validate({
 		rules: {
 		select: "required" }
@@ -69,7 +77,7 @@ $(document).ready(function(){
 	
 	// Load in posts of each section on nav item roll
 	
-	$('.nav-holder:not(:first-child)').hover(
+	$('.nav-holder:not(".about")').hover(
 		function(){
 			var content = $(this).find('.nav-content');
 			if (content.is(':empty')){
@@ -99,9 +107,6 @@ $(document).ready(function(){
 		}	
 	);
 	
-	$('.nav-link:not(:first)').click(function(e){
-		e.preventDefault();
-	});
 	$('a[href*="' + siteURL + '"]').ajaxLink();
 	
 	$('.nav-title').hover(function(){

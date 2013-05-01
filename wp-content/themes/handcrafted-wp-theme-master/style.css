@@ -75,7 +75,7 @@ select, input, textarea, button {
 pre, code, kbd, samp {
 	font-family: monospace, sans-serif;
 }
-#site-description, 
+#site-description h2, 
 #about-page .entry-content p:first-child,
 #about-page.main-article ul,
 #about-page .endline
@@ -254,8 +254,21 @@ body {
 }
 
 #page {
-	display: block;
 	height: 100%;
+}
+
+#page.hide{
+	opacity: 0;
+}
+
+#page.show{
+	display: block;
+	opacity: 1;
+	-webkit-transition: opacity 3s;
+       -moz-transition: opacity 3s;
+        -ms-transition: opacity 3s;
+         -o-transition: opacity 3s;
+            transition: opacity 3s;
 }
 
 #main{
@@ -264,6 +277,7 @@ body {
 
 
 #content {
+	position: relative;
 }
 
 #main .widget-area {
@@ -420,119 +434,134 @@ body {
 #nav-below {
 	display: block;
 	overflow: hidden;
-	top: 50%;
 	width: 100%;
 	font-size: 1.25em;
 }
 
-#nav-below .nav-next a, #nav-below .nav-previous a{
-	border: none;
-	display: inline-block;
+#nav-below div{
+	position: absolute;
 	z-index: 100;
-	position: fixed;
 	top: 50%;
-	
 }
 
-#nav-below .nav-next a{
-	right: 5px;
+#nav-below .nav-next{
+	right: 0;
 }
 
-#nav-below .nav-next a{
-	right: 5px;
+#nav-below a{
+	border: none;
 }
-
 
 #nav-below .meta-nav{
-	display: inline-block;
-	width: 45px;
-	padding: 0 5px;
-	text-indent: -9000px;
 	position: relative;
 	z-index: 5;
-		-webkit-transition: background-color 0.2s ease 0.3s;
-       -moz-transition: background-color 0.2s ease 0.3s;
-        -ms-transition: background-color 0.2s ease 0.3s;
-         -o-transition: background-color 0.2s ease 0.3s;
-            transition: background-color 0.2s ease 0.3s;
+	-webkit-transition: all 0.2s ease 0.3s;
+       -moz-transition: all 0.2s ease 0.3s;
+        -ms-transition: all 0.2s ease 0.3s;
+         -o-transition: all 0.2s ease 0.3s;
+            transition: all 0.2s ease 0.3s;
+}
+
+#nav-below .meta-nav .arrow{
+	fill: white;
+	-webkit-transition: fill 0.2s ease 0.3s;
+       -moz-transition: fill 0.2s ease 0.3s;
+        -ms-transition: fill 0.2s ease 0.3s;
+         -o-transition: fill 0.2s ease 0.3s;
+            transition: fill 0.2s ease 0.3s;
 }
 
 #nav-below .nav-text{
 	background: red;
-	display: inline-block;
-	line-height: 56px;
-	padding: 0 25px;
 	z-index: 4;
-    -webkit-transition: all 0.3s ease 0.2s;
-       -moz-transition: all 0.3s ease 0.2s;
-        -ms-transition: all 0.3s ease 0.2s;
-         -o-transition: all 0.3s ease 0.2s;
-            transition: all 0.3s ease 0.2s;
-} 
-
-#nav-below .nav-text, #nav-below .meta-nav{
-	height: 55px;
-	vertical-align: middle;
+    -webkit-transition: all 0.3s ease;
+       -moz-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+         -o-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+    line-height: 1.15em;
 }
 
 #nav-below .nav-next a .nav-text{
 	left: 100%;
-	color: red;
 }
 
 #nav-below .nav-previous a .nav-text{
 	left: -100%;
-	color: red;
 }
 
 
 #nav-below .nav-next a:hover .nav-text,
 #nav-below .nav-previous a:hover .nav-text{
-	-webkit-transition: all 0.3s ease;
-       -moz-transition: all 0.3s ease;
-        -ms-transition: all 0.3s ease;
-         -o-transition: all 0.3s ease;
-            transition: all 0.3s ease;
+	-webkit-transition: all 0.3s ease 0.2s;
+       -moz-transition: all 0.3s ease 0.2s;
+        -ms-transition: all 0.3s ease 0.2s;
+         -o-transition: all 0.3s ease 0.2s;
+            transition: all 0.3s ease 0.2s;
 }
 
 #nav-below .nav-next a:hover .nav-text{
-	left: 25px;
-	color: white;
+	left: 0;
+	color: black;
 }
 
 #nav-below .nav-previous a:hover .nav-text{
-	left: -25px;
-	color: white;
+	left: 0;
+	color: black;
 }
 
 #nav-below .nav-text{
 	position: relative;
 }
 
-#nav-below .nav-next a .meta-nav{
-	background: url('images/next-post.svg') no-repeat 60% center ;
+#nav-below a:hover .meta-nav{
+	-webkit-transition: all 0.2s;
+       -moz-transition: all 0.2s;
+        -ms-transition: all 0.2s;
+         -o-transition: all 0.2s;
+            transition: all 0.2s;
 }
 
-#nav-below .nav-previous a .meta-nav{
-	background: url('images/previous-post.svg') no-repeat 40% center ;
+#nav-below a:hover .meta-nav .arrow{
+	fill: black;
+	-webkit-transition: fill 0.2s;
+       -moz-transition: fill 0.2s;
+        -ms-transition: fill 0.2s;
+         -o-transition: fill 0.2s;
+            transition: fill 0.2s;
 }
 
-#nav-below .nav-next a:hover .meta-nav,
-#nav-below .nav-previous a:hover .meta-nav{
-    -webkit-transition: background-color 0.2s;
-       -moz-transition: background-color 0.2s;
-        -ms-transition: background-color 0.2s;
-         -o-transition: background-color 0.2s;
-            transition: background-color 0.2s;
+.single-post #nav-below a:hover .meta-nav, 
+.single-post #nav-below .nav-text{
+	background: #38da7d;
 }
 
-#nav-below .nav-next a:hover .meta-nav{
-	background: red url('images/next-post.svg') no-repeat 60% center ;
+.single-project #nav-below a:hover .meta-nav, 
+.single-project #nav-below .nav-text{
+	background: #e70a0a;
 }
 
-#nav-below .nav-previous a:hover .meta-nav{
-	background: red url('images/previous-post.svg') no-repeat 40% center ;
+
+#nav-below .nav-text, #nav-below .meta-nav{
+	height: 34px;
+	display: block;
+	float: left;
+	position:relative;
 }
+
+#nav-below .meta-nav{
+	padding: 13px 17px;
+	z-index: 40;
+}
+
+#nav-below .nav-next .nav-text{
+	padding: 13px 6px 13px 28px;
+}
+
+#nav-below .nav-previous .nav-text{
+	padding: 13px 28px 13px 6px;
+}
+
 .page-link {
 	margin: 0 0 1em;
 }
@@ -609,16 +638,17 @@ article.comment {
 }
 .nav-content{
 	background: black;
-	border-bottom: 1px solid;
 	height: 0;
-	-webkit-transition: height 0.4s ease 0.1s;
-	-moz-transition: height 0.4s ease 0.1s;
-	-o-transition: height 0.4s ease 0.1s;
-	-ms-transition: height 0.4s ease 0.1s;
+	-webkit-transition: height 0.4s ease 0.1s, border-color 0.4s ease 0.1s;
+	-moz-transition: height 0.4s ease 0.1s, border-color 0.4s ease 0.1s;
+	-o-transition: height 0.4s ease 0.1s, border-color 0.4s ease 0.1s;
+	-ms-transition: height 0.4s ease 0.1s, border-color 0.4s ease 0.1s;
 	overflow:hidden;
+	border-top: 1px solid rgba(255,255,255,0);
 }
 .nav-content.active{
 	height: 260px;
+	border-top: 1px solid rgba(255,255,255,1);
 }
 
 
@@ -653,10 +683,32 @@ article.comment {
 .nav-title, .nav-link{
 	font-size: 1.25em;
 	line-height: 0.75em;
-	padding: 22px 60px;
+	padding: 22px 34px;
 }
 
-.nav-link{
+.nav-icon {
+	position: relative;
+	bottom: 3px;
+}
+
+.nav-holder{
+	border-bottom: 1px solid;
+}
+
+.nav-holder.about .nav-icon .plus{
+  fill: #ffcc00; 
+}
+
+.nav-holder.projects .nav-icon .plus{
+  fill: #e70a0a; 
+}
+
+.nav-holder.news .nav-icon .plus{
+  fill: #38da7d; 
+}
+
+.nav-holder.contact .nav-icon .plus{
+  fill: #64b9e4; 
 }
 
 .nav-title{
@@ -664,9 +716,9 @@ article.comment {
 	top: -10px;
 	right: 0;
 	z-index: 100;
-	background: white url('images/chevron.svg') no-repeat 22px 37px;
+	background: white;
 	color: black;
-	padding: 32px 40px 22px 53px;
+	padding: 32px 40px 22px 32px;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1) 1.2s;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
 	   -moz-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
@@ -675,19 +727,29 @@ article.comment {
 			transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
 }
 
+.nav-title-icon{
+	bottom: 6px;
+	left: -6px;
+	position: relative;
+}
+
 .home .nav-title{
 	top: -76px;
 }
 
-a.nav-link{
+.nav-link{
 	display: block;
 	color: white;
-	background: black url('images/plus.svg') no-repeat;
-	background-position: 29px center;
 	text-decoration: none;
-	border-bottom: 1px solid white;
 	box-sizing: border-box;
 	-moz-box-sizing: border-sizing;
+}
+
+#site-description li, #site-description a, #site-description ul{
+	border-bottom: none !important;
+	list-style: none;
+	margin-left: 0;
+	padding-left: 0;
 }
 
 .thumb-box{
@@ -913,7 +975,8 @@ a.nav-link{
 	min-height: 100%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	position:relative;
+	position: relative;
+	overflow: hidden;
 }
 
 #primary.incoming{
@@ -1040,10 +1103,34 @@ to {left: 0;}
 	padding-bottom: 40px;
 	margin-bottom: 45px;
 	border-width: 0 0 1px 0;
-	-webkit-border-image:url('images/dotted-border.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border.svg') 10 1 round;
 }
+
+.single-project .main-article, .single-project .main-article header{
+	-webkit-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border-projects.svg') 10 1 round;
+}
+
+.single-post .main-article, .single-post .main-article header{
+	-webkit-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border-news.svg') 10 1 round;
+}
+
+#about-page.main-article, #about-page.main-article header{
+	-webkit-border-image:url('images/dotted-border-about.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border-about.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border-about.svg') 10 1 round;
+}
+
+.conatct-page .main-article, .conatct-page .main-article header{
+	-webkit-border-image:url('images/dotted-border-conatct.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border-conatct.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border-conatct.svg') 10 1 round;
+}
+
+
+
 
 .main-article .lead-img img{
 	padding-bottom: 35px;
