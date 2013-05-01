@@ -1,7 +1,8 @@
-var internalA = 'a[href*="' + siteURL + '"]';
+var internalA = 'a[href*="' + siteURL + '"]:not("#nav-below a")';
 
 jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
+		console.log(e)
 		e.preventDefault();
 		target = $(this).attr('href');
 		$.ajax({
@@ -11,9 +12,8 @@ jQuery.fn.ajaxLink = function(){
 				$('body').append('<p class="loader">Loading</p>');
 			},
 			success: function (data) {
-				console.log('ajaxLink');
 				if(target == siteURL + '/'){
-					pageTrans(data , '-home');
+					pageTrans(e , data , '-home');
 				}else{
 					pageTrans(e, data , '');
 				}
@@ -80,7 +80,8 @@ $(document).ready(function(){
 	// Load in posts of each section on nav item roll
 	
 	$('.nav-holder:not(".about")').hover(
-		function(){
+		function(e){
+			console.log(e);
 			var content = $(this).find('.nav-content');
 			if (content.is(':empty')){
 				var target = $(this).find('.nav-link').attr('href');
@@ -117,8 +118,10 @@ $(document).ready(function(){
 		$('#nav-container.drop').removeClass('up').addClass('down');
 	});
 	
-	$('#nav-container.drop').mouseleave(function(){
-		$(this).removeClass('down').addClass('up');
+	$('#nav-container.drop').on('mouseleave click' , function(){
+		$(this)
+			.removeClass('down').addClass('up')
+			.find('.active').removeClass('active');
 	});
 });
 
