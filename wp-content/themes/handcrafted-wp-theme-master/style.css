@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 select, input, textarea, button {
-	font:99% sans-serif;
+	font: 0.83em 'Trade Gothic W01 Light' , sans-serif; 
 }
 pre, code, kbd, samp {
 	font-family: monospace, sans-serif;
@@ -89,12 +89,21 @@ pre, code, kbd, samp {
  * Base Styles 
  *
  */
-body, select, input, textarea { 
+body { 
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
   color: white; 
   /* set your base font here, to apply evenly */
   /* font-family: Georgia, serif;  */   
 }
+
+input[type="text"], textarea{
+	color: white;
+	background: #323232;
+}
+
+select{
+}
+
 /* Headers (h1,h2,etc) have no default font-size or margin,
    you'll want to define those yourself. */ 
 h1,h2,h3,h4,h5,h6 { font-weight: bold; }
@@ -878,6 +887,7 @@ article.comment {
 	-moz-box-sizing: border-box;
 	padding: 46px 29px;
 	line-height: 1.35em;
+	height: 260px;
 }
 
 #contact #contact-nav{
@@ -894,45 +904,36 @@ article.comment {
 	width: 20%;
 	display: block;
 	float: left;
-	padding-top: 176px;
 	text-align: center;
-	background-position: center 55%;
-	background-repeat: no-repeat;
-	-webkit-transition: background-size 0.4s;
-	   -moz-transition: background-size 0.4s;
-		-ms-transition: background-size 0.4s;
-		 -o-transition: background-size 0.4s;
-			transition: background-size 0.4s;
-	background-size: 50%;
+	height: 260px;
 }
 
-#contact #contact-nav a.map{
-	background-image: url('images/ico-map.svg');
+#contact #contact-nav a span{
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	display: block;
 }
 
-#contact #contact-nav a.email{
-	background-image: url('images/ico-mail.svg');
-}
-
-#contact #contact-nav a.twitter{
-	background-image: url('images/ico-tw.svg');
-}
-
-#contact #contact-nav a.linkedin{
-	background-image: url('images/ico-in.svg');
-}
-
-#contact #contact-nav a.facebook{
-	background-image: url('images/ico-fb.svg');
+#contact #contact-nav a span.ico{
+	height: 176px;
+	padding-top: 60px;
 }
 
 #contact #contact-nav a:hover{
-	background-size: 60%;
-	-webkit-transition: background-size 0.2s ease-in;;
-	   -moz-transition: background-size 0.2s ease-in;;
-		-ms-transition: background-size 0.2s ease-in;;
-		 -o-transition: background-size 0.2s ease-in;;
-			transition: background-size 0.2s ease-in;;
+	background-color: #64b9e4;
+	-webkit-transition: all 0.3s ease-in;
+	   -moz-transition: all 0.3s ease-in;
+		-ms-transition: all 0.3s ease-in;
+		 -o-transition: all 0.3s ease-in;
+			transition: all 0.3s ease-in;;
+}
+
+#contact #contact-nav a .ico{
+	fill: #64b9e4;
+}
+
+#contact #contact-nav a:hover .ico{
+	fill: white;
 }
 
 
@@ -1123,10 +1124,10 @@ to {left: 0;}
 	border-image:url('images/dotted-border-about.svg') 10 1 round;
 }
 
-.conatct-page .main-article, .conatct-page .main-article header{
-	-webkit-border-image:url('images/dotted-border-conatct.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border-conatct.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border-conatct.svg') 10 1 round;
+.contact-page .main-article, .contact-page .main-article header{
+	-webkit-border-image:url('images/dotted-border-contact.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border-contact.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border-contact.svg') 10 1 round;
 }
 
 
@@ -1292,3 +1293,50 @@ to {left: 0;}
 	background: #CD2029;
 }
 
+/* Contact Page */
+
+#contact-wrapper,
+.contact-page .main-article .entry-title,
+#contact-wrapper form{
+	width: 421px;
+	margin: 0 auto;
+}
+
+.contact-page .main-article .entry-title{
+	font-size: 1.25em;
+}
+
+#contact-wrapper label{
+	display: none;
+}
+
+.contact-page .main-article, .contact-page .main-article header {
+	padding-bottom: 35px;
+	margin-bottom: 40px;
+}
+
+#contact-wrapper input, #contact-wrapper textarea{
+	border: none;
+	display: block;
+	margin-bottom: 13px;
+	padding: 10px 15px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#contact-wrapper input[type="text"], #contact-wrapper textarea{
+	width: 100%;
+}
+
+div.input{
+	position: relative;
+}
+
+.input label.error{
+	background: #e70a0c;
+	right: 0;
+	font-size: 0.5em;
+	padding: 10px 15px;
+	display: block !important;
+	margin-bottom: 13px;
+}
