@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6,
 	font-weight: normal;
 }
 
-select, input, textarea, button {
+select, input, textarea, button, .contact-back {
 	font: 0.75em 'Trade Gothic W01 Light' , sans-serif; 
 }
 pre, code, kbd, samp {
@@ -1300,6 +1300,7 @@ to {left: 0;}
 #contact-wrapper form{
 	width: 421px;
 	margin: 0 auto;
+	position: relative;
 }
 
 .contact-page .main-article .entry-title{
@@ -1315,26 +1316,31 @@ to {left: 0;}
 	margin-bottom: 40px;
 }
 
-input, textarea{
-	border: none;
-	display: block;
+input, textarea, .contact-back{
+	border: none !important;
 	padding: 10px 20px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
+	display:inline-block;
+}
+
+.contact-back{
+	margin-bottom: 10px;
 }
 
 #contact-wrapper input[type="text"], #contact-wrapper textarea{
 	width: 100%;
+	display: block;
 }
 
 div.input{
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 }
 
 .input label.error, #form-response{
 	font-size: 0.5em;
 	padding: 10px 20px;
-	margin: 15px 0;
+	margin: 20px 0;
 }
 
 .input label.error{
@@ -1351,12 +1357,14 @@ div.input{
 }
 
 
-select{
+#contact-wrapper select{
 	width: 100%;
+	display:block;
 }
 
 
-input[type="submit"]{
+input[type="submit"], .contact-back{
+	border-bottom: none;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
@@ -1389,6 +1397,28 @@ input[type="submit"]:hover{
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#57a6da', endColorstr='#2a79ad',GradientType=0 ); /* IE6-9 */
 }
 
+.success input[type="submit"]{
+	background: rgb(177,177,177); /* Old browsers */
+	background: -moz-linear-gradient(top,  rgba(177,177,177,1) 0%, rgba(132,132,132,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(177,177,177,1)), color-stop(100%,rgba(132,132,132,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  rgba(177,177,177,1) 0%,rgba(132,132,132,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  rgba(177,177,177,1) 0%,rgba(132,132,132,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  rgba(177,177,177,1) 0%,rgba(132,132,132,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  rgba(177,177,177,1) 0%,rgba(132,132,132,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b1b1b1', endColorstr='#848484',GradientType=0 ); /* IE6-9 */
+}
+
 .contact-page #load{
 	display:none;
+}
+
+a.back{
+	border: none !important;
+	display: block;
+	position: absolute;
+	right: 0;
+	top: -10%;
+}
+.close-btn{
+	fill: white;
 }

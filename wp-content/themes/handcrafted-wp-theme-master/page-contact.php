@@ -95,9 +95,11 @@ get_header(); ?>
 				</section><!--#load-->
 				<article id="post-<?php the_ID(); ?>" <?php post_class('main-article'); ?> role="article">
 						<header class="entry-header">
-								<h1 class="entry-title">Email Us</h1>
+								<h1 class="entry-title">Email Us <a href="#" class="back">
+									<?php echo file_get_contents(get_template_directory_uri() . '/images/close.svg'); ?>
+								</a></h1>
 							</header><!-- .entry-header -->
-						<div id="contact-wrapper">
+						<div id="contact-wrapper" class="<?php if(isset($emailSent) && $emailSent == true)echo success; ?>">
 							<form method="post" action="<?php the_permalink() ?>" id="contactform">
 								<div class="input">
 									<label for="name">Name</label>
@@ -116,7 +118,7 @@ get_header(); ?>
 									  <option value="supplier">Supplier</option>
 									  <option value="professional">Professional</option>
 									  <option value="investor">Investor</option>
-									  <option value="general">General</option>
+									  <option value="general">Other</option>
 									</select>
 								</div>
 								<div class="input">
@@ -131,6 +133,7 @@ get_header(); ?>
 							
 							<?php if(isset($emailSent) && $emailSent == true) { //If email is sent ?>
 								<div id="form-response" class="success">Thanks <?php echo $name ?>! your email has been sent</div>
+								<a href="#" class="contact-back">Back to Previous Page</a>
 							<?php } ?>
 						</div>
 					</article>
