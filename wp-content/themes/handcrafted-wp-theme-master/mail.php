@@ -5,7 +5,7 @@
  * @subpackage themename
  */
 
-get_header(); ?>
+//get_header(); ?>
 
 		<div id="primary">
 			<div id="content">
@@ -70,4 +70,4 @@ if(isset($_POST['submit'])) {
 </div><!-- #content -->
 		</div><!-- #primary -->
 
-<?php get_footer(); ?>
+<?php //get_footer(); ?>

@@ -6,11 +6,60 @@
  * @package WordPress
  * @subpackage themename
  */
+ 
+if(isset($_POST['submit'])) {
+	if(trim($_POST['contactname']) == '') {
+		$hasError = true;
+	} else {
+		$name = trim($_POST['contactname']);
+	}
+
+	if(trim($_POST['subject']) == '') {
+		$hasError = true;
+	} else {
+		$subject = trim($_POST['subject']);
+	}
+
+	if(trim($_POST['email']) == '')  {
+		$hasError = true;
+	} else if (!eregi("^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}$", trim($_POST['email']))) {
+		$hasError = true;
+	} else {
+		$email = trim($_POST['email']);
+	}
+
+	if(trim($_POST['message']) == '') {
+		$hasError = true;
+	} else {
+		if(function_exists('stripslashes')) {
+			$comments = stripslashes(trim($_POST['message']));
+		} else {
+			$comments = trim($_POST['message']);
+		}
+	}
+
+	if(!isset($hasError)) {
+		$emailTo = get_option('tz_email');
+		if (!isset($emailTo) || ($emailTo == '') ){
+			$emailTo = get_option('admin_email');
+		}
+		$subject = $subject . ':  ' .$name;
+		$body = "Name: $name \n\nEmail: $email \n\nComments: $comments";
+		$headers = 'From: '.$name.' <'.$emailTo.'>' . "\r\n" . 'Reply-To: ' . $email;
+
+		wp_mail($emailTo, $subject, $body, $headers);
+		$emailSent = true;
+	}
+
+}
 
 get_header(); ?>
 
-		
+		<div id="primary">
+				<div id="content" class="contact-page">
+				
 				<?php the_post(); ?>
+				
 				<section id="load">
 					<div id="contact">
 						<address>
@@ -44,14 +93,12 @@ get_header(); ?>
 						</nav>
 					</div><!--#contact-->
 				</section><!--#load-->
-				<div id="primary">
-				<div id="content" class="contact-page">
 				<article id="post-<?php the_ID(); ?>" <?php post_class('main-article'); ?> role="article">
 						<header class="entry-header">
 								<h1 class="entry-title">Email Us</h1>
 							</header><!-- .entry-header -->
 						<div id="contact-wrapper">
-							<form method="post" action="mail.php" id="contactform">
+							<form method="post" action="<?php the_permalink() ?>" id="contactform">
 								<div class="input">
 									<label for="name">Name</label>
 									<input type="text" placeholder="Your name" class="required" name="contactname" id="contactname" value="" />
@@ -76,15 +123,14 @@ get_header(); ?>
 									<label for="message">Message</label>
 									<textarea rows="3" cols="80" placeholder="Your message" class="required" name="message" id="message"></textarea>
 								</div>
-								<input type="submit" value="Send Message" name="submit" />
+								<input type="submit" value="Send Email" name="submit" />
 							</form>
 							<?php if(isset($hasError)) { //If errors are found ?>
-								<p>Please check if you've filled all the fields with valid information. Thank you.</p>
+								<div id="form-response" class="error">Error! Please check you've filled in everything correctly</div>
 							<?php } ?>
 							
 							<?php if(isset($emailSent) && $emailSent == true) { //If email is sent ?>
-								<p><strong>Email Successfully Sent!</strong></p>
-								<p>Thank you <strong><?php echo $name;?></strong> for using my contact form! Your email was successfully sent and I will be in touch with you soon.</p>
+								<div id="form-response" class="success">Thanks <?php echo $name ?>! your email has been sent</div>
 							<?php } ?>
 						</div>
 					</article>

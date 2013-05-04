@@ -48,7 +48,7 @@ function pageTrans(e, data , home){
 			$(this).remove();
 			$('#primary').removeClass('incoming' + home);
 			setTimeout(function() {
-				  $('#carousel-images').cycleInit();
+				  cycleValid();
 			}, 1000);
 			$('#nav-below').removeClass('hidden');
 	})
@@ -60,8 +60,18 @@ $(document).on('navswitch' , function(){
 		.appendTo('#site-description');
 });
 
-$(document).ready(function(){
+function cycleValid(){
+	$('#carousel-images').cycleInit();
+	$("#contactform").validate({
+		rules: {
+		select: "required" }
+	});
+}
 
+$(document).ready(function(){
+	
+	 cycleValid();
+	
 	$('#nav-container')
 		.addClass('home')
 		.clone()
@@ -69,13 +79,6 @@ $(document).ready(function(){
 		.addClass('drop up')
 		.appendTo('#utility')
 		.trigger('navswitch');
-	
-	$('#carousel-images').cycleInit();
-		
-	$("#contactform").validate({
-		rules: {
-		select: "required" }
-	});
 	
 	// Load in posts of each section on nav item roll
 	
@@ -95,7 +98,7 @@ $(document).ready(function(){
 					success: function (data) {
 						console.log('menulink');
 						content.append($(data).find('#load'));
-						//$(internalA).unbind('click').ajaxLink();
+						$(internalA).unbind('click').ajaxLink();
 					},
 					complete: function(){
 						$('.loader').remove();
@@ -104,7 +107,7 @@ $(document).ready(function(){
 				});
 			}else{
 				content.addClass('active').children();
-				//$(internalA).unbind('click').ajaxLink();
+				$(internalA).unbind('click').ajaxLink();
 			}
 		}, 
 		function(){
@@ -112,7 +115,7 @@ $(document).ready(function(){
 		}	
 	);
 	
-	//$(internalA).ajaxLink();
+	$(internalA).ajaxLink();
 	
 	$('.nav-title').hover(function(){
 		$('#nav-container.drop').removeClass('up').addClass('down');
