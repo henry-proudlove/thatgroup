@@ -2,7 +2,6 @@ var internalA = 'a[href*="' + siteURL + '"]:not("#nav-below a")';
 
 jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
-		console.log(e)
 		e.preventDefault();
 		target = $(this).attr('href');
 		$.ajax({
@@ -66,9 +65,22 @@ function cycleValid(){
 		rules: {
 		select: "required" }
 	});
-}
+}           
 
 $(document).ready(function(){
+
+	// Add jQuery Address functionality to the links in the navbar
+	
+    $(internalA).address();
+    
+    // Our event responder that triggers whenever the address is changed (including on first load!)
+    
+    $.address.change(function(event) {
+        var uri = event.value;
+        var rel = uri.replace('http://localhost/' , '');
+        console.log(rel);
+        $.address.value(rel);  
+    });
 	
 	 cycleValid();
 	
@@ -84,7 +96,6 @@ $(document).ready(function(){
 	
 	$('.nav-holder:not(".about")').hover(
 		function(e){
-			console.log(e);
 			var content = $(this).find('.nav-content');
 			if (content.is(':empty')){
 				var target = $(this).find('.nav-link').attr('href');
@@ -96,7 +107,6 @@ $(document).ready(function(){
 						 $('body').append('<p class="loader">Loading</p>');
 				   },
 					success: function (data) {
-						console.log('menulink');
 						content.append($(data).find('#load'));
 						$(internalA).unbind('click').ajaxLink();
 					},
