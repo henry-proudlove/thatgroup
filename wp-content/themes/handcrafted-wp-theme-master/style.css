@@ -698,26 +698,98 @@ article.comment {
 .nav-icon {
 	position: relative;
 	bottom: 3px;
+	width: 16px;
+	height:16px;
+	display: inline-block;
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+	-webkit-transition: all 0.5s ;
+	-moz-transition: all 0.5s ;
+	-ms-transition: all 0.5s ;
+	-o-transition: all 0.5s ;
+	transition: all 0.5s ;
+}
+
+.nav-holder:hover .nav-icon{
+	-moz-transform: rotate(180deg);
+		-webkit-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+}
+
+.nav-icon span{
+	display: block;
+	position: absolute;
+}
+
+.nav-icon .vert{
+	width: 3px;
+	height: 16px;
+	left: 6px;
+	-webkit-transition: all 0.2s ;
+	-moz-transition: all 0.2s ;
+	-ms-transition: all 0.2s ;
+	-o-transition: all 0.2s ;
+	transition: all 0.2s ;
+}
+
+.nav-holder:hover .nav-icon .vert{
+	height: 2px;
+	top: 7px;
+}
+
+.nav-icon .horiz{
+	width: 16px;
+	height: 3px;
+	top: 6px;
 }
 
 .nav-holder{
 	border-bottom: 1px solid;
 }
 
-.nav-holder.about .nav-icon .plus{
-  fill: #ffcc00; 
+.nav-holder a.nav-link{
+	-webkit-transition: all 0.5s ;
+	-moz-transition: all 0.5s ;
+	-ms-transition: all 0.5s ;
+	-o-transition: all 0.5s ;
+	transition: all 0.5s ;
 }
 
-.nav-holder.projects .nav-icon .plus{
-  fill: #e70a0a; 
+.nav-holder.about .nav-icon span{
+  background: #ffcc00; 
 }
 
-.nav-holder.news .nav-icon .plus{
-  fill: #38da7d; 
+.nav-holder.about:hover a.nav-link{
+  color: #ffe066; 
 }
 
-.nav-holder.contact .nav-icon .plus{
-  fill: #64b9e4; 
+.nav-holder.projects .nav-icon span{
+  background: #e70a0a; 
+}
+
+.nav-holder.projects:hover a.nav-link{
+  color: #ef5e5e; 
+}
+
+.nav-holder.news .nav-icon span{
+  background: #38da7d; 
+}
+
+.nav-holder.news:hover a.nav-link{
+  color: #7ce7a9; 
+}
+
+.nav-holder.contact .nav-icon span{
+  background: #64b9e4; 
+}
+
+.nav-holder.contact:hover a.nav-link{
+  color: #99d1ed; 
 }
 
 .nav-title{

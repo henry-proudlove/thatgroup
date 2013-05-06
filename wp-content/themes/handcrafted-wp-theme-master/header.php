@@ -45,7 +45,7 @@
 
 	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="<?php echo get_template_directory_uri();?>/js/modernizr.custom.43351.js"></script>
 	<script type="text/javascript" src="http://fast.fonts.com/jsapi/1abaa99c-ef54-4ae8-83b7-dcb11503cf62.js"></script>
 	<?php wp_head(); ?>
@@ -74,15 +74,13 @@
 							'title_li'     => __(''),
 							'sort_column'  => 'menu_order'
 						);
-						
-						$plus_icon = file_get_contents(get_template_directory_uri() . '/images/plus.svg');
 												
 						$pages = get_pages( $args );
 						foreach ($pages as $page){ ?>
 							<ul class="nav-holder <?php echo $page->post_name; ?>">
 							<li>
 								<a class="nav-link" href="<?php echo get_permalink($page->ID);?>">
-									<span class="nav-icon"><?php echo $plus_icon; ?></span>
+									<span class="nav-icon" id="<?php echo $page->post_name . '-ico'; ?>"><span class="vert"></span><span class="horiz"></span></span>
 									<?php echo $page->post_title; ?>
 								</a>
 							</li>
