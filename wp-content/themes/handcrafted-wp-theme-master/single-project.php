@@ -10,11 +10,7 @@ get_header(); ?>
 			<div id="content">
 
 			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-				<div id="carousel-holder">
-					<div class="gradient"></div>
-					<div id="carousel-images">
-						<?php img_fecther() ?>
-					</div><!--#carousel-images-->
+				<?php img_fecther() ?>
 				</div><!--#carousel-->
 				<article id="post-<?php the_ID(); ?>" <?php post_class('main-article'); ?> role="article">
 					<header class="entry-header">
@@ -29,10 +25,12 @@ get_header(); ?>
 					<?php edit_post_link( __( 'Edit', 'themename' ), '<span class="edit-link">', '</span>' ); ?>
 				</footer><!-- .entry-meta -->
 				</article><!-- #post-<?php the_ID(); ?> -->
-				<aside class="related">
-					<?php
-						tg_rel_posts($post->project_cat, 'Related News');
-					?>
+				<aside id="related">
+					<div id="related-holder" class="clearfix">
+						<?php
+							tg_rel_posts($post->project_cat, 'Related News');
+						?>
+					</div><!--#related-holder-->
 				</aside>
 				
 				<?php tg_nav_below(); ?>

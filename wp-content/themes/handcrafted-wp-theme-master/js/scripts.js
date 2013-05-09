@@ -85,7 +85,7 @@ $(document).ready(function(){
         
     });
 
-	 cycleValid();
+	cycleValid();
 
 	$('#nav-container')
 		.addClass('home')

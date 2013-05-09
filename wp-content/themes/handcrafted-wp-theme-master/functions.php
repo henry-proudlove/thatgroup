@@ -302,11 +302,15 @@ function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg =
 		
 		$length = count($images);
 		
+		echo '<div id="carousel-holder"><div class="gradient"></div><div id="carousel-images">';
+				
 		foreach($images as $image) {
 			$attachment=wp_get_attachment_image_src($image->ID, $size); ?>
 			<div style="z-index: <?php echo $length ?>; background-image: url('<?php echo $attachment[0]; ?>');"></div><?php
 			$length--;
 		}
+		
+		echo '</div><!--#carousel-images--></div><!--#carousel-->';
 	endif;
 	//echo '</div><!--.images-->';
 	

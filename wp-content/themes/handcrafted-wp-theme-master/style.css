@@ -861,22 +861,40 @@ article.comment {
 .type-project .thumb-box .thumb-content header{
 	position: absolute;
 	bottom: 29px;
-	opacity: 0;
 	-webkit-transition: all 0.3s ease-out;
 	   -moz-transition: all 0.3s ease-out;
 		-ms-transition: all 0.3s ease-out;
 		 -o-transition: all 0.3s ease-out;
 			transition: all 0.3s ease-out;
+	opacity: 1;
+	left: 29px;
+}
+
+.type-project .thumb-box img + .thumb-content header{
+	opacity: 0;
 	left: -22px;
 }
 
-.type-project .thumb-box:hover .thumb-content header{
+.type-project .thumb-box:hover img + .thumb-content header{
 	opacity: 1;
 	left: 29px;
 }
 
 .type-project .thumb-box .thumb-content{
-	background-image: url('images/roll-mask.svg');
+	background: rgba(231,10,10,0.8);
+	-webkit-transition: background-color 0.5s;
+	   -moz-transition: background-color 0.5s;
+		-ms-transition: background-color 0.5s;
+		 -o-transition: background-color 0.5s;
+			transition: background-color 0.5s;
+}
+
+.type-project .thumb-box:hover .thumb-content{
+	background: rgba(231,10,10,1);
+}
+
+.type-project .thumb-box img + .thumb-content{
+	background: rgba(231,10,10,0) url('images/roll-mask.svg');
 	background-position: 0 0;
 	-webkit-transition: opacity 0.5s;
 	   -moz-transition: opacity 0.5s;
@@ -886,8 +904,8 @@ article.comment {
 	opacity:0;
 }
 
-.type-project .thumb-box:hover .thumb-content{
-	background: url('images/roll-mask.svg');
+.type-project .thumb-box:hover img + .thumb-content{
+	background: rgba(231,10,10,0) url('images/roll-mask.svg');
 	background-repeat: no-repeat;
 	animation: polyslide 0.3s;
 	-webkit-animation: polyslide 0.3s;
@@ -1560,4 +1578,14 @@ a.back{
 
 #related a{
 	border-bottom: none;	
+}
+
+.type-project + #related{
+	-webkit-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border-projects.svg') 10 1 round;
+}
+
+.type-project + #related .thumb-box time{
+	color: #e70a0a;
 }
