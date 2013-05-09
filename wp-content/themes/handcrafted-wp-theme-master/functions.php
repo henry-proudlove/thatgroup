@@ -243,14 +243,14 @@ $project_mb = new WPAlchemy_MetaBox(array
 
 // Create category on project publish
 
-function create_artist_term($post_ID) {
+function create_project_cat($post_ID) {
 	$this_post = get_post($post_ID); 
 	$title = $this_post->post_title;
-	
-	wp_insert_term($title, 'category');
+	$project_cat = wp_insert_term($title, 'category');
+	add_post_meta($post_ID, '_project_cat' , $project_cat['term_id'] , true);
 }
 
-add_action('publish_tg_project', 'create_artist_term');
+add_action('publish_project', 'create_project_cat');
 
 function post_extender($post){
 	switch ($post->post_type){
@@ -259,6 +259,8 @@ function post_extender($post){
 			foreach ($meta as $key=>$value){
 				$post->$key = $value;
 			}
+			$meta = get_post_meta($post->ID, '_project_cat' , true);
+			$post->project_cat = $meta;
 			break;
 		case 'people':
 			$meta = get_post_meta($post->ID, '_person_meta', true);
@@ -334,6 +336,65 @@ function page_chevron($direction){
 	$arrow = file_get_contents($image);
 	$span = '<span class="meta-nav">' . $arrow . '</span>';
 	return $span;
+}
+
+function tg_rel_posts($tax, $title, $post_ID = ''){
+	$args = array(
+		'posts_per_page' => '4',
+		'category__in' => $tax,
+		'post__not_in' => array($post_ID)
+	);
+	$wp_query = new WP_query($args);
+	if ( $wp_query->have_posts() ):
+		$i = 0;
+		echo '<h2 class="widget-title">' . $title . '</h2>';
+		//echo '<div id="related-articles" class="clearfix">';
+		while ( $wp_query->have_posts() ) : $wp_query->the_post();
+			if($i < 1){
+				$class = 'first';	
+			}elseif($i > 2){
+				$class = 'last';
+			}else{
+				$class= 'middle';
+			}?>
+			<article id="post-<?php the_ID(); ?>" <?php post_class($class); ?> role="article">
+				<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+					<div class="thumb-content">
+						<header class="entry-header">
+							<time class="entry-date"><?php the_date('d.m.y'); ?></time>
+							<h1 class="entry-title"><?php the_title(); ?></h1>
+						</header><!-- .entry-header -->	
+						<div class="entry-summary">
+							<?php the_excerpt(); ?>
+						</div><!-- .entry-summary -->
+					</div><!--.thumb-content-->
+				</a>
+			</article><!-- #post-<?php the_ID(); ?> --> <?php 
+			$i++;
+		endwhile; wp_reset_query();
+		//echo'</div><!--#related-articles-->';
+		endif;
+	
+}
+
+
+function the_excerpt_short($charlength) {
+	$excerpt = get_the_excerpt();
+	$charlength++;
+
+	if ( mb_strlen( $excerpt ) > $charlength ) {
+		$subex = mb_substr( $excerpt, 0, $charlength - 5 );
+		$exwords = explode( ' ', $subex );
+		$excut = - ( mb_strlen( $exwords[ count( $exwords ) - 1 ] ) );
+		if ( $excut < 0 ) {
+			echo mb_substr( $subex, 0, $excut );
+		} else {
+			echo $subex;
+		}
+		echo '...';
+	} else {
+		echo $excerpt;
+	}
 }
 
 ?>

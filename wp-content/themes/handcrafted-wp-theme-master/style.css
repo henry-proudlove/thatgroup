@@ -853,7 +853,7 @@ article.comment {
 	height: 100%;
 	font-size: 1.25em;
 	line-height: 1em;
-	padding: 10px 29px;
+	padding: 22px 29px;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
@@ -924,11 +924,13 @@ article.comment {
 	font-size: 0.5em;
 	line-height: 0.5em;
 	color: #38da7d;
+	display: block;
 	-webkit-transition: all 0.3s;
 	   -moz-transition: all 0.3s;
 		-ms-transition: all 0.3s;
 		 -o-transition: all 0.3s;
 			transition: all 0.3s;
+	line-height: 1.2em;
 }
 
 .type-post .thumb-box{
@@ -1160,7 +1162,8 @@ to {left: 0;}
 .main-article .entry-location,
 .main-article .entry-content,
 .main-article .entry-meta,
-.main-article .lead-img{
+.main-article .lead-img,
+#related-holder{
 	margin: 0 auto;
 	width: 800px;
 }
@@ -1493,4 +1496,68 @@ a.back{
 }
 .close-btn{
 	fill: white;
+}
+
+/* Related news on posts and projects */
+
+#related{
+	padding-bottom: 50px;
+	margin-bottom: 100px;
+	border-width: 0 0 1px 0;
+	-webkit-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Safari 5 */
+	-o-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Opera */
+	border-image:url('images/dotted-border-news.svg') 10 1 round;
+}
+
+#related .thumb-box{
+	width: 25%;
+	padding-top: 25%;
+	height: auto;
+	margin: 0;
+	background: #333;
+	box-sizing: border-box;
+	border-width: 0 10px 0 0;
+	border-style: solid;
+	border-color: black;
+}
+
+#related .last .thumb-box {
+	border-width: 0;
+}
+
+/*#related-articles{
+	margin: 0 -5px;
+}
+
+#related article{
+	margin: 0 10px;
+}*/
+
+#related .thumb-content{
+	padding: 10px;
+	top: 0;
+}
+
+#related .thumb-box .entry-title{
+	font-size: 0.6em;
+	line-height: 1.1em;
+	padding-top: 1px;
+}
+
+#related .thumb-box .entry-summary{
+	padding-top: 10px;
+	font-size: 0.4em;
+}
+
+#related .thumb-box time{
+	font-size: 0.45em;
+	line-height: 1.1em;
+}
+
+.widget-title{
+	margin-bottom: 20px;
+}
+
+#related a{
+	border-bottom: none;	
 }

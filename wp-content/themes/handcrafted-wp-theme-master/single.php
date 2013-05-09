@@ -31,10 +31,22 @@ get_header(); ?>
 						<?php edit_post_link( __( 'Edit', 'themename' ), '<span class="edit-link">', '</span>' ); ?>
 					</footer><!-- .entry-meta -->
 				</article><!-- #post-<?php the_ID(); ?> -->
+				
+				<aside id="related" >
+					<div id="related-holder" class="clearfix">
+						<?php 
+							$cats = get_the_category();
+							$cat_arr = array();
+							foreach($cats as $cat){
+								$cat_arr[] = $cat->term_id;
+							}
+							tg_rel_posts($cat_arr, 'Related News', $post->ID);
+						?>
+						</div><!--#related-holder-->
+				</aside><!--#related-->
 
 				<?php tg_nav_below(); ?>
 			<?php endwhile; // end of the loop. ?>
-
 			</div><!-- #content -->
 		</div><!-- #primary -->
 

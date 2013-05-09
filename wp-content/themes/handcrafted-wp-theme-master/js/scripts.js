@@ -1,6 +1,6 @@
 var internalA = 'a[href*="' + siteURL + '"]:not("#wpadminbar a")';
 
-jQuery.fn.ajaxLink = function(){
+/*jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
 		e.preventDefault();
 		target = $(this).attr('href');
@@ -25,7 +25,7 @@ jQuery.fn.ajaxLink = function(){
 			});
 		}
 	});
-};
+};*/
 
 jQuery.fn.cycleInit = function(){
 	if(this.children().size() > 1){	
@@ -73,7 +73,7 @@ $(document).ready(function(){
 
 	// Add jQuery Address functionality to the links in the navbar
 
-    $(internalA).address();
+   // $(internalA).address();
     
     // Our event responder that triggers whenever the address is changed (including on first load!)
     
@@ -111,7 +111,7 @@ $(document).ready(function(){
 				   },
 					success: function (data) {
 						content.append($(data).find('#load'));
-						$(internalA).unbind('click').ajaxLink();
+						//$(internalA).unbind('click').ajaxLink();
 					},
 					complete: function(){
 						$('.loader').remove();
@@ -120,7 +120,7 @@ $(document).ready(function(){
 				});
 			}else{
 				content.addClass('active').children();
-				$(internalA).unbind('click').ajaxLink();
+				//$(internalA).unbind('click').ajaxLink();
 			}
 		}, 
 		function(){
@@ -128,7 +128,7 @@ $(document).ready(function(){
 		}	
 	);
 
-	$(internalA).ajaxLink();
+	//$(internalA).ajaxLink();
 
 	$('.nav-title').hover(function(){
 		$('#nav-container.drop').removeClass('up').addClass('down');
