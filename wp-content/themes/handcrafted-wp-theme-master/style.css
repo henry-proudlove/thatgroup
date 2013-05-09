@@ -654,11 +654,36 @@ article.comment {
 	-ms-transition: height 0.4s ease 0.1s, border-color 0.4s ease 0.1s;
 	overflow:hidden;
 	border-top: 1px solid rgba(255,255,255,0);
+	position: relative;
 }
 .nav-content.active{
-	height: 260px;
+	height: 240px;
 	border-top: 1px solid rgba(255,255,255,1);
 }
+
+.nav-content .nav-pag{
+	background: rgba(0,0,0,0.5) no-repeat;
+	position:absolute;
+	width: 50px;
+	height: 240px;
+	display: block;
+	top: 0;
+	text-indent: -90000px;
+}
+
+.nav-content .nav-pag.next{	
+	right: 5px;
+	background-image: url('images/nav-next.svg');
+	background-position: 60% center;
+}
+
+.nav-content .nav-pag.prev{	
+	left: 0;
+	background-image: url('images/nav-prev.svg');
+	background-position: 40% center;
+}
+
+
 
 
 /* main menu */
@@ -834,8 +859,8 @@ article.comment {
 }
 
 .thumb-box{
-	width: 346px;
-	height: 260px;
+	width: 320px;
+	height: 240px;
 	display:block;
 	float: left;
 	position: relative;
@@ -935,7 +960,7 @@ article.comment {
 .type-post .thumb-box .entry-summary{
 	font-size: 0.525em;
 	line-height: 1.3em;
-	padding-top: 18px;
+	padding-top: 10px;
 }
 
 .thumb-box time{
@@ -1055,7 +1080,16 @@ article.comment {
 #load{
 	overflow-y: scroll;
 	overflow-x: hidden;
-	width: 10000px;
+	/*width: 10000px;*/
+	/*width: auto;*/
+	width: 2240px;
+	position: relative;
+	transition: left 1s;
+	-webkit-transition: left 0.5s;
+	-moz-transition: left 0.5s;
+	-o-transition: left 0.5s;
+	-ms-transition: left 0.5s;
+	left: 0;
 }
 
 /* Page Transition */
@@ -1589,3 +1623,4 @@ a.back{
 .type-project + #related .thumb-box time{
 	color: #e70a0a;
 }
+

@@ -13,7 +13,7 @@
 		<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'themename' ) ); ?></div>
 	</nav><!-- #nav-above -->
 <?php endif; ?>
-<section id="load">
+<section id="load" data-page="<?php echo $wp_query->max_num_pages; ?>">
 	<?php /* Start the Loop */ ?>
 	<?php while ( have_posts() ) : the_post(); ?>
 	

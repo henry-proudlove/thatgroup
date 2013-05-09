@@ -42,8 +42,6 @@
 	
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); echo '?' . filemtime( get_stylesheet_directory() . '/style.css'); ?>" type="text/css" media="screen, projection" />
-
-	<?php if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' ); ?>
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="<?php echo get_template_directory_uri();?>/js/modernizr.custom.43351.js"></script>
@@ -67,24 +65,36 @@
 					<h3 class="nav-title"><span class="nav-title-icon"><?php echo $chevron_icon ?> </span>Menu</h3>
 					<ul id="nav-container">
 						<?php
-						
 						$frontpage_id = get_option('page_on_front');
 						$args = array(
 							'exclude'      => $frontpage_id,
-							'title_li'     => __(''),
 							'sort_column'  => 'menu_order'
-						);
-												
+						);					
 						$pages = get_pages( $args );
-						foreach ($pages as $page){ ?>
-							<ul class="nav-holder <?php echo $page->post_name; ?>">
-							<li>
-								<a class="nav-link" href="<?php echo get_permalink($page->ID);?>">
-									<span class="nav-icon" id="<?php echo $page->post_name . '-ico'; ?>"><span class="vert"></span><span class="horiz"></span></span>
-									<?php echo $page->post_title; ?>
-								</a>
-							</li>
-							<li class="nav-content"></li></ul>
+						$menu = array();
+						foreach ($pages as $page){
+							$menu[] = array(
+										'post_name' => $page->post_name,
+										'link' => get_permalink($page->ID),
+										'post_title' => $page->post_title
+									);
+						}
+						$project_item = array(array(
+										'post_name' => 'projects',
+										'link' => get_post_type_archive_link('project'),
+										'post_title' => 'Projects' 
+									));
+						array_splice($menu , 1 , 0 , $project_item);
+						foreach ($menu as $item){ ?>
+							<ul class="nav-holder <?php echo $item['post_name']; ?>">
+								<li>
+									<a class="nav-link" href="<?php echo $item['link']; ?>">
+										<span class="nav-icon" id="<?php echo $item['post_name'] . '-ico'; ?>"><span class="vert"></span><span class="horiz"></span></span>
+										<?php echo $item['post_title']; ?>
+									</a>
+								</li>
+								<li class="nav-content"></li>
+							</ul>
 							<?php
 						}
 						?>

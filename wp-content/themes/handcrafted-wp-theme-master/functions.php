@@ -132,6 +132,7 @@ foreach($cpts_args as $cpt){
 			'show_ui' => true, 
 			'query_var' => true,
 			'rewrite' => true,
+			'has_archive' => true,
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'menu_position' => $cpt['menu_pos'],
@@ -208,7 +209,7 @@ function tg_pages_excerpt	() {
 // Add Image Sizes
 
 if ( function_exists( 'add_image_size' ) ) { 
-	add_image_size( 'tg-projectthumb', 346, 260, true );
+	add_image_size( 'tg-projectthumb', 320, 240, true );
 	add_image_size( 'tg-leadimg', 800, 345, true );
 	add_image_size( 'tg-carouselimg', 1280, 440, true );
 }

@@ -13,7 +13,6 @@ get_header(); ?>
 			<div id="content">
 
 				<?php the_post(); ?>
-
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
 					<div class="entry-content">
 						<?php the_content(); ?>
