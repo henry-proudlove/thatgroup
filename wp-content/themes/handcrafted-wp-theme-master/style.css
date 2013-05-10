@@ -677,10 +677,19 @@ article.comment {
 	background-position: 60% center;
 }
 
+.nav-content .nav-pag.next.hide{	
+	right: -45px;
+}
+
+
 .nav-content .nav-pag.prev{	
 	left: 0;
 	background-image: url('images/nav-prev.svg');
 	background-position: 40% center;
+}
+
+.nav-content .nav-pag.prev.hide{	
+	left: -50px;
 }
 
 
@@ -1082,13 +1091,13 @@ article.comment {
 	overflow-x: hidden;
 	/*width: 10000px;*/
 	/*width: auto;*/
-	width: 2240px;
+	width: 10000px;
 	position: relative;
-	transition: left 1s;
+	/*transition: left 1s;
 	-webkit-transition: left 0.5s;
 	-moz-transition: left 0.5s;
 	-o-transition: left 0.5s;
-	-ms-transition: left 0.5s;
+	-ms-transition: left 0.5s;*/
 	left: 0;
 }
 

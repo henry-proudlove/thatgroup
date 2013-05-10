@@ -61,18 +61,17 @@ $(document).on('navswitch' , function(){
 		.appendTo('#site-description');
 });
 
-$('.nav-content').on('navslide' , function(e){
+/*$('.nav-content').on('navslide' , function(e){
 	parent = $(this);
 	pw = parent.width();
 	load = parent.find('#load');
 	lw = load.children().length * 320;
-	pages = parseInt(load.attr('data-page'));
-	nextLink = '<a href="#" class="nav-pag next">Next</a>';
-	prevLink = '<a href="#" class="nav-pag prev">Previous</a>';
-	if(pw < lw || pages > 1){
+	//pages = parseInt(load.attr('data-page'));
+	if(pw < lw){
 		$(nextLink)
-			.appendTo(parent)
-			.hover(
+			.removeClass('hidden')
+			.navShift(true);
+			/*.hover(
 				function(){
 					if((lw + load.position().left) > pw){
 						load.css('left' , '-=320');
@@ -81,8 +80,6 @@ $('.nav-content').on('navslide' , function(e){
 								if((lw + load.position().left) > pw){
 									load.css('left' , '-=320');
 								}
-								}else{
-									window.clearInterval(nextInt);
 								},750);
 					}else{
 						console.log('Rightmost visible');
@@ -107,11 +104,100 @@ $('.nav-content').on('navslide' , function(e){
 					}
 			}, function(){
 				window.clearInterval(prevInt);
-			});
-	}else{
+			});	}else{
 	}
+});*/
+
+/*jQuery.fn.navShift = function(direction){
+
+		load = $(this[0]).siblings().filter('#load');
+		lw = load.children().length * 320;
+		pw = $(this[0]).parent().width();
+		
+		$(this).on('mouseenter' , function(e){
+			console.log(e);
+			el = $(this);
+			if(getCondition(direction, load, lw, pw)){
+				load.css('left' , '-=320');
+				intv = window.setInterval(
+					function(){
+						if(getCondition(direction, load, lw, pw)){
+							load.css('left' , '-=320');
+						}else{
+							el.trigger('navstop');
+						}
+					},750);
+			}else{
+				el.trigger('navstop');
+			}
+		});
+		
+		$(this).on('mouseleave navstop' , function(e){
+			console.log(e);
+			window.clearInterval(intv);
+		});
+					
+};*/
+
+$(document).on('navslide', function(e){
+//$('.nav-content .active', function(){
+	el = $(e.target);
+	console.log(e);
+	//el = $(this);
+	load = el.find('#load');
+	elw = el.width();
+	lw = load.children().length * 320;
+	next = el.find('.nav-pag.next');
+	prev = el.find('.nav-pag.prev');
+	
+	el.on('navmoved' , function(e){
+		if(getCondition(true, load, lw, elw)){
+			next.removeClass('hide');
+		}else{
+			next.addClass('hide');
+			next.off('mouseover');
+			window.clearInterval();
+		}
+		if(getCondition(false, load, lw, elw)){
+			prev.removeClass('hide');
+		}else{
+			prev.addClass('hide');
+			prev.off('mouseover');
+			window.clearInterval();
+		}
+	});
+	
+	next.click(function(e){
+		console.log(e);
+		e.preventDefault();
+		if(getCondition(true, load, lw, elw)){
+			load.animate({'left' : '-=320'}, function(){
+				el.trigger('navmoved');
+			});
+		}
+	});
+	
+	
+	
+	prev.click(function(e){
+		console.log(e);
+		e.preventDefault();
+		if(getCondition(false, load, lw, elw)){
+			load.animate({'left' : '+=320'}, function(){
+				el.trigger('navmoved');
+			});
+		}
+	});
 	
 });
+
+function getCondition(direction, load, lw, pw){
+	if(direction == true){
+		return (lw + parseInt(load.css('left'))) > pw;
+	}else{
+		return parseInt(load.css('left')) < 0;
+	}
+}
 
 function cycleValid(){
 	$('#carousel-images').cycleInit();
@@ -152,7 +238,7 @@ $(document).ready(function(){
 	$('.nav-holder:not(".about")').hover(
 		function(e){
 			var content = $(this).find('.nav-content');
-			if (content.is(':empty')){
+			if (content.find('#load').length < 1){
 				var target = $(this).find('.nav-link').attr('href');
 				$.ajax({
 					url: target,
@@ -161,12 +247,17 @@ $(document).ready(function(){
 						 $('body').append('<p class="loader">Loading</p>');
 				   },
 					success: function (data) {
-						content
-							.addClass('active')
-							.append($(data)
-							.find('#load'))
-							.trigger('navslide');
-						//$(internalA).unbind('click').ajaxLink();					
+						lw = $(data).find('#load').children().length * 320;
+						if(content.width() < lw){
+							content.addClass('active')
+								.prepend($(data).find('#load'))
+								.trigger('navslide')
+								.find('.nav-pag.next').removeClass('hide');
+						}else{
+							content
+								.addClass('active')
+								.prepend($(data).find('#load'));
+						}			
 					},
 					complete: function(){
 						$('.loader').remove();
@@ -179,7 +270,7 @@ $(document).ready(function(){
 			}
 		}, 
 		function(){
-			$(this).find('.nav-content').removeClass('active').unbind('hover');
+			$(this).find('.nav-content').removeClass('active').off('hover navslide').children().off('click navmoved');
 		}	
 	);
 

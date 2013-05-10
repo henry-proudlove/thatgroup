@@ -93,7 +93,7 @@
 										<?php echo $item['post_title']; ?>
 									</a>
 								</li>
-								<li class="nav-content"></li>
+								<li class="nav-content"><a href="#" class="nav-pag prev hide">Prev</a><a href="#" class="nav-pag next hide">Next</a></li>
 							</ul>
 							<?php
 						}

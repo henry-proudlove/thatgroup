@@ -10,7 +10,8 @@ get_header(); ?>
 				<?php
 					$args = array(
 						'post_type' => 'project',
-						'paged' => get_query_var('paged')
+						'paged' => get_query_var('paged'),
+						'posts_per_page' => '-1'
 					);
 					$wp_query = new WP_Query($args);
 				?>

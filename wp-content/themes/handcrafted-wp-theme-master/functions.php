@@ -68,6 +68,18 @@ add_theme_support( 'post-thumbnails' );
 
 add_editor_style("/css/layout-style.css");
 
+
+$option_name = 'posts_per_page' ;
+$new_value = '-1' ;
+
+if ( get_option( $option_name ) != $new_value ) {
+    update_option( $option_name, $new_value );
+} else {
+    $deprecated = ' ';
+    $autoload = 'no';
+    add_option( $option_name, $new_value, $deprecated, $autoload );
+}
+
 /**
  *	Replace the default welcome 'Howdy' in the admin bar with something more professional.
  */
