@@ -669,7 +669,17 @@ article.comment {
 	display: block;
 	top: 0;
 	text-indent: -90000px;
+	-webkit-transition: all 0.2s ;
+	-moz-transition: all 0.2s ;
+	-ms-transition: all 0.2s ;
+	-o-transition: all 0.2s ;
+	transition: all 0.2s ;
 }
+
+.nav-content .nav-pag:hover{
+	background: rgba(0,0,0,0.8) no-repeat;
+}
+
 
 .nav-content .nav-pag.next{	
 	right: 5px;
