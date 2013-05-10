@@ -1,32 +1,4 @@
-//var internalA = 'a[href*="' + siteURL + '"]:not("#wpadminbar a")';
-var internalA = '#branding a, #nav-below a';
-
-/*jQuery.fn.ajaxLink = function(){
-	$(this).click(function(e){
-		e.preventDefault();
-		target = $(this).attr('href');
-		if (target !== $.address.value){
-			$.ajax({
-				url: target,
-				data: {},
-				beforeSend: function(){
-					$('body').append('<p class="loader">Loading</p>');
-				},
-				success: function (data) {
-					if(target == siteURL + '/'){
-						pageTrans(e , data , '-home');
-					}else{
-						pageTrans(e, data , '');
-					}
-				},
-				complete: function(){
-					$('.loader').remove();
-				},
-				dataType: 'html'
-			});
-		}
-	});
-};*/
+var internalA = '#branding a:not("a.nav-pag"), #nav-below a';
 
 jQuery.fn.cycleInit = function(){
 	if(this.children().size() > 1){	
@@ -163,7 +135,6 @@ $(document).ready(function(){
     
     $.address.externalChange(function(e) {
     	console.log(e);
-    	//window.location = 'http://localhost/' + e.value;
 	});
 
 	cycleValid();

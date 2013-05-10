@@ -91,7 +91,7 @@ pre, code, kbd, samp {
  */
 body { 
   /* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859 */ 
-  color: white; 
+  color: black; 
   /* set your base font here, to apply evenly */
   /* font-family: Georgia, serif;  */   
 }
@@ -258,7 +258,7 @@ html{
 }
 
 body {
-	background: black;
+	background: white;
 	height: 100%;
 }
 
@@ -301,10 +301,10 @@ body {
 	width: 100%;
 	font-size: 0.5em;
 	height: 25px;
-	background: white;
+	background: black;
 	position: fixed;
 	bottom: 0;
-	color: black;
+	color: white;
 }
 
 /* Increase the size of the content area for templates without sidebars */
@@ -342,7 +342,7 @@ body {
 	width: 100%;
 }
 #site-title a {
-	position: fixed;
+	position: absolute;
 	text-indent: -9000px;
 	width: 171px;
 	height: 61px;
@@ -358,7 +358,7 @@ body {
 	-moz-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 	-o-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
 	-ms-transition: left 1s cubic-bezier(0.770, 0.000, 0.175, 1.000);
-	color: white;
+	color: black;
 	z-index: 3;
 	position: absolute;
 	width: 100%;
@@ -472,7 +472,6 @@ body {
 }
 
 #nav-below .meta-nav .arrow{
-	fill: white;
 	-webkit-transition: fill 0.2s ease 0.3s;
        -moz-transition: fill 0.2s ease 0.3s;
         -ms-transition: fill 0.2s ease 0.3s;
@@ -765,6 +764,14 @@ article.comment {
         transform: rotate(180deg);
 }
 
+#site-description .nav-holder:hover .nav-icon{
+	-moz-transform: rotate(0deg);
+	-webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
 .nav-icon span{
 	display: block;
 	position: absolute;
@@ -786,6 +793,11 @@ article.comment {
 	top: 7px;
 }
 
+#site-description .nav-holder:hover .nav-icon .vert{
+	height: 16px;
+	top: 0;
+}
+
 .nav-icon .horiz{
 	width: 16px;
 	height: 3px;
@@ -793,7 +805,7 @@ article.comment {
 }
 
 .nav-holder{
-	border-bottom: 1px solid;
+	border-bottom: 1px solid white;
 }
 
 .nav-holder a.nav-link{
@@ -809,7 +821,7 @@ article.comment {
 }
 
 .nav-holder.about:hover a.nav-link{
-  color: #ffe066; 
+  color: #ffcc00; 
 }
 
 .nav-holder.projects .nav-icon span{
@@ -817,7 +829,7 @@ article.comment {
 }
 
 .nav-holder.projects:hover a.nav-link{
-  color: #ef5e5e; 
+  color: #e70a0a; 
 }
 
 .nav-holder.news .nav-icon span{
@@ -825,7 +837,7 @@ article.comment {
 }
 
 .nav-holder.news:hover a.nav-link{
-  color: #7ce7a9; 
+  color: #38da7d; 
 }
 
 .nav-holder.contact .nav-icon span{
@@ -833,7 +845,7 @@ article.comment {
 }
 
 .nav-holder.contact:hover a.nav-link{
-  color: #99d1ed; 
+  color: #64b9e4; 
 }
 
 .nav-title{
@@ -841,8 +853,8 @@ article.comment {
 	top: -10px;
 	right: 0;
 	z-index: 100;
-	background: white;
-	color: black;
+	background: black;
+	color: white;
 	padding: 32px 40px 22px 32px;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1) 1.2s;
 	-webkit-transition: top 0.25s cubic-bezier(0.175, 0.885, 0.320, 1.275) 1.2s;
@@ -875,6 +887,19 @@ article.comment {
 	list-style: none;
 	margin-left: 0;
 	padding-left: 0;
+}
+
+#site-description .nav-link{
+	color: black;
+}
+
+#site-description .nav-link:hover{
+	color: #ffcc00;
+}
+
+
+#site-description .nav-content{
+	display: none;
 }
 
 .thumb-box{
@@ -1024,6 +1049,7 @@ article.comment {
 	padding: 46px 29px;
 	line-height: 1.35em;
 	height: 260px;
+	color: white;
 }
 
 #contact #contact-nav{
@@ -1115,8 +1141,9 @@ article.comment {
 
 #primary{
 	width: 100%;
-	background: black;
-	border-left: 5px solid white;
+	background: white;
+	border-left: 5px solid black;
+	border-right: 5px solid black;
 	padding: 5px 5px 5px 0;
 	min-height: 100%;
 	box-sizing: border-box;
@@ -1196,7 +1223,7 @@ to {left: 0;}
 /* Disgusting border solution */
 
 #border div{
-	background: white;
+	background: black;
 	position: fixed;
 	z-index: 1000;
 }
@@ -1341,7 +1368,7 @@ to {left: 0;}
 
 #about-page.main-article li .item{
 	padding: 0 15px;
-	background: black;
+	background: white;
 	position: relative;
 }
 
@@ -1585,11 +1612,15 @@ a.back{
 	padding-top: 25%;
 	height: auto;
 	margin: 0;
-	background: #333;
+	background: black;
 	box-sizing: border-box;
 	border-width: 0 10px 0 0;
 	border-style: solid;
-	border-color: black;
+	border-color: white;
+}
+
+#related .thumb-box:hover{
+	background: #38da7d;
 }
 
 #related .last .thumb-box {

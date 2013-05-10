@@ -364,6 +364,7 @@ function tg_rel_posts($tax, $title, $post_ID = ''){
 	$wp_query = new WP_query($args);
 	if ( $wp_query->have_posts() ):
 		$i = 0;
+		echo '<aside id="related"><div id="related-holder" class="clearfix">';
 		echo '<h2 class="widget-title">' . $title . '</h2>';
 		//echo '<div id="related-articles" class="clearfix">';
 		while ( $wp_query->have_posts() ) : $wp_query->the_post();
@@ -390,6 +391,7 @@ function tg_rel_posts($tax, $title, $post_ID = ''){
 			$i++;
 		endwhile; wp_reset_query();
 		//echo'</div><!--#related-articles-->';
+		echo '</div><!--#related-holder--></aside><!--#related-->';
 		endif;
 	
 }
