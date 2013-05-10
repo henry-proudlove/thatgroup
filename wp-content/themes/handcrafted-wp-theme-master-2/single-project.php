@@ -7,11 +7,10 @@
 get_header(); ?>
 
 		<div id="primary">
-			<div id="content">
+			<div id="content" class="project">
 
 			<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 				<?php img_fecther() ?>
-				</div><!--#carousel-->
 				<article id="post-<?php the_ID(); ?>" <?php post_class('main-article'); ?> role="article">
 					<header class="entry-header">
 						<h1 class="entry-title"><?php echo the_title(); ?></h1>

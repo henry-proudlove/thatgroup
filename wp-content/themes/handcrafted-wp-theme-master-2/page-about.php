@@ -10,7 +10,7 @@
 get_header(); ?>
 
 		<div id="primary">
-			<div id="content">
+			<div id="content" class="about">
 
 				<?php the_post(); ?>
 

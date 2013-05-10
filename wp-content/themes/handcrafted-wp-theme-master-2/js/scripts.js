@@ -75,21 +75,30 @@ function cycleValid(){
 	});
 }
 
-function pageTrans(data , home){
-	if(!home){
-		$('#main')
-			.children()
-			.fadeOut('fast', function(){
-				$(this).remove().parent();
-				$('#main').append($(data).find('#primary').addClass('incoming'));
-			});
+function pageTrans(data , home, external){
+	if(!external){
+		if(!home){
+			$('#main')
+				.children()
+				.fadeOut('fast', function(){
+					$(this).remove().parent();
+					$('#main').append($(data).find('#primary').addClass('incoming'));
+				});
+		}else{
+			$('#main')
+				.children()
+				.fadeOut('fast', function(){
+					$(this).remove().parent();
+					$('#main').append($(data).find('#primary').addClass('incoming-home'));
+				});
+		}
 	}else{
 		$('#main')
-			.children()
-			.fadeOut('fast', function(){
-				$(this).remove().parent();
-				$('#main').append($(data).find('#primary').addClass('incoming-home'));
-			});
+				.children()
+				.fadeOut('fast', function(){
+					$(this).remove().parent();
+					$('#main').append($(data).find('#primary'));
+				});
 	}
 	$('body')
 		.removeClass()
@@ -101,7 +110,7 @@ $(document).ready(function(){
 	
    	$(internalA).address();
    	
-    $.address.change(function(e) {
+    $.address.internalChange(function(e) {
     	console.log(e);
         //var target = e.value.replace($.address.baseURL() + '/', '');
     	var target = e.value.replace('http://localhost/', '');
@@ -116,11 +125,34 @@ $(document).ready(function(){
 			},
 			success: function (data) {
 				if(target == siteURL + '/'){
-					pageTrans(data , true);
+					pageTrans(data , true, false);
 				}else{
-					pageTrans(data , false);
+					pageTrans(data , false, false);
 				}
 				
+			},
+			complete: function(){
+				$('.loader').remove();
+			},
+			dataType: 'html'
+		});    
+    });
+    
+    $.address.externalChange(function(e) {
+    	console.log(e);
+        //var target = e.value.replace($.address.baseURL() + '/', '');
+    	var target = e.value.replace('http://localhost/', '');
+    	$('a[href="http://localhost' + target +'"]').addClass('current');
+        console.log($.address.value());
+		$.address.value(target);
+		$.ajax({
+			url: target,
+			data: {},
+			beforeSend: function(){
+				$('body').append('<p class="loader">Loading</p>');
+			},
+			success: function (data) {
+				pageTrans(data , true, true);
 			},
 			complete: function(){
 				$('.loader').remove();
