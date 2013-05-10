@@ -1,4 +1,5 @@
-var internalA = 'a[href*="' + siteURL + '"]:not("#wpadminbar a")';
+//var internalA = 'a[href*="' + siteURL + '"]:not("#wpadminbar a")';
+var internalA = '#branding a, #nav-below a';
 
 /*jQuery.fn.ajaxLink = function(){
 	$(this).click(function(e){
@@ -35,115 +36,14 @@ jQuery.fn.cycleInit = function(){
 	}
 };
 
-function pageTrans(e, data , home){
-	$('#main')
-		.children()
-		.addClass('outgoing' + home)
-		.parent()
-		.append($(data).find('#primary').addClass('incoming' + home));
-	$('body')
-		.removeClass()
-		.addClass($(data).find('#main').attr('data'));
-	$('.outgoing' + home)
-		.on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
-			$(this).remove();
-			$('#primary').removeClass('incoming' + home);
-			setTimeout(function() {
-				  cycleValid();
-			}, 1000);
-			$('#nav-below').removeClass('hidden');
-	})
-}
-
 $(document).on('navswitch' , function(){
 	$('#nav-container.home')
 		.find('.nav-holder.about')
 		.appendTo('#site-description');
 });
 
-/*$('.nav-content').on('navslide' , function(e){
-	parent = $(this);
-	pw = parent.width();
-	load = parent.find('#load');
-	lw = load.children().length * 320;
-	//pages = parseInt(load.attr('data-page'));
-	if(pw < lw){
-		$(nextLink)
-			.removeClass('hidden')
-			.navShift(true);
-			/*.hover(
-				function(){
-					if((lw + load.position().left) > pw){
-						load.css('left' , '-=320');
-						nextInt = window.setInterval(
-							function(){
-								if((lw + load.position().left) > pw){
-									load.css('left' , '-=320');
-								}
-								},750);
-					}else{
-						console.log('Rightmost visible');
-					}
-				}, function(){
-					window.clearInterval(nextInt);    
-				});
-		$(prevLink)
-			.appendTo(parent)
-			.hover(
-				function(){
-					if(load.position().left < 0){
-						load.css('left' , '+=320');
-						prevInt = window.setInterval(
-							function(){
-								if(load.position().left < 0){
-									load.css('left' , '+=320');
-								}
-							} ,750);
-					}else{
-						window.clearInterval(nextInt);
-					}
-			}, function(){
-				window.clearInterval(prevInt);
-			});	}else{
-	}
-});*/
-
-/*jQuery.fn.navShift = function(direction){
-
-		load = $(this[0]).siblings().filter('#load');
-		lw = load.children().length * 320;
-		pw = $(this[0]).parent().width();
-		
-		$(this).on('mouseenter' , function(e){
-			console.log(e);
-			el = $(this);
-			if(getCondition(direction, load, lw, pw)){
-				load.css('left' , '-=320');
-				intv = window.setInterval(
-					function(){
-						if(getCondition(direction, load, lw, pw)){
-							load.css('left' , '-=320');
-						}else{
-							el.trigger('navstop');
-						}
-					},750);
-			}else{
-				el.trigger('navstop');
-			}
-		});
-		
-		$(this).on('mouseleave navstop' , function(e){
-			console.log(e);
-			window.clearInterval(intv);
-		});
-					
-};*/
-
 $(document).on('navslide', function(e){
-//$('.nav-content .active', function(){
 	el = $(e.target);
-	console.log(e);
-	//el = $(this);
 	load = el.find('#load');
 	elw = el.width();
 	lw = load.children().length * 320;
@@ -168,7 +68,6 @@ $(document).on('navslide', function(e){
 	});
 	
 	next.click(function(e){
-		console.log(e);
 		e.preventDefault();
 		if(getCondition(true, load, lw, elw)){
 			load.animate({'left' : '-=320'}, function(){
@@ -180,7 +79,6 @@ $(document).on('navslide', function(e){
 	
 	
 	prev.click(function(e){
-		console.log(e);
 		e.preventDefault();
 		if(getCondition(false, load, lw, elw)){
 			load.animate({'left' : '+=320'}, function(){
@@ -207,21 +105,66 @@ function cycleValid(){
 	});
 }
 
+function pageTrans(data , home){
+	$('#main')
+		.children()
+		.fadeOut('fast', function(){
+			$(this).remove().parent();
+			$('#main').append($(data).find('#primary').addClass('incoming' + home));
+		});
+	$('body')
+		.removeClass()
+		.addClass($(data).find('#main').attr('data'));
+	$('.outgoing' + home)
+		.on('webkitTransitionEnd oTransitionEnd transitionend msTransitionEnd', function() {
+			$(this).remove();
+			$('#primary').removeClass('incoming' + home);
+			setTimeout(function() {
+				  cycleValid();
+			}, 1000);
+			$('#nav-below').removeClass('hidden');
+	})
+}
+
 $(document).ready(function(){
 
 	// Add jQuery Address functionality to the links in the navbar
 
-   // $(internalA).address();
+   	$(internalA).address();
     
-    // Our event responder that triggers whenever the address is changed (including on first load!)
-    
-    $.address.change(function(event) {
-        var uri = event.value;
-        var rel = uri.replace('http://localhost/' , '');
+    $.address.internalChange(function(e) {
+    	console.log(e);
+        var uri = e.value;
+        var target = uri.replace('http://localhost/' , '');
         console.log($.address.path());
-        $.address.value(rel);  
+        $.address.value(target);
+		if (target != $.address.value){
+			$.ajax({
+				url: target,
+				data: {},
+				beforeSend: function(){
+					$('body').append('<p class="loader">Loading</p>');
+				},
+				success: function (data) {
+					if(target == siteURL + '/'){
+						pageTrans(data , '-home');
+					}else{
+						pageTrans(data , '');
+					}
+				},
+				complete: function(){
+					$('.loader').remove();
+				},
+				dataType: 'html'
+			});
+		}
         
     });
+    
+    $.address.externalChange(function(e) {
+    	console.log(e);
+    	//window.location = 'http://localhost/' + e.value;
+	});
 
 	cycleValid();
 
