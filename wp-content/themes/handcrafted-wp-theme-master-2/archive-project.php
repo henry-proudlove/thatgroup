@@ -22,7 +22,6 @@ get_header(); ?>
 								<?php if(has_post_thumbnail()){
 									$thumb_id = get_post_thumbnail_id(get_the_ID());
 									$img = wp_get_attachment_image_src($thumb_id , 'tg-projectthumb');
-									//print_r($img);
 									echo '<img src="' . $img[0] . '" class="project-thumb" />';
 								} ?>
 								<div class="thumb-content">

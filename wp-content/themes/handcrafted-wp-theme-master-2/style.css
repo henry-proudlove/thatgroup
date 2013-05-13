@@ -322,6 +322,7 @@ body {
 	position: fixed;
 	bottom: 0;
 	color: white;
+	z-index: 50;
 }
 
 /* Increase the size of the content area for templates without sidebars */
@@ -730,7 +731,7 @@ article.comment {
 /* main menu */
 
 #nav-container{
-	position: fixed;
+	position: absolute;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	z-index: 3;
@@ -887,7 +888,7 @@ a.nav-link{
 }
 
 .nav-title{
-	position: fixed;
+	position: absolute;
 	top: -10px;
 	right: 0;
 	z-index: 100;
@@ -1535,9 +1536,15 @@ to {left: 0;}
 #contact-wrapper,
 .contact-page .main-article .entry-title,
 #contact-wrapper form{
-	width: 421px;
+	max-width: 560px;
 	margin: 0 auto;
 	position: relative;
+}
+
+#contact-wrapper{
+	padding: 0 70px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .contact-page .main-article .entry-title{
@@ -1671,9 +1678,13 @@ a.back{
 	border-image:url('images/dotted-border-news.svg') 10 1 round;
 }
 
-#related .thumb-box{
+#related article{
 	width: 25%;
-	padding-top: 25%;
+	float: left;
+}
+
+#related .thumb-box{
+	padding-top: 100%;
 	height: auto;
 	margin: 0;
 	background: black;
@@ -1760,6 +1771,10 @@ a.back{
 	z-index: 500;
 }
 
+body > .loader-holder{
+	position: fixed;
+}
+
 #loader{
 	position: absolute;
 	top: 50%;
@@ -1768,6 +1783,32 @@ a.back{
 }
 
 /* Reponsive */
+
+@media screen and (max-width: 900px){
+	#related article{
+		font-size:16px;
+		width: 50%;
+		margin-bottom: 10px;
+	}
+	
+	#related .thumb-box{
+		font-size: 1.5em;
+		padding-top: 66.66%;
+	}
+	
+	#related .last .thumb-box {
+		border-width: 0 10px;
+	}
+	
+	#related{
+		padding-bottom: 30px;
+		margin-bottom: 80px;
+	}
+	
+	#related .thumb-content{
+		position: absolute;
+	}
+}
 
 @media screen and (max-width: 768px){
 
@@ -1792,17 +1833,6 @@ a.back{
 	.main-article, .main-article header {
 		padding-bottom: 30px;
 		margin-bottom: 35px;
-	}
-	
-	#related .thumb-box{
-		width: 50%;
-		font-size: 1.5em;
-		padding-top: 33.33%;
-	}
-	
-	#related{
-		padding-bottom: 30px;
-		margin-bottom: 80px;
 	}
 	
 	#nav-below .nav-next .nav-text {
@@ -1968,6 +1998,72 @@ a.back{
 		position: relative;
 		top: 31px;
 	}
+	
+	#about-page.main-article li .item{
+		padding: 0 15px;
+		background: white;
+		position: relative;
+	}
+	
+	#about-page.main-article li .item{
+		padding: 0 7px;
+	}
+
+	#about-page.main-article li:nth-child(1) .item,
+	#about-page.main-article li:nth-child(2) .item,
+	#about-page.main-article li:nth-child(3) .item,
+	#about-page.main-article li:nth-child(4) .item,
+	#about-page.main-article li:nth-child(5) .item
+	{
+		left: 0;
+	}
+	
+	.nav-pag{
+		display: none !important;
+	}
+	
+	#about-page.main-article li{
+		padding: 7px 0;
+	}
+	
+	.main-article .entry-content img, .wp-caption{
+		margin: 20px;
+	}
+	
+	.main-article .lead-img img {
+		padding-bottom: 15px;
+		width: 100%;
+		height: auto;
+	}
+
 }
+
+@media screen and (max-width: 650px){
+	#related article{
+		font-size:16px;
+		width: 100%;
+		margin-bottom: 10px;
+	}
+	
+	#related .thumb-box{
+		font-size: 1.5em;
+		border: none;
+		padding-top: 0;
+	}
+	
+	#related .last .thumb-box {
+		border-width: 0 10px;
+	}
+	
+	#related{
+		padding-bottom: 30px;
+		margin-bottom: 80px;
+	}
+	
+	#related .thumb-content{
+		position: static;
+	}
+}
+
 
 

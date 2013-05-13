@@ -15,13 +15,14 @@ get_header(); ?>
 					<header class="entry-header">
 						<h1 class="entry-title"><?php the_title(); ?></h1>
 					</header><!-- .entry-header -->
-					<div class="lead-img">
-						<?php if ( has_post_thumbnail() ) { 
-								  the_post_thumbnail('tg-leadimg');
-								} 
-						?>
-					</div><!--.lead-image-->
 					<div class="content-holder">
+						<div class="lead-img">
+						<?php if(has_post_thumbnail()){
+									$thumb_id = get_post_thumbnail_id(get_the_ID());
+									$img = wp_get_attachment_image_src($thumb_id , 'tg-leadimg');
+									echo '<img src="' . $img[0] . '" class="single-leadimg" />';
+								} ?>
+						</div><!--.lead-image-->
 						<div class="entry-content">
 							<?php the_content(); ?>
 						</div><!-- .entry-content -->

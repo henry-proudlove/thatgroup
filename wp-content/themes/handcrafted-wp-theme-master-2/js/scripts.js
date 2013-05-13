@@ -214,12 +214,17 @@ $(document).ready(function(){
 			}
 	});
 	$('.nav-holder:not(".about")').mouseleave(function(){
-			$(this).find('.nav-content')/*.removeClass('active')*/.off('hover navslide').children().off('click navmoved');
+			$(this).find('.nav-content').removeClass('active').off('hover navslide').children().off('click navmoved');
 			$('.loader-holder').children().remove();
 	});
 	
 	$('.nav-holder').mouseenter(function(){
-		$(this).siblings().find('.nav-content').removeClass('active')
+		$(this)
+			.siblings()
+			.find('.nav-content')
+			.removeClass('active')
+			.off('hover navslide')
+			.children().off('click navmoved')
 	});
 
 	$('.nav-title').hover(function(){
