@@ -21,11 +21,12 @@ get_header(); ?>
 								} 
 						?>
 					</div><!--.lead-image-->
-					<div class="entry-content">
-						<?php the_content(); ?>
-						<?php wp_link_pages( array( 'before' => '<div class="page-link">' . __( 'Pages:', 'themename' ), 'after' => '</div>' ) ); ?>
-					</div><!-- .entry-content -->
-
+					<div class="content-holder">
+						<div class="entry-content">
+							<?php the_content(); ?>
+						</div><!-- .entry-content -->
+						<?php tg_nav_below(); ?>
+					</div><!--.content-holder-->
 					<footer class="entry-meta">
 						<time class="entry-date">Posted on <?php the_date('d.m.y'); ?></time>
 						<?php edit_post_link( __( 'Edit', 'themename' ), '<span class="edit-link">', '</span>' ); ?>
@@ -39,7 +40,6 @@ get_header(); ?>
 					}
 					tg_rel_posts($cat_arr, 'Related News', $post->ID);
 				?>
-				<?php tg_nav_below(); ?>
 			<?php endwhile; // end of the loop. ?>
 			</div><!-- #content -->
 		</div><!-- #primary -->
