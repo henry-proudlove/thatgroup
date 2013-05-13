@@ -115,15 +115,31 @@ a:hover, a:active {
 	outline: none;
 }
 a, a:active, a:visited {
-	color: white;
+	color: black;
 	text-decoration: none;
 }
-a:hover { 
-	color: white;
+#content.project a:hover { 
+	color: #e70a0a;
 }
 
-#content a{
-	border-bottom: 1px solid white;
+#content.project a{
+	border-bottom: 1px solid #e70a0a;
+}
+
+#content.about a:hover { 
+	color: #38da7d;
+}
+
+#content.about a{
+	border-bottom: 1px solid #ffc907;
+}
+
+#content.single a:hover { 
+	color: #38da7d;
+}
+
+#content.single a{
+	border-bottom: 1px solid #ffc907;
 }
 
 ul, ol { margin-left: 1.8em; }
@@ -168,8 +184,8 @@ input:invalid, textarea:invalid {
 /* These selection declarations have to be separate.
    No text-shadow: twitter.com/miketaylr/status/12228805301 
    Also: hot pink. */
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:white; color:#444; text-shadow: none; } 
+::-moz-selection{ background: #444; color:#fff; text-shadow: none; }
+::selection { background:#444; color:#fff; text-shadow: none; } 
 /*  j.mp/webkit-tap-highlight-color */
 a:link { -webkit-tap-highlight-color: #FF5E99; } 
 /* make buttons play nice in IE:    
@@ -810,6 +826,10 @@ article.comment {
 	border-bottom: 1px solid white;
 }
 
+a.nav-link{
+	color: white;
+}
+
 .nav-holder a.nav-link{
 	-webkit-transition: all 0.5s ;
 	-moz-transition: all 0.5s ;
@@ -912,6 +932,7 @@ article.comment {
 	position: relative;
 	border-right: 1px solid black;
 	overflow: hidden;
+	color: white !important;
 }
 
 .thumb-box img{
@@ -1048,9 +1069,9 @@ article.comment {
 	width: 25%;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	padding: 46px 29px;
+	padding: 36px 29px;
 	line-height: 1.35em;
-	height: 260px;
+	height: 240px;
 	color: white;
 }
 
@@ -1058,6 +1079,10 @@ article.comment {
 	width: 75%;
 	display: block;
 	float: left;
+}
+
+#contact-nav a{
+	color: white;
 }
 
 .nav-holder:last-child #load{
@@ -1079,8 +1104,8 @@ article.comment {
 }
 
 #contact #contact-nav a span.ico{
-	height: 176px;
-	padding-top: 60px;
+	height: 166px;
+	padding-top: 50px;
 }
 
 #contact #contact-nav a:hover{
@@ -1679,4 +1704,30 @@ a.back{
 .contact-page{
 	z-index: 5;
 }
+
+.nav-holder.contact{
+	color: white;
+}
+
+.nav-holder.contact a{
+	color: white;
+}
+
+.loader-holder{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 500;
+}
+
+#loader{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -40px -75px;
+}
+
 

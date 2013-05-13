@@ -1,3 +1,5 @@
+var loader = '<div id="loader" style="width: 150px; height: 80px"></div><script>var stage = new swiffy.Stage(document.getElementById("loader"),swiffyobject);stage.start();</script>';
+
 jQuery.fn.cycleInit = function(){
 	if(this.children().size() > 1){	
 		$(this).addClass('cycle').after('<nav id="pager">').cycle({
@@ -106,22 +108,26 @@ function pageTrans(data , home, external){
 }
 
 $(document).ready(function(){
-	var internalA = '#branding a:not("a.nav-pag , a.current"), #nav-below a';
+
+	var internalA = '#branding a:not("a.nav-pag , a.current, a.map"), #nav-below a';
 	
-   	$(internalA).address();
+   	$(internalA).address(function() {  
+   		var target = $(this).attr('href').replace('http://localhost/', '');
+    	$('a[href="http://localhost' + target +'"]').addClass('current');
+		return target;
+		$(this).addClass('current');
+	});  
    	
     $.address.internalChange(function(e) {
     	console.log(e);
-        //var target = e.value.replace($.address.baseURL() + '/', '');
-    	var target = e.value.replace('http://localhost/', '');
-    	$('a[href="http://localhost' + target +'"]').addClass('current');
-        console.log($.address.value());
-		$.address.value(target);
+		target = $.address.value();
 		$.ajax({
 			url: target,
 			data: {},
 			beforeSend: function(){
-				$('body').append('<p class="loader">Loading</p>');
+				$('body > .loader-holder')
+					.append(loader)
+					.fadeIn('fast');
 			},
 			success: function (data) {
 				if(target == siteURL + '/'){
@@ -132,7 +138,9 @@ $(document).ready(function(){
 				
 			},
 			complete: function(){
-				$('.loader').remove();
+				$('.loader-holder').fadeOut('fast' , function(){
+					$(this).children().remove();
+				});
 			},
 			dataType: 'html'
 		});    
@@ -149,13 +157,11 @@ $(document).ready(function(){
 			url: target,
 			data: {},
 			beforeSend: function(){
-				$('body').append('<p class="loader">Loading</p>');
 			},
 			success: function (data) {
 				pageTrans(data , true, true);
 			},
 			complete: function(){
-				$('.loader').remove();
 			},
 			dataType: 'html'
 		});    
@@ -182,8 +188,11 @@ $(document).ready(function(){
 					url: target,
 					data: {},
 					beforeSend: function(){
-						 $('body').append('<p class="loader">Loading</p>');
-						 content.addClass('active')
+						content
+							.addClass('active')
+							.find('.loader-holder')
+							.append(loader)
+							.fadeIn('fast');
 				   },
 					success: function (data) {
 						lw = $(data).find('#load').children().length * 320;
@@ -197,7 +206,9 @@ $(document).ready(function(){
 						}			
 					},
 					complete: function(){
-						$('.loader').remove();
+						$('.loader-holder').fadeOut('fast' , function(){
+							$(this).children().remove();
+						});
 					},
 					dataType: 'html'
 				});
@@ -208,6 +219,7 @@ $(document).ready(function(){
 		}, 
 		function(){
 			$(this).find('.nav-content').removeClass('active').off('hover navslide').children().off('click navmoved');
+			$('.loader-holder').children().remove();
 		}	
 	);
 
@@ -220,4 +232,7 @@ $(document).ready(function(){
 			.removeClass('down').addClass('up')
 			.find('.active').removeClass('active');
 	});
+	
+	
+	
 });

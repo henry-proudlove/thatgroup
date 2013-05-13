@@ -67,7 +67,7 @@ get_header(); ?>
 							6a St Pancras Way</br>
 							London</br>
 							NW1 0TB</br>
-							<a href="tel:+4402035442696">0203 544 2696</a></br>
+							<a class="tel" href="tel:+4402035442696">0203 544 2696</a></br>
 						</address>
 						<nav id="contact-nav">
 							<?php 
@@ -81,11 +81,11 @@ get_header(); ?>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-tw.svg');
 							?>
-							<a class="twitter" href="#" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Twitter</span></a>
+							<a class="twitter" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Twitter</span></a>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-in.svg');
 							?>
-							<a class="linkedin" href="#" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">LinkedIn</span></a>
+							<a class="linkedin" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">LinkedIn</span></a>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-fb.svg');
 							?>

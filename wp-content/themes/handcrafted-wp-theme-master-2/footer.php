@@ -12,13 +12,12 @@
 			</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-
+<div class="loader-holder" style="display:none;"></div>
 <div id="border">
 	<div class="b-top"></div>
 	<div class="b-right"></div>
 	<div class="b-left"></div>
 </div><!--- URGH! this is disgusting markup -->
-
 <script type="text/javascript">
 	var siteURL = '<?php echo get_site_url(); ?>';
 </script>
