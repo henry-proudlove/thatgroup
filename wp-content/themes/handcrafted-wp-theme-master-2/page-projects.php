@@ -16,10 +16,13 @@ get_header(); ?>
 					$args = array('post_type' => 'project' , 'posts_per_page' => '5');
 					$wp_query = new WP_Query($args);
 					if( $wp_query->have_posts() ): while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
-							<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> role="article">
+							<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
 								<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 								<?php if(has_post_thumbnail()){
-									the_post_thumbnail('tg-projectthumb');
+									$thumb_id = get_post_thumbnail_id( get_the_ID() );
+									//$url = wp_get_attachment_thumb_url( $thumb_id );
+									//the_post_thumbnail('tg-projectthumb');
+									print_r(wp_get_attachment_image_src($thumb_id));
 								} ?>
 								<div class="thumb-content">
 									<header class="entry-header">

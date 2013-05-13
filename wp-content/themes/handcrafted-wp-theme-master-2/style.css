@@ -193,7 +193,7 @@ input:invalid, textarea:invalid {
 ::-moz-selection{ background: #444; color:#fff; text-shadow: none; }
 ::selection { background:#444; color:#fff; text-shadow: none; } 
 /*  j.mp/webkit-tap-highlight-color */
-a:link { -webkit-tap-highlight-color: #FF5E99; } 
+a:link { -webkit-tap-highlight-color: #e70a0a; } 
 /* make buttons play nice in IE:    
    www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
 button {width: auto; overflow: visible;}
@@ -272,11 +272,6 @@ button {width: auto; overflow: visible;}
  */
 html{
 	height: 100%;
-	/*border-style: solid;
-	border-color: white;
-	border-width: 5px 5px 25px 5px;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;*/
 }
 
 body {
@@ -945,13 +940,20 @@ a.nav-link{
 	display: none;
 }
 
-.thumb-box{
+.nav-content article{
 	width: 320px;
 	height: 240px;
 	display:block;
 	float: left;
-	position: relative;
 	border-right: 1px solid black;
+	color: white !important;
+	
+}
+
+.thumb-box{
+	height: 100%;
+	display:block;
+	position: relative;
 	overflow: hidden;
 	color: white !important;
 }
@@ -962,13 +964,15 @@ a.nav-link{
 
 .thumb-box .thumb-content{
 	position: absolute;
-	width: 100%;
 	height: 100%;
 	font-size: 1.25em;
 	line-height: 1em;
 	padding: 22px 29px;
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
+}
+
+.type-project .thumb-content{
+	padding: 0;
+	width: 100%;
 }
 
 .type-project .thumb-box .thumb-content header{
@@ -981,6 +985,7 @@ a.nav-link{
 			transition: all 0.3s ease-out;
 	opacity: 1;
 	left: 29px;
+	padding-right: 29px;
 }
 
 .type-project .thumb-box img + .thumb-content header{
@@ -1763,6 +1768,7 @@ a.back{
 
 	body{ 
 		font-size:16px;
+		height: auto;
 	}
 	
 	#site-title a {
@@ -1806,6 +1812,118 @@ a.back{
 		width: 100%;
 		font-size: 0.9em;
 		height: 28px;
+	}
+	
+	.nav-icon{
+		width: 13px;
+		height: 13px;
+		bottom: 2px;
+	}
+	
+	.nav-icon .vert{
+		height: 13px;
+		left: 5px;
+	}
+	
+	.nav-icon .horiz{
+		width: 13px;
+		top: 5px;
+	}
+	
+	.nav-holder:hover .nav-icon .vert{
+		height: 2px;
+		top: 6px;
+	}
+	
+	.nav-link{
+		padding: 22px 24px;
+	}
+	
+	#site-description{
+		position: relative;
+		padding: 100px 24px 50px;
+	}
+	
+	#primary.home{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+	}
+	
+	#nav-container.home{
+		position: relative;
+		border-width: 1px 5px 0 5px;
+	}
+	
+	.type-project .thumb-box .thumb-content header,
+	.type-project .thumb-box img + .thumb-content header,
+	.type-project .thumb-box:hover img + .thumb-content header{
+		left: 22px;
+		opacity: 1;
+		bottom: 22px;
+	}
+	
+	.type-project .thumb-box img + .thumb-content,
+	.type-project .thumb-box img + .thumb-content:hover{
+		opacity: 1;
+		background: rgba(0,0,0,0.7);
+	}
+	
+	#load{
+		width: auto;
+	}
+	
+	.nav-content.active{
+		height: auto;
+	}
+	
+	.type-project .thumb-box{
+		width: 100%;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		clear: both;
+	}
+	
+	.nav-holder.projects .nav-content article{
+		width: 50%;
+		float: left;
+		height: auto;
+		box-sizing: border-box;
+		border-width: 0 1px 1px 0;
+		border-color: black;
+		border-style: solid;
+	}
+	
+	.nav-holder.projects .thumb-box{
+		position: relative;
+		width: 100%;
+		padding-top: 75%;
+	}
+	
+	.nav-holder.projects .thumb-content{
+		position: absolute;
+		top: 0;
+	}
+	
+	.project-thumb{
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.nav-content article{
+		width: 100%;
+		height: auto;
+		position: static;
+	}
+	
+	.type-post .thumb-box .thumb-content{
+		padding: 20px 24px;
+		position: relative;
+		border-right: none;
+		border-bottom: 1px solid #333;
 	}
 }
 

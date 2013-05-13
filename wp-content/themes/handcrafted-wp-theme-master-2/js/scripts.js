@@ -147,7 +147,7 @@ $(document).ready(function(){
    	$.address.externalChange(function(e) {
     	console.log(e);
     	var target = e.value.replace('http://localhost/', '');
-    	$('a[href="http://localhost' + target +'"]').addClass('current');
+    	//$('a[href="http://localhost' + target +'"]').addClass('current');
         console.log($.address.value());
 		$.address.value(target);
 		$.ajax({
@@ -176,7 +176,7 @@ $(document).ready(function(){
 
 	// Load in posts of each section on nav item roll
 
-	$('.nav-holder:not(".about")').hover(
+	$('.nav-holder:not(".about")').on('click mouseenter' ,
 		function(e){
 			var content = $(this).find('.nav-content');
 			if (content.find('#load').length < 1){
@@ -212,12 +212,11 @@ $(document).ready(function(){
 			}else{
 				content.addClass('active').trigger('navslide');
 			}
-		}, 
-		function(){
-			$(this).find('.nav-content').removeClass('active').off('hover navslide').children().off('click navmoved');
+	});
+	$('.nav-holder:not(".about")').mouseleave(function(){
+			$(this).find('.nav-content')/*.removeClass('active')*/.off('hover navslide').children().off('click navmoved');
 			$('.loader-holder').children().remove();
-		}	
-	);
+	});
 	
 	$('.nav-holder').mouseenter(function(){
 		$(this).siblings().find('.nav-content').removeClass('active')

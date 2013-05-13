@@ -257,10 +257,12 @@ $project_mb = new WPAlchemy_MetaBox(array
 // Create category on project publish
 
 function create_project_cat($post_ID) {
-	$this_post = get_post($post_ID); 
-	$title = $this_post->post_title;
-	$project_cat = wp_insert_term($title, 'category');
-	add_post_meta($post_ID, '_project_cat' , $project_cat['term_id'] , true);
+	if(!get_post_meta($post_ID, '_project_cat')){
+		$this_post = get_post($post_ID); 
+		$title = $this_post->post_title;
+		$project_cat = wp_insert_term($title, 'category');
+		update_post_meta($post_ID, '_project_cat' , $project_cat['term_id'] , true);
+	}
 }
 
 add_action('publish_project', 'create_project_cat');
