@@ -8,23 +8,18 @@ jQuery.fn.cycleInit = function(){
 	}
 };
 
+// Move home about link to #site-description
+
 $(document).on('navswitch' , function(){
 	$('#nav-container.home')
 		.find('.nav-holder.about')
 		.appendTo('#site-description');
 });
 
-/*$(document).on('navslide', function(e){
-	el = $(e.target);
-	load = el.find('#load');
-	elw = el.width();
-	lw = load.children().length * 320;
-	next = el.find('.nav-pag.next');
-	prev = el.find('.nav-pag.prev');
-	
-});*/
 
-function getCondition(el, direction){
+// Get position of menu items relative to container
+
+function getPos(el, direction){
 	load = el.find('#load');
 	elw = el.width();
 	lw = load.children().length * 320;
@@ -208,13 +203,13 @@ $(document).ready(function(){
 	el = $(this);
 	next = el.find('.nav-pag.next');
 	prev = el.find('.nav-pag.prev');
-	if(getCondition(el, true)){
+	if(getPos(el, true)){
 		next.removeClass('hide');
 	}else{
 		next
 			.addClass('hide')
 	}
-	if(getCondition(el, false)){
+	if(getPos(el, false)){
 		prev.removeClass('hide');
 	}else{
 		prev.addClass('hide');
@@ -225,7 +220,7 @@ $(document).ready(function(){
 		e.preventDefault();
 		console.log(e);
 		el = $(this).parent();
-		if(getCondition(el, true)){
+		if(getPos(el, true)){
 			load.animate({'left' : '-=320'}, function(){
 				el.trigger('navmoved');
 			});
@@ -235,7 +230,7 @@ $(document).ready(function(){
 	$('.nav-pag.prev').click(function(e){
 		e.preventDefault();
 		el = $(this).parent();
-		if(getCondition(el, false)){
+		if(getPos(el, false)){
 			load.animate({'left' : '+=320'}, function(){
 				el.trigger('navmoved');
 			});
