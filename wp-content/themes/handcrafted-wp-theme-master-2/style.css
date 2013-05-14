@@ -756,6 +756,7 @@ article.comment {
 .home #nav-container.home{
 	opacity: 1;
 	left: 0;
+	position: fixed;
 }
 
 .nav-title, .nav-link{
@@ -948,7 +949,8 @@ a.nav-link{
 	float: left;
 	border-right: 1px solid black;
 	color: white !important;
-	
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .thumb-box{
