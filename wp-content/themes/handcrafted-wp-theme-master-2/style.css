@@ -299,6 +299,17 @@ body {
 
 #main{
 	height: 100%;
+	background-color: white;
+	-webkit-transition: background-color 2s;
+       -moz-transition: background-color 2s;
+        -ms-transition: background-color 2s;
+         -o-transition: background-color 2s;
+            transition: background-color 2s;
+}
+
+.home #main{
+	background-color: transparent;
+	
 }
 
 
@@ -658,13 +669,13 @@ article.comment {
  
 #tag {
 	padding: 1em 0 0;
-	position: fixed;
+	position: absolute;
 	bottom: 7px;
 	left: 5px;
 }
 
 #cr{
-	position: fixed;
+	position: absolute;
 	bottom: 7px;
 	right: 5px;
 }
@@ -1166,18 +1177,23 @@ a.nav-link{
 	bottom: auto;
 	z-index: 1000;
 	padding-top: 30px;
-	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1);
-	-webkit-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-	   -moz-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-		-ms-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-		 -o-transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
-			transition: top 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+	-webkit-transition: top 0.7s cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition: top 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+	   -moz-transition: top 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+		-ms-transition: top 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+		 -o-transition: top 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+			transition: top 0.7s cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 #nav-container.down{
 	left: 0;
 	bottom: auto;
 	top: -25px;
+}
+
+#nav-container.disable{
+	pointer-events: none;
+    cursor: default;
 }
 
 #nav-container.up{
@@ -1212,6 +1228,10 @@ a.nav-link{
 	-moz-box-sizing: border-box;
 	position: relative;
 	overflow: hidden;
+}
+
+#primary.home{
+	display: none;
 }
 
 #primary.incoming{
@@ -1813,11 +1833,20 @@ body > .loader-holder{
 	}
 }
 
-@media screen and (max-width: 768px){
-
+@media screen and (max-width: 650px){
+	
+	#load{
+		max-height: 455px;
+	}
+	
+	.home #branding{
+		position: relative;
+	}
+	
 	body{ 
 		font-size:16px;
 		height: auto;
+		background: black;
 	}
 	
 	#site-title a {
@@ -1878,19 +1907,20 @@ body > .loader-holder{
 	}
 	
 	#site-description{
-		position: relative;
-		padding: 100px 24px 50px;
+		position: static;
+		padding: 80px 24px 4px;
 	}
 	
 	#primary.home{
-		position: absolute;
+		position: static;
 		width: 100%;
 		height: 100%;
 		top: 0;
+		padding: 0;
 	}
 	
-	#nav-container.home{
-		position: relative;
+	.home #nav-container.home{
+		position: static;
 		border-width: 1px 5px 0 5px;
 	}
 	
@@ -1977,7 +2007,7 @@ body > .loader-holder{
 	}
 	
 	#contact #contact-nav a{
-		height: 80px;
+		height: 60px;
 		padding: 0 24px 0 0;
 		text-align: left;
 	}
@@ -1986,12 +2016,13 @@ body > .loader-holder{
 		float: left;
 		padding-top: 0;
 		height: auto;
-		        transform:scale(0.5);
-		    -ms-transform:scale(0.5);
-		-webkit-transform:scale(0.5);
-		width: 25%;
+		        transform:scale(0.35);
+		    -ms-transform:scale(0.35);
+		-webkit-transform:scale(0.35);
+		width: 20%;
 		position: relative;
-		top: -5px;
+		top: -17px;
+		left: -5px;
 		
 	}
 	
@@ -1999,7 +2030,7 @@ body > .loader-holder{
 		float: left;
 		width: 75%;
 		position: relative;
-		top: 31px;
+		top: 20px;
 	}
 	
 	#about-page.main-article li .item{
@@ -2038,10 +2069,11 @@ body > .loader-holder{
 		width: 100%;
 		height: auto;
 	}
-
-}
-
-@media screen and (max-width: 650px){
+	
+	.nav-holder.about:hover .nav-icon .vert{
+		height: 13px;
+	}
+	
 	#related article{
 		font-size:16px;
 		width: 100%;
@@ -2066,7 +2098,7 @@ body > .loader-holder{
 	#related .thumb-content{
 		position: static;
 	}
-}
 
+}
 
 

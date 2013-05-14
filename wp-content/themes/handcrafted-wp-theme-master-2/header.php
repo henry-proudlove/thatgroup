@@ -52,9 +52,14 @@
 	</script>	
 	<?php wp_head(); ?>
 	</head>
-	
+	<?php
+		$page = get_page_by_path('home');
+		if(has_post_thumbnail()){
+			$img = wp_get_attachment_image_src( get_post_thumbnail_id($page->ID), 'full');
+		}
+	?>
 	<body <?php body_class(); ?>>
-	<div id="page" class="hfeed">
+	<div id="page" class="hfeed" style="background-image: url('<?php echo $img[0]; ?>'); background-size: cover;">
 		<header id="branding" role="banner">
 				<hgroup>
 					<h1 id="site-title"><span><a href="<?php echo home_url( '/' ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></span></h1>
