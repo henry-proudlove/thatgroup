@@ -95,7 +95,7 @@ get_header(); ?>
 				</section><!--#load-->
 				<article id="post-<?php the_ID(); ?>" <?php post_class('main-article'); ?> role="article">
 						<header class="entry-header">
-								<h1 class="entry-title">Email Us <a href="#" class="back">
+								<h1 class="entry-title">Email Us <a href="<?php echo site_url() ?>" class="back">
 									<?php echo file_get_contents(get_template_directory_uri() . '/images/close.svg'); ?>
 								</a></h1>
 							</header><!-- .entry-header -->
@@ -133,7 +133,6 @@ get_header(); ?>
 							
 							<?php if(isset($emailSent) && $emailSent == true) { //If email is sent ?>
 								<div id="form-response" class="success">Thanks <?php echo $name ?>! your email has been sent</div>
-								<a href="#" class="contact-back">Back to Previous Page</a>
 							<?php } ?>
 						</div>
 					</article>

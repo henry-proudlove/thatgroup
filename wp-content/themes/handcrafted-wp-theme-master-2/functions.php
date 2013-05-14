@@ -332,7 +332,7 @@ function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg =
 }
 
 function tg_excerpt_length($length) {
-	return 25;
+	return 20;
 }
 
 add_filter('excerpt_length', 'tg_excerpt_length');

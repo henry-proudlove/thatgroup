@@ -49,6 +49,8 @@ function pageTrans(data , home, external){
 					$(this).remove().parent();
 					$('#main').append($(data).find('#primary').addClass('incoming'));
 				});
+			cycleValid();
+			window.scrollTo(0,0);
 		}else{
 			$('#main')
 				.children()
@@ -56,6 +58,8 @@ function pageTrans(data , home, external){
 					$(this).remove().parent();
 					$('#main').append($(data).find('#primary').addClass('incoming-home'));
 				});
+			cycleValid();
+			window.scrollTo(0,0);
 		}
 	}else{
 		$('#main')
@@ -64,6 +68,8 @@ function pageTrans(data , home, external){
 					$(this).remove().parent();
 					$('#main').append($(data).find('#primary'));
 				});
+			cycleValid();
+			window.scrollTo(0,0);
 	}
 	$('body')
 		.removeClass()
@@ -79,21 +85,26 @@ function pageTrans(data , home, external){
 }
 
 function mobScroll(el){
+	p = el.parent();
 	var mob = $(window).width() < 650;
 	if(mob == true){
-		$('html, body').stop().animate({
-			scrollTop: el.offset().top
-		 }, 800);
+		if(p.hasClass('home')){
+			window.scrollTo(0, el.offset().top);
+		}else{
+			window.scrollTo(0,0);
+		}
 	}
 }
 
 $(document).ready(function(){
 
-	
 	var internalA = '#branding a:not("a.nav-pag , a.current, a.map, input[type="submit""), #nav-below a';
+	
+	base = $.address.baseURL();
 		
    	$(internalA).address(function() {  
-   		target = $(this).attr('href').replace($.address.baseURL(), '');
+   		target = $(this).attr('href').replace(base, '');
+		//target = $(this).attr('href').replace('http://localhost/', '');
 		return target;
 	});  
    	
@@ -167,7 +178,6 @@ $(document).ready(function(){
 					url: target,
 					data: {},
 					beforeSend: function(){
-						mobScroll(el.parent());
 						content
 							.addClass('active')
 							.find('.loader-holder')
@@ -180,6 +190,7 @@ $(document).ready(function(){
 							content.addClass('active')
 								.prepend($(data).find('#load'))
 								.find('.nav-pag.next').removeClass('hide');
+							mobScroll(el);
 						}else{
 							content.prepend($(data).find('#load'));
 						}			
@@ -193,7 +204,7 @@ $(document).ready(function(){
 				});
 			}else{
 				content.addClass('active');
-				mobScroll(el.parent());
+				mobScroll(el);
 			}
 	});
 	$('.nav-holder:not(".about")').mouseleave(function(){

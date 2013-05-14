@@ -106,7 +106,7 @@ select{
 
 /* Headers (h1,h2,etc) have no default font-size or margin,
    you'll want to define those yourself. */ 
-h1,h2,h3,h4,h5,h6 { font-weight: bold; }
+h1,h2,h3,h4,h5,h6 { font-weight: normal; }
 /* always force a scrollbar in non-IE */ 
 html { overflow-y: scroll; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
@@ -1189,6 +1189,12 @@ a.nav-link{
 	left: 0;
 	bottom: auto;
 	top: -25px;
+	-webkit-transition: top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1);
+	-webkit-transition: top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+	   -moz-transition: top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+		-ms-transition: top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+		 -o-transition: top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+			transition: top 0.4s cubic-bezier(0.175, 0.885, 0.320, 1.275);
 }
 
 #nav-container.disable{
@@ -1364,31 +1370,22 @@ to {left: 0;}
 .main-article, .main-article header{
 	padding-bottom: 40px;
 	margin-bottom: 45px;
-	border-width: 0 0 1px 0;
 }
 
 #content.project .main-article, #content.project .main-article header{
-	-webkit-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border-projects.svg') 10 1 round;
+	background: url('images/dotted-border-projects.gif') repeat-x bottom left;
 }
 
 #content.single .main-article, #content.single .main-article header{
-	-webkit-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border-news.svg') 10 1 round;
+	background: url('images/dotted-border-news.gif') repeat-x bottom left;
 }
 
 #content.about .main-article, #content.about .main-article header{
-	-webkit-border-image:url('images/dotted-border-about.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border-about.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border-about.svg') 10 1 round;
+	background: url('images/dotted-border-about.gif') repeat-x bottom left;
 }
 
 .contact-page .main-article, .contact-page .main-article header{
-	-webkit-border-image:url('images/dotted-border-contact.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border-contact.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border-contact.svg') 10 1 round;
+	background: url('images/dotted-border-contact.gif') repeat-x bottom left;
 }
 
 
@@ -1405,8 +1402,10 @@ to {left: 0;}
 
 .main-article .entry-content img, .wp-caption{
 	float: right;
-	margin: 40px;
+	padding: 40px;
 	margin-right: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
 .main-article .wp-caption img{
@@ -1449,7 +1448,7 @@ to {left: 0;}
 #about-page.main-article li{
 	border-width: 0 0 1px 0;
 	padding: 15px 0;
-	background: url('images/dotted-border-about.svg') center center;
+	background: url('images/dotted-border-about.gif') center center;
 	background-repeat:repeat-x;
 	font-size: 1em;
 }
@@ -1548,6 +1547,7 @@ to {left: 0;}
     -webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	border-radius: 20px;
+	border-bottom: none !important;
 }
 
 #pager a.activeSlide, #pager a:hover{
@@ -1683,11 +1683,15 @@ a.back{
 	border: none !important;
 	display: block;
 	position: absolute;
-	right: 0;
+	right: 70px;
 	top: -10%;
 }
 .close-btn{
-	fill: white;
+	fill: black;
+}
+
+a:hover .close-btn{
+	fill: #666;
 }
 
 /* Related news on posts and projects */
@@ -1695,10 +1699,7 @@ a.back{
 #related{
 	padding-bottom: 50px;
 	margin-bottom: 100px;
-	border-width: 0 0 1px 0;
-	-webkit-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border-news.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border-news.svg') 10 1 round;
+	background: url('images/dotted-border-news.gif') repeat-x bottom left;
 }
 
 #related article{
@@ -1763,10 +1764,21 @@ a.back{
 }
 
 .type-project + #related{
-	-webkit-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Safari 5 */
-	-o-border-image:url('images/dotted-border-projects.svg') 10 1 round; /* Opera */
-	border-image:url('images/dotted-border-projects.svg') 10 1 round;
+	background: url('images/dotted-border-projects.gif') repeat-x bottom left;
 }
+
+#content.project #related .thumb-box:hover{
+	background: #e70a0a;
+}
+
+#content.project #related .thumb-box:hover time{
+	color: white;
+}
+
+#content.project #related a {
+	border-bottom: none;
+}
+
 
 .type-project + #related .thumb-box time{
 	color: #e70a0a;
@@ -1808,6 +1820,7 @@ body > .loader-holder{
 /* Reponsive */
 
 @media screen and (max-width: 900px){
+
 	#related article{
 		font-size:16px;
 		width: 50%;
@@ -1820,7 +1833,7 @@ body > .loader-holder{
 	}
 	
 	#related .last .thumb-box {
-		border-width: 0 10px;
+		border-width: 0 10px 0 0;
 	}
 	
 	#related{
@@ -1831,12 +1844,37 @@ body > .loader-holder{
 	#related .thumb-content{
 		position: absolute;
 	}
+	
+	#carousel-holder{
+		height: 320px;
+	}
 }
 
 @media screen and (max-width: 650px){
+
+	.main-article .entry-title, 
+	.main-article .entry-location, 
+	.main-article .entry-content, 
+	.main-article .entry-meta, 
+	.main-article .lead-img, 
+	#related-holder{
+		padding: 0 8%;
+	}
 	
-	#load{
-		max-height: 455px;
+	a.back{
+		right: 8%;
+	}
+	
+	#contact-wrapper{
+		padding: 0 8%;
+	}
+	
+	#carousel-holder{
+		height: 180px;
+	}
+	
+	#colophon{
+		display: none;
 	}
 	
 	.home #branding{
@@ -2061,7 +2099,7 @@ body > .loader-holder{
 	}
 	
 	.main-article .entry-content img, .wp-caption{
-		margin: 20px;
+		padding: 20px;
 	}
 	
 	.main-article .lead-img img {
@@ -2097,6 +2135,29 @@ body > .loader-holder{
 	
 	#related .thumb-content{
 		position: static;
+	}
+	
+	#nav-below .nav-text{
+		display: none;
+	}
+	
+	.content-holder{
+		margin-bottom: 80px;
+	}
+	
+	#nav-below div {
+		position: absolute;
+		z-index: 100;
+		top: auto;
+		margin-top: 0;
+	}
+	
+	#nav-below .nav-previous {
+		left: 30%;
+	}
+	
+	#nav-below .nav-next {
+		right: 30%;
 	}
 
 }
