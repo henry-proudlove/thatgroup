@@ -93,7 +93,7 @@ $(document).ready(function(){
 	var internalA = '#branding a:not("a.nav-pag , a.current, a.map, input[type="submit""), #nav-below a';
 		
    	$(internalA).address(function() {  
-   		target = $(this).attr('href').replace('http://localhost/', '');
+   		target = $(this).attr('href').replace($.address.baseURL(), '');
 		return target;
 	});  
    	
@@ -232,7 +232,7 @@ $(document).ready(function(){
 		el = $(this).parent();
 		if(getPos(el, true)){
 			load.animate({'left' : '-=320'}, function(){
-				el.trigger('navmoved');
+				$(this).parent().trigger('navmoved');
 			});
 		}
 	});
@@ -242,20 +242,20 @@ $(document).ready(function(){
 		el = $(this).parent();
 		if(getPos(el, false)){
 			load.animate({'left' : '+=320'}, function(){
-				el.trigger('navmoved');
+				$(this).parent().trigger('navmoved');
 			});
 		}
 	});
 	
 	$('.nav-content').on('navmoved' , function(e){
+		console.log(e);
 		el = $(this);
 		next = el.find('.nav-pag.next');
 		prev = el.find('.nav-pag.prev');
 		if(getPos(el, true)){
 			next.removeClass('hide');
 		}else{
-			next
-				.addClass('hide')
+			next.addClass('hide')
 		}
 		if(getPos(el, false)){
 			prev.removeClass('hide');
