@@ -14,63 +14,24 @@ $(document).on('navswitch' , function(){
 		.appendTo('#site-description');
 });
 
-$(document).on('navslide', function(e){
-	console.log(e);
+/*$(document).on('navslide', function(e){
 	el = $(e.target);
-	next = el.find('.nav-pag.next');
-	prev = el.find('.nav-pag.prev');
-	el.on('navmoved' , function(e){
-		if(getCondition(el, true)){
-			next.removeClass('hide');
-		}else{
-			next
-				.addClass('hide')
-				.off('click navmoved');
-		}
-		if(getCondition(el, false)){
-			prev.removeClass('hide');
-		}else{
-			prev
-				.addClass('hide')
-				.off('click navmoved');
-		}
-	});
-	
-});
-
-$('.nav-pag.next').click(function(e){
-	el = $(this).siblings('#load');
-	console.log(e);
-	e.preventDefault();
-	if(getCondition(el , true)){
-		load.animate({'left' : '-=320'}, function(){
-			el.trigger('navmoved');
-		});
-	}
-});
-	
-	
-	
-$('.nav-pag.prev').click(function(e){
-	el = $(this).parent();
-	console.log(e);
-	e.preventDefault();
-	if(getCondition(false, load, lw, elw)){
-		load.animate({'left' : '+=320'}, function(){
-			el.trigger('navmoved');
-		});
-	}
-});
-
-function getCondition(el , direction){
 	load = el.find('#load');
 	elw = el.width();
 	lw = load.children().length * 320;
+	next = el.find('.nav-pag.next');
+	prev = el.find('.nav-pag.prev');
 	
+});*/
+
+function getCondition(el, direction){
+	load = el.find('#load');
+	elw = el.width();
+	lw = load.children().length * 320;
+	next = el.find('.nav-pag.next');
+	prev = el.find('.nav-pag.prev');
 	if(direction == true){
-		val = (lw + parseInt(load.css('left'))) > pw;
-		console.log(val);
-		return val;
+		return (lw + parseInt(load.css('left'))) > elw;
 	}else{
 		return parseInt(load.css('left')) < 0;
 	}
@@ -184,6 +145,7 @@ $(document).ready(function(){
 
 	$('.nav-holder:not(".about")').on('click mouseenter' ,
 		function(e){
+			e.preventDefault();
 			var content = $(this).find('.nav-content');
 			if (content.find('#load').length < 1){
 				var target = $(this).find('.nav-link').attr('href');
@@ -202,7 +164,6 @@ $(document).ready(function(){
 						if(content.width() < lw){
 							content.addClass('active')
 								.prepend($(data).find('#load'))
-								.trigger('navslide')
 								.find('.nav-pag.next').removeClass('hide');
 						}else{
 							content.prepend($(data).find('#load'));
@@ -216,10 +177,9 @@ $(document).ready(function(){
 					dataType: 'html'
 				});
 			}else{
-				content.addClass('active').trigger('navslide');
+				content.addClass('active');
 			}
 	});
-	
 	$('.nav-holder:not(".about")').mouseleave(function(){
 			$(this).find('.nav-content').removeClass('active');
 			$('.loader-holder').children().remove();
@@ -230,8 +190,6 @@ $(document).ready(function(){
 			.siblings()
 			.find('.nav-content')
 			.removeClass('active')
-			.off('hover navslide')
-			.children().off('click navmoved')
 	});
 
 	$('.nav-title').hover(function(){
@@ -242,6 +200,46 @@ $(document).ready(function(){
 		$(this)
 			.removeClass('down').addClass('up')
 			.find('.active').removeClass('active');
+	});
+	
+	// Menu Pagination
+	
+	$('.nav-content').on('navmoved' , function(e){
+	el = $(this);
+	next = el.find('.nav-pag.next');
+	prev = el.find('.nav-pag.prev');
+	if(getCondition(el, true)){
+		next.removeClass('hide');
+	}else{
+		next
+			.addClass('hide')
+	}
+	if(getCondition(el, false)){
+		prev.removeClass('hide');
+	}else{
+		prev.addClass('hide');
+	}
+	});
+	
+	$('.nav-pag.next').click(function(e){
+		e.preventDefault();
+		console.log(e);
+		el = $(this).parent();
+		if(getCondition(el, true)){
+			load.animate({'left' : '-=320'}, function(){
+				el.trigger('navmoved');
+			});
+		}
+	});
+	
+	$('.nav-pag.prev').click(function(e){
+		e.preventDefault();
+		el = $(this).parent();
+		if(getCondition(el, false)){
+			load.animate({'left' : '+=320'}, function(){
+				el.trigger('navmoved');
+			});
+		}
 	});
 	
 	
