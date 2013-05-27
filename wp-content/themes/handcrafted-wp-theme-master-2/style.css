@@ -1351,6 +1351,7 @@ to {left: 0;}
 .main-article .entry-content,
 .main-article .entry-meta,
 .main-article .lead-img,
+section#people,
 #related-holder{
 	margin: 0 auto;
 	max-width: 940px;
@@ -1816,6 +1817,94 @@ body > .loader-holder{
 	left: 50%;
 	margin: -40px -75px;
 }
+
+
+/* People Image */
+
+#people-img{
+	width: 100%;
+	padding-top: 79%;
+	position: relative;
+}
+
+#people-holder, #people-img .img{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#people-img .img{
+	background-image: url('images/people/black.png');
+	background-size:cover;
+}
+
+.hit-area{
+	position: absolute;
+	height: 64%;
+	top: 13%;
+	z-index: 2;
+}
+
+.hit-area:hover{
+	cursor: pointer;
+}
+
+.hit-area.one{
+	width: 13%;
+	left:15%;
+}
+
+.hit-area.one:hover ~ .img{
+	background-image: url('images/people/bennet.png') !important;
+}
+
+.hit-area.two{
+	width: 12%;
+	left: 28%;
+}
+
+.hit-area.two:hover ~ .img{
+	background-image: url('images/people/brown.png') !important;;
+}
+
+.hit-area.three{
+	width: 8.5%;
+	left: 40%
+}
+
+.hit-area.three:hover ~ .img{
+	background-image: url('images/people/flaxman.png') !important;;
+}
+
+.hit-area.four{
+	width: 12%;
+	left: 48.5%;
+}
+
+.hit-area.four:hover ~ .img{
+	background-image: url('images/people/kelvin.png') !important;;
+}
+
+.hit-area.five{
+	width: 11%;
+	left: 60.5%;
+}
+
+.hit-area.five:hover ~ .img{
+	background-image: url('images/people/tisdale.png') !important;;
+}
+
+.hit-area.six{
+	width: 11%;
+	left: 71.5%;
+}
+
+.hit-area.six:hover ~ .img{
+	background-image: url('images/people/page.png') !important;;
+}
+
 
 /* Reponsive */
 

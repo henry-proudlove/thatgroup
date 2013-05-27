@@ -103,8 +103,8 @@ $(document).ready(function(){
 	base = $.address.baseURL();
 		
    	$(internalA).address(function() {  
-   		target = $(this).attr('href').replace(base, '');
-		//target = $(this).attr('href').replace('http://localhost/', '');
+   		//target = $(this).attr('href').replace(base, '');
+		target = $(this).attr('href').replace('http://localhost/', '');
 		return target;
 	});  
    	
