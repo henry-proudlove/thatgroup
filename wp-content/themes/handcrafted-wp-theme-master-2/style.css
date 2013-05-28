@@ -141,7 +141,7 @@ a, a:active, a:visited {
 }
 
 #content.about a:hover { 
-	color: #38da7d;
+	color: #ffcc00;
 }
 
 #content.about a{
@@ -1368,6 +1368,13 @@ section#people,
 	line-height: 1em;
 }
 
+#people header > .entry-title{
+	font-size: 2em;
+	line-height: 1em;
+	position: relative;
+	z-index: 4;
+}
+
 .main-article, .main-article header{
 	padding-bottom: 40px;
 	margin-bottom: 45px;
@@ -1827,7 +1834,7 @@ body > .loader-holder{
 	position: relative;
 }
 
-#people-holder, #people-img .img{
+#people-holder, #people-img #img{
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1835,9 +1842,19 @@ body > .loader-holder{
 	height: 100%;
 }
 
-#people-img .img{
+#people-img #img{
 	background-image: url('images/people/black.png');
 	background-size:cover;
+}
+
+#people-image #preload-img{
+	background: 
+			url('images/people/bennet.png') no-repeat -9999px -9999px;
+		    url('images/people/brown.png') no-repeat -9999px -9999px,
+		    url('images/people/flaxman.png') no-repeat -9999px -9999px,
+		    url('images/people/kelvin.png') no-repeat -9999px -9999px,
+		    url('images/people/page.png') no-repeat -9999px -9999px,
+		    url('images/people/tisdale.png') no-repeat -9999px -9999px;
 }
 
 .hit-area{
@@ -1856,7 +1873,7 @@ body > .loader-holder{
 	left:15%;
 }
 
-.hit-area.one:hover ~ .img{
+.hit-area.one:hover ~ #img{
 	background-image: url('images/people/bennet.png') !important;
 }
 
@@ -1865,8 +1882,8 @@ body > .loader-holder{
 	left: 28%;
 }
 
-.hit-area.two:hover ~ .img{
-	background-image: url('images/people/brown.png') !important;;
+.hit-area.two:hover ~ #img{
+	background-image: url('images/people/brown.png') !important;
 }
 
 .hit-area.three{
@@ -1874,8 +1891,8 @@ body > .loader-holder{
 	left: 40%
 }
 
-.hit-area.three:hover ~ .img{
-	background-image: url('images/people/flaxman.png') !important;;
+.hit-area.three:hover ~ #img{
+	background-image: url('images/people/flaxman.png') !important;
 }
 
 .hit-area.four{
@@ -1883,8 +1900,8 @@ body > .loader-holder{
 	left: 48.5%;
 }
 
-.hit-area.four:hover ~ .img{
-	background-image: url('images/people/kelvin.png') !important;;
+.hit-area.four:hover ~ #img{
+	background-image: url('images/people/kelvin.png') !important;
 }
 
 .hit-area.five{
@@ -1892,8 +1909,8 @@ body > .loader-holder{
 	left: 60.5%;
 }
 
-.hit-area.five:hover ~ .img{
-	background-image: url('images/people/tisdale.png') !important;;
+.hit-area.five:hover ~ #img{
+	background-image: url('images/people/tisdale.png') !important;
 }
 
 .hit-area.six{
@@ -1901,12 +1918,65 @@ body > .loader-holder{
 	left: 71.5%;
 }
 
-.hit-area.six:hover ~ .img{
-	background-image: url('images/people/page.png') !important;;
+.hit-area.six:hover ~ #img{
+	background-image: url('images/people/page.png') !important;
 }
 
+#people-list{
+	position: relative;
+	z-index: 3;
+	margin-left: 0;
+}
 
-/* Reponsive */
+#people li{
+	list-style: none;
+	width: 33%;
+	float: left;
+	line-height: 1.1em;
+	margin-bottom: 1em;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	padding-right: 2%;
+}
+
+#people li h1, #people li h2{
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+section#people{
+	padding-bottom: 50px;
+	margin-bottom: 100px;
+	background: url('images/dotted-border-about.gif') repeat-x bottom left;
+}
+
+#peter-tisdale a:hover , #peter-tisdale.active a{
+	color: #be1e2d !important;
+}
+
+#steven-brown a:hover, #steven-brown.active a{
+	color: #603813 !important;
+}
+
+#ivan-bennett a:hover, #ivan-bennett.active a{
+	color: #25aae1 !important;
+}
+
+#lindsay-page a:hover, #lindsay-page.active a{
+	color: #024da1 !important;
+}	
+
+#michael-j-flaxman a:hover, #michael-j-flaxman.active a{
+	color: #006738 !important;
+}
+
+#dr-ray-kelvin a:hover, #dr-ray-kelvin.active a{
+	color: #7e3f98 !important;
+}
+
+/* Responsive */
 
 @media screen and (max-width: 900px){
 
@@ -1938,6 +2008,13 @@ body > .loader-holder{
 		height: 320px;
 	}
 }
+
+@media screen and (max-width: 750px){
+	#people li{
+		width: 50%;
+	}
+}
+
 
 @media screen and (max-width: 650px){
 
@@ -2249,6 +2326,12 @@ body > .loader-holder{
 		right: 30%;
 	}
 
+}
+
+@media screen and (max-width: 450px){
+	#people li{
+		width: 100%;
+	}
 }
 
 

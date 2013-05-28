@@ -26,15 +26,19 @@ get_header(); ?>
 					</footer><!-- .entry-meta -->
 				</article><!-- #post-<?php the_ID(); ?> -->
 				<section id="people" class="thumbs">
+					<header class="entry-header">
+						<h1 class="entry-title">The Team</h1>
+					</header><!-- .entry-header -->
 					<div id="people-img">
 						<div id="people-holder">
-							<div class="hit-area one"></div>
-							<div class="hit-area two"></div>
-							<div class="hit-area three"></div>
-							<div class="hit-area four"></div>
-							<div class="hit-area five"></div>
-							<div class="hit-area six"></div>
-							<div class="img"></div>
+							<div id="ivan-bennet" class="hit-area one"></div>
+							<div id="steven-brown" class="hit-area two"></div>
+							<div id="michael-j-flaxman" class="hit-area three"></div>
+							<div id="dr-ray-kelvin" class="hit-area four"></div>
+							<div id="peter-tisdale" class="hit-area five"></div>
+							<div id="lindsay-page" class="hit-area six"></div>
+							<div id="img"></div>
+							<div id="preload-img"></div>
 						</div>
 					</div><!--#people-img-->
 					<ul id="people-list" class="clearfix">
@@ -42,7 +46,7 @@ get_header(); ?>
 					$args = array('post_type' => 'people' , 'posts_per_page' => '-1');
 					$wp_query = new WP_Query($args);
 					if( $wp_query->have_posts() ): while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
-						<li class="people-item">
+						<li id="<?php echo $post->post_name; ?>" class="people-item">
 							<a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
 								<header class="entry-header">
 									<h2 class="entry-role"><?php echo $post->jobtitle; ?></h2>

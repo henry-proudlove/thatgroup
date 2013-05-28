@@ -275,4 +275,24 @@ $(document).ready(function(){
 		}
 	});
 	
+	/*$('.hit-area').hover(
+		function(){
+			console.log('balls');
+			name = $(this).attr('id');
+			$('#people-list').find('#' + name).addClass('active');
+		}, 
+		function(){
+			$('#people-list').find('.active').removeClass('active');	
+		}
+	);*/
+	
+	$('.hit-area').hover(
+	  function () {
+	  	console.log('balls');
+	  },
+	  function () {
+		console.log('balls');
+	  }
+	);
+	
 });
