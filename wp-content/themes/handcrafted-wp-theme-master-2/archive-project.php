@@ -18,7 +18,7 @@ get_header(); ?>
 				<section id="load" data-page="<?php echo $wp_query->max_num_pages; ?>">
 					<?php if( $wp_query->have_posts() ): while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 							<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-								<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+								<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" <?php address_rel(get_permalink()) ?>>
 								<?php if(has_post_thumbnail()){
 									$thumb_id = get_post_thumbnail_id(get_the_ID());
 									$img = wp_get_attachment_image_src($thumb_id , 'tg-projectthumb');

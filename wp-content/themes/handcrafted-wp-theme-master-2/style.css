@@ -1352,7 +1352,8 @@ to {left: 0;}
 .main-article .entry-meta,
 .main-article .lead-img,
 section#people,
-#related-holder{
+#related-holder,
+.people-biog .article-holder{
 	margin: 0 auto;
 	max-width: 940px;
 	width: 100%;
@@ -1873,7 +1874,7 @@ body > .loader-holder{
 	left:15%;
 }
 
-.hit-area.one:hover ~ #img{
+.hit-area.one:hover ~ #img, .hit-area.one.active ~ #img{
 	background-image: url('images/people/bennet.png') !important;
 }
 
@@ -1882,7 +1883,7 @@ body > .loader-holder{
 	left: 28%;
 }
 
-.hit-area.two:hover ~ #img{
+.hit-area.two:hover ~ #img, .hit-area.two.active ~ #img{
 	background-image: url('images/people/brown.png') !important;
 }
 
@@ -1891,7 +1892,7 @@ body > .loader-holder{
 	left: 40%
 }
 
-.hit-area.three:hover ~ #img{
+.hit-area.three:hover ~ #img, .hit-area.three.active ~ #img{
 	background-image: url('images/people/flaxman.png') !important;
 }
 
@@ -1900,7 +1901,7 @@ body > .loader-holder{
 	left: 48.5%;
 }
 
-.hit-area.four:hover ~ #img{
+.hit-area.four:hover ~ #img, .hit-area.four.active ~ #img{
 	background-image: url('images/people/kelvin.png') !important;
 }
 
@@ -1909,7 +1910,7 @@ body > .loader-holder{
 	left: 60.5%;
 }
 
-.hit-area.five:hover ~ #img{
+.hit-area.five:hover ~ #img, .hit-area.five.active ~ #img{
 	background-image: url('images/people/tisdale.png') !important;
 }
 
@@ -1918,7 +1919,7 @@ body > .loader-holder{
 	left: 71.5%;
 }
 
-.hit-area.six:hover ~ #img{
+.hit-area.six:hover ~ #img, .hit-area.six.active ~ #img{
 	background-image: url('images/people/page.png') !important;
 }
 
@@ -1928,7 +1929,7 @@ body > .loader-holder{
 	margin-left: 0;
 }
 
-#people li{
+#people-list li{
 	list-style: none;
 	width: 33%;
 	float: left;
@@ -1945,6 +1946,43 @@ body > .loader-holder{
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
+
+#people-biogs{
+	margin: 0;
+}
+
+.people-biog{
+	display: none;
+	z-index: 1000;
+	position: relative;
+	list-style: none;
+}
+
+.people-biog > div{
+	display: table;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.9);
+	color: white;
+	cursor:url('images/biog-close.png'),auto;
+}
+
+#peter-tisdale.people-biog{
+	/*display: table;*/
+}
+
+.people-biog article{
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.article-holder header{
+	margin-bottom: 0.5em;
+}
+
 
 section#people{
 	padding-bottom: 50px;

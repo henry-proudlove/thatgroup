@@ -345,8 +345,25 @@ add_filter('excerpt_more', 'tg_excerpt_more');
 
 function tg_nav_below(){ ?>
 	<nav id="nav-below" role="article">
-		<div class="nav-previous clearfix"><?php previous_post_link( '%link', page_chevron('previous') . '<span class="nav-text">' . _x( '', 'Previous post link', 'themename' ) . '%title</span>' ); ?></div>
-		<div class="nav-next clearfix"><?php next_post_link( '%link', '<span class="nav-text"> %title ' . _x( '', 'Next post link', 'themename' ) . '</span>' . page_chevron('next') ); ?></div>
+		<div class="nav-previous clearfix">
+		<?php
+			$prev_post = get_previous_post();
+			if (!empty( $prev_post )): ?>
+			  <a href="<?php echo get_permalink( $prev_post->ID ); ?>" <?php address_rel(get_permalink( $prev_post->ID )) ?>>
+			  	<?php page_chevron('previous') ?>
+			  	<span class="nav-text"><?php echo $prev_post->post_title; ?></span>
+			  </a>
+			<?php endif; ?>
+		</div>
+		<div class="nav-next clearfix">
+			<?php $next_post = get_next_post();
+			if (!empty( $next_post )): ?>
+			  <a href="<?php echo get_permalink( $next_post->ID ); ?>" <?php address_rel(get_permalink( $next_post->ID )) ?>>
+			  	<span class="nav-text"><?php echo $next_post->post_title; ?></span>
+			  	<?php page_chevron('next') ?>
+			  </a>
+		<?php endif; ?>
+		</div>
 	</nav><!--#nav-below -->
 <?php }
 
@@ -354,7 +371,7 @@ function page_chevron($direction){
 	$image = get_template_directory_uri() . '/images/post-' . $direction . '.svg';
 	$arrow = file_get_contents($image);
 	$span = '<span class="meta-nav">' . $arrow . '</span>';
-	return $span;
+	echo $span;
 }
 
 function tg_rel_posts($tax, $title, $post_ID = ''){
@@ -378,7 +395,7 @@ function tg_rel_posts($tax, $title, $post_ID = ''){
 				$class= 'middle';
 			}?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class($class); ?> role="article">
-				<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+				<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" <?php address_rel(get_permalink()) ;?>>
 					<div class="thumb-content">
 						<header class="entry-header">
 							<time class="entry-date"><?php the_date('d.m.y'); ?></time>
@@ -416,6 +433,11 @@ function the_excerpt_short($charlength) {
 	} else {
 		echo $excerpt;
 	}
+}
+
+function address_rel($permalink){
+	$base_url = get_site_url();
+	echo 'rel="address:' . str_replace($base_url, '' , $permalink) . '"';
 }
 
 ?>

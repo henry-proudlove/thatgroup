@@ -22,7 +22,6 @@
 	var siteURL = '<?php echo get_site_url(); ?>';
 </script>
 <script src="<?php echo get_template_directory_uri();?>/js/jquery.validate.min.js"></script>
-<script src="<?php echo get_template_directory_uri();?>/js/jquery.address-1.5.min.js?state=/"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/svg.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/plugins.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/scripts.js"></script>

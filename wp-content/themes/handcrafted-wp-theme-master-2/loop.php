@@ -18,7 +18,7 @@
 	<?php while ( have_posts() ) : the_post(); ?>
 	
 		<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
-			<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark">
+			<a class="thumb-box" href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'themename' ), the_title_attribute( 'echo=0' ) ); ?>" <?php address_rel(get_permalink()) ?>>
 				<div class="thumb-content">
 					<header class="entry-header">
 						<time class="entry-date"><?php the_date('d.m.y'); ?></time>

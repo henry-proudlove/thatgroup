@@ -16,6 +16,42 @@ $(document).on('navswitch' , function(){
 		.appendTo('#site-description');
 });
 
+$(document).on('aboutpage' , function(){
+	$('.hit-area').hover(
+		function(){
+			name = $(this).attr('id');
+			console.log(name);
+			$('#people-list').find('#' + name).addClass('active');
+		}, 
+		function(){
+			$('#people-list').find('.active').removeClass('active');	
+		}
+	);
+	$('.people-item').hover(
+		function(){
+			name = $(this).attr('id');
+			console.log(name);
+			$('#people-holder').find('#' + name).addClass('active');
+		}, 
+		function(){
+			$('#people-holder').find('.active').removeClass('active');	
+		}
+	);
+	
+	$('.people-item, .hit-area').click(function(e){
+		e.preventDefault();
+		console.log('fuck yeah');
+		name = $(this).attr('id');
+		$('#people-biogs').find('#' + name).fadeIn('fast');
+		$('body').css('overflow' , 'hidden');
+	});
+	
+	$('.people-biog').click(function(){
+		$(this).fadeOut('fast');
+		$('body').css('overflow' , 'auto');
+	});
+});
+
 
 // Get position of menu items relative to container
 
@@ -48,6 +84,9 @@ function pageTrans(data , home, external){
 				.fadeOut('fast', function(){
 					$(this).remove().parent();
 					$('#main').append($(data).find('#primary').addClass('incoming'));
+					if($('#content.about').length > 0){
+						$(document).trigger('aboutpage');
+					}
 				});
 			cycleValid();
 			window.scrollTo(0,0);
@@ -57,6 +96,9 @@ function pageTrans(data , home, external){
 				.fadeOut('fast', function(){
 					$(this).remove().parent();
 					$('#main').append($(data).find('#primary').addClass('incoming-home'));
+					if($('#content.about').length > 0){
+						$(document).trigger('aboutpage');
+					}
 				});
 			cycleValid();
 			window.scrollTo(0,0);
@@ -67,6 +109,9 @@ function pageTrans(data , home, external){
 				.fadeOut('fast', function(){
 					$(this).remove().parent();
 					$('#main').append($(data).find('#primary'));
+					if($('#content.about').length > 0){
+						$(document).trigger('aboutpage');
+					}
 				});
 			cycleValid();
 			window.scrollTo(0,0);
@@ -74,7 +119,6 @@ function pageTrans(data , home, external){
 	$('body')
 		.removeClass()
 		.addClass($(data).find('#main').attr('data'));
-		
 	$('#nav-container.down')
 		.removeClass('down')
 		.addClass('up')
@@ -96,64 +140,61 @@ function mobScroll(el){
 	}
 }
 
+
+// Event handlers
+$.address.init(function(event) {
+	console.log(event);
+}).change(function(event) {
+	console.log(event);
+}).internalChange(function(event) {
+	console.log(event);
+	var target =  $.address.path();
+	$.ajax({
+		url: '/thatgroup' + target,
+		data: {},
+		beforeSend: function(){
+			$('body > .loader-holder')
+				.append(loader)
+				.fadeIn('fast');
+		},
+		success: function (data) {
+			if(target == siteURL + '/'){
+				pageTrans(data , true, false);
+			}else{
+				pageTrans(data , false, false);
+			}
+		},
+		complete: function(){
+			$('.loader-holder').fadeOut('fast' , function(){
+				$(this).children().remove();
+			});
+		},
+		dataType: 'html'
+	});    
+}).bind('externalChange', function(event) {
+	console.log(event);
+	var target = $.address.path();
+	if (target == '/about/'){
+		$(document).trigger('aboutpage');
+	}
+	$.address.value(target);
+	$.ajax({
+		url: '/thatgroup' + target,
+		data: {},
+		beforeSend: function(){
+		},
+		success: function (data) {
+			pageTrans(data , true, true);
+		},
+		complete: function(){
+		},
+		dataType: 'html'
+	});    
+});
+
 $(document).ready(function(){
 
 	var internalA = '#branding a:not("a.nav-pag , a.current, a.map, input[type="submit""), #nav-below a';
-	
-	base = $.address.baseURL();
-		
-   	$(internalA).address(function() {  
-   		//target = $(this).attr('href').replace(base, '');
-		target = $(this).attr('href').replace('http://localhost/', '');
-		return target;
-	});  
-   	
-    $.address.internalChange(function(e) {
-    	console.log(e);
-		target = $.address.value();
-		$.ajax({
-			url: target,
-			data: {},
-			beforeSend: function(){
-				$('body > .loader-holder')
-					.append(loader)
-					.fadeIn('fast');
-			},
-			success: function (data) {
-				if(target == siteURL + '/'){
-					pageTrans(data , true, false);
-				}else{
-					pageTrans(data , false, false);
-				}
-				
-			},
-			complete: function(){
-				$('.loader-holder').fadeOut('fast' , function(){
-					$(this).children().remove();
-				});
-			},
-			dataType: 'html'
-		});    
-    });
-    
-   	$.address.externalChange(function(e) {
-    	console.log(e);
-    	var target = e.value.replace('http://localhost/', '');
-        console.log($.address.value());
-		$.address.value(target);
-		$.ajax({
-			url: target,
-			data: {},
-			beforeSend: function(){
-			},
-			success: function (data) {
-				pageTrans(data , true, true);
-			},
-			complete: function(){
-			},
-			dataType: 'html'
-		});    
-    });
     
 	cycleValid();
 
@@ -275,24 +316,8 @@ $(document).ready(function(){
 		}
 	});
 	
-	/*$('.hit-area').hover(
-		function(){
-			console.log('balls');
-			name = $(this).attr('id');
-			$('#people-list').find('#' + name).addClass('active');
-		}, 
-		function(){
-			$('#people-list').find('.active').removeClass('active');	
-		}
-	);*/
-	
-	$('.hit-area').hover(
-	  function () {
+	$('.hit-area').click(function() {
 	  	console.log('balls');
-	  },
-	  function () {
-		console.log('balls');
-	  }
-	);
+	});
 	
 });
