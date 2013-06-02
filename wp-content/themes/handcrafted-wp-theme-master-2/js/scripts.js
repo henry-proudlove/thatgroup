@@ -74,6 +74,20 @@ function cycleValid(){
 		rules: {
 		select: "required" }
 	});
+	$(".contact-submit").click(function(e) {  
+		e.preventDefault();
+		var dataString = 'name='+ $('input#contactname').val() + '&email=' + $('input#email').val() + '&subject=' + $('select#subject').val() + '&message=' + $('textarea#message').val();
+		//alert (dataString);return false;
+		$.ajax({
+		type: "POST",
+		url: "http://localhost/thatgroup/wp-content/themes/handcrafted-wp-theme-master-2/mail.php",
+		data: dataString,
+		success: function() {
+			$('#contactform').after('<div id="form-response" class="success">Thanks ' + $('input#contactname').val() + '! your email has been sent</div>');
+			$('#contactform')[0].reset();
+		}
+		});  
+	});  
 }
 
 function pageTrans(data , home, external){
@@ -140,14 +154,9 @@ function mobScroll(el){
 	}
 }
 
-
-// Event handlers
 $.address.init(function(event) {
-	console.log(event);
 }).change(function(event) {
-	console.log(event);
 }).internalChange(function(event) {
-	console.log(event);
 	var target =  $.address.path();
 	$.ajax({
 		url: '/thatgroup' + target,
@@ -172,7 +181,6 @@ $.address.init(function(event) {
 		dataType: 'html'
 	});    
 }).bind('externalChange', function(event) {
-	console.log(event);
 	var target = $.address.path();
 	if (target == '/about/'){
 		$(document).trigger('aboutpage');
@@ -207,6 +215,7 @@ $(document).ready(function(){
 		.trigger('navswitch');
 
 	// Load in posts of each section on nav item roll
+	
 
 	$('.nav-holder:not(".about")').on('click mouseenter' ,
 		function(e){
