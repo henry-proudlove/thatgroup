@@ -79,7 +79,7 @@ function cycleValid(){
 		var dataString = 'name='+ $('input#contactname').val() + '&email=' + $('input#email').val() + '&subject=' + $('select#subject').val() + '&message=' + $('textarea#message').val();
 		$.ajax({
 			type: "POST",
-			url: "http://www.thatgroup.henryproudlove.com/wp-content/themes/handcrafted-wp-theme-master-2/mail.php",
+			url: "http://localhost/thatgroup/wp-content/themes/handcrafted-wp-theme-master-2/mail.php",
 			data: dataString,
 			success: function() {
 				$('#contactform').after('<div id="form-response" class="success">Thanks ' + $('input#contactname').val() + '! your email has been sent</div>');
@@ -87,6 +87,10 @@ function cycleValid(){
 			}
 		});  
 	});
+	$('a.back').click(function(e){
+		e.preventDefault();
+        console.log(parent.history.back());
+    });
 }
 
 function pageTrans(data , home, external){

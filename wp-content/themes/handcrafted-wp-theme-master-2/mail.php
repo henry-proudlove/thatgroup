@@ -1,5 +1,5 @@
 <?php 
-if(isset($_POST['submit'])) {
+	var_dump($_POST);
 	if(trim($_POST['contactname']) == '') {
 		$hasError = true;
 	} else {
@@ -42,5 +42,4 @@ if(isset($_POST['submit'])) {
 		wp_mail($emailTo, $subject, $body, $headers);
 		$emailSent = true;
 	}
-}
 ?>
