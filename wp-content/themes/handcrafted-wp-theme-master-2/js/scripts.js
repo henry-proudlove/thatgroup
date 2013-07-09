@@ -1,4 +1,4 @@
-var loader = '<div id="loader" style="width: 150px; height: 80px"></div><script>var stage = new swiffy.Stage(document.getElementById("loader"),swiffyobject);stage.start();</script>';
+loader = '<div id="loader"><div class="loader-sec left"></div><div class="loader-sec middle"></div><div class="loader-sec right"></div></div>';
 
 jQuery.fn.cycleInit = function(){
 	if(this.children().size() > 1){	
@@ -320,10 +320,6 @@ $(document).ready(function(){
 		}else{
 			prev.addClass('hide');
 		}
-	});
-	
-	$('.hit-area').click(function() {
-	  	console.log('balls');
 	});
 	
 });

@@ -12,7 +12,8 @@
 			</div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
-<div class="loader-holder" style="display:none;"></div>
+<div class="loader-holder" style="display:none;">
+</div>
 <div id="border">
 	<div class="b-top"></div>
 	<div class="b-right"></div>
@@ -23,7 +24,6 @@
 </script>
 <script src="<?php echo get_template_directory_uri();?>/js/jquery.validate.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/jquery.form.js"></script>
-<script src="<?php echo get_template_directory_uri();?>/js/svg.min.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/plugins.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/scripts.js"></script>
 <?php wp_footer(); ?>
