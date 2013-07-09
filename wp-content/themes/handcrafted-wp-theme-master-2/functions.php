@@ -223,7 +223,7 @@ function tg_pages_excerpt	() {
 if ( function_exists( 'add_image_size' ) ) { 
 	add_image_size( 'tg-projectthumb', 320, 240, true );
 	add_image_size( 'tg-leadimg', 800, 345, true );
-	add_image_size( 'tg-carouselimg', 1280, 440, true );
+	add_image_size( 'tg-carouselimg', 1280, 640, false );
 }
 
 // Metaboxes

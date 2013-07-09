@@ -1,0 +1,22 @@
+.my_meta_control{
+	margin-bottom: 20px;
+}
+.my_meta_control h4
+{ font-size:1em; margin:15px 0 5px; }
+
+
+.my_meta_control div div
+{ margin:5px 0 }
+
+.my_meta_control div div span
+{ margin:0px 3px 0 5px }
+
+.my_meta_control input
+{ margin:1px 0}
+
+.my_meta_control em
+{ color:#999}
+
+.my_meta_control .button{
+	margin-top: 5px;
+}

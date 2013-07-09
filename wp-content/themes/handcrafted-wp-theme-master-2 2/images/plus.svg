@@ -1,0 +1,15 @@
+<svg version="1.1" id="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+	<g id="static" class="plus">
+		<rect class="horiz" x="0" y="6" width="15" height="3"/>
+		<rect class="vert" x="6" y="0" width="3" height="15"/>
+	</g>
+	<g id="anim-in" class="plus">
+		<rect class="horiz" x="0" y="6" width="15" height="3"/>
+		<rect class="vert" x="6" y="0" width="3" height="15"/>
+	</g>
+	<g id="anim-out" class="plus">
+		<rect class="horiz" x="0" y="6" width="15" height="3"/>
+		<rect class="vert" x="6" y="0" width="3" height="15"/>
+	</g>
+</svg>
