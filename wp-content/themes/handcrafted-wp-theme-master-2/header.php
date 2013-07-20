@@ -35,8 +35,24 @@
 		echo ' | ' . sprintf( __( 'Page %s', 'themename' ), max( $paged, $page ) );
 
 	?></title>
-	<meta name="description" content="">
+	<meta name="description" content="<?php bloginfo('description'); ?>">
+	<meta name="keywords" content="
+		THAT Group,
+		THAT Property Company,
+		Steven Brown,
+		Ray Kelvin Property,
+		Peter Tisdale,
+		Michael Flaxman Hotels,
+		Hilton Bournemouth,
+		Terrace Mount Development,
+		Torwood Street Development,
+		Torquay Hilton,
+		New Riviera Estates Ltd,
+		New Riviera Estates Limited,
+		THAT Bournemouth Company Ltd,
+		THAT Bournemouth Company Limited" />
 	<meta name="author" content="">
+	
 	<!--  Mobile Viewport Fix -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	

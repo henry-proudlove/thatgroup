@@ -1134,11 +1134,19 @@ a.nav-link{
 	   -moz-transition: all 0.3s ease-in;
 		-ms-transition: all 0.3s ease-in;
 		 -o-transition: all 0.3s ease-in;
-			transition: all 0.3s ease-in;;
+			transition: all 0.3s ease-in;
+}
+
+#contact #contact-nav a.inactive:hover{
+	background-color: #999;
 }
 
 #contact #contact-nav a .ico{
 	fill: #64b9e4;
+}
+
+#contact #contact-nav a.inactive .ico{
+	fill: #999;
 }
 
 #contact #contact-nav a:hover .ico{
@@ -1181,17 +1189,9 @@ a.nav-link{
 }
 
 #load{
-	overflow-y: scroll;
-	overflow-x: hidden;
-	/*width: 10000px;*/
-	/*width: auto;*/
+	overflow: hidden;
 	width: 10000px;
 	position: relative;
-	/*transition: left 1s;
-	-webkit-transition: left 0.5s;
-	-moz-transition: left 0.5s;
-	-o-transition: left 0.5s;
-	-ms-transition: left 0.5s;*/
 	left: 0;
 }
 

@@ -1,11 +1,9 @@
 loader = '<div id="loader"><div class="loader-sec left"></div><div class="loader-sec middle"></div><div class="loader-sec right"></div></div>';
 
 jQuery.fn.cycleInit = function(){
-	if(this.children().size() > 1){	
-		$(this).addClass('cycle').after('<nav id="pager">').cycle({
-			pager:  '#pager'
-		});
-	}
+	$(this).addClass('cycle').after('<nav id="pager">').cycle({
+		pager:  '#pager'
+	});
 };
 
 // Move home about link to #site-description
@@ -69,7 +67,7 @@ function getPos(el, direction){
 }
 
 function cycleValid(){
-	$('#carousel-images').cycleInit();
+	$('#carousel-images').cycle('destroy').cycleInit();
 	$("#contactform").validate({
 		rules: {
 		select: "required" }
@@ -157,7 +155,7 @@ $.address.init(function(event) {
 }).internalChange(function(event) {
 	var target =  $.address.path();
 	$.ajax({
-		url: '/thatgroup' + target,
+		url: target,
 		data: {},
 		beforeSend: function(){
 			$('body > .loader-holder')
@@ -185,7 +183,7 @@ $.address.init(function(event) {
 	}
 	$.address.value(target);
 	$.ajax({
-		url: '/thatgroup' + target,
+		url: target,
 		data: {},
 		beforeSend: function(){
 		},

@@ -35,15 +35,15 @@ get_header(); ?>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-tw.svg');
 							?>
-							<a class="twitter" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Twitter</span></a>
+							<a class="twitter inactive" href="#" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Twitter</span></a>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-in.svg');
 							?>
-							<a class="linkedin" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">LinkedIn</span></a>
+							<a class="linkedin inactive" href="#" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">LinkedIn</span></a>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-fb.svg');
 							?>
-							<a class="facebook " href="#" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Facebook</span></a>
+							<a class="facebook inactive" href="#" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Facebook</span></a>
 						</nav>
 					</div><!--#contact-->
 				</section><!--#load-->

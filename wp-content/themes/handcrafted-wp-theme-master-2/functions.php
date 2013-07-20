@@ -306,6 +306,11 @@ function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg =
 	}
 	
 	//echo '<div class="images">';
+	if (has_post_thumbnail()){
+		$thumb_id = get_post_thumbnail_id(get_the_ID());
+	}else{
+		$thumb_id = '';
+	}
 	
 	if ($images = get_children(array(
 
@@ -313,6 +318,7 @@ function img_fecther($size='tg-carouselimg', $limit='-1', $post_id = null, $bg =
 		'post_type' => 'attachment',
 		'order' => 'menu_order',
 		'numberposts' => $limit,
+		'exclude' => $thumb_id,
 		'post_mime_type' => 'image'))):
 		
 		$length = count($images);

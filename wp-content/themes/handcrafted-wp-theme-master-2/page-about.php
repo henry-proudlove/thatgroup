@@ -16,7 +16,7 @@ get_header(); ?>
 
 				<article id="about-page" <?php post_class('main-article'); ?> role="article">
 					<header class="entry-header">
-						<h1 class="entry-title"><span id="all-sty">All Style. </span><span id="all-sub">All Substance</span></h1>
+						<h1 class="entry-title"><span id="all-sty">All Style. </span><span id="all-sub">All Substance.</span></h1>
 					</header><!-- .entry-header -->
 					<div class="entry-content">
 						<?php the_content(); ?>
