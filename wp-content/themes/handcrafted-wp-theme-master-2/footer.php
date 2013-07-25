@@ -22,8 +22,7 @@
 <script type="text/javascript">
 	var siteURL = '<?php echo get_site_url(); ?>';
 </script>
-<script src="<?php echo get_template_directory_uri();?>/js/jquery.validate.min.js"></script>
-<script src="<?php echo get_template_directory_uri();?>/js/plugins.js"></script>
+<script src="<?php echo get_template_directory_uri();?>/js/cycle.js"></script>
 <script src="<?php echo get_template_directory_uri();?>/js/scripts.js"></script>
 <?php wp_footer(); ?>
 	

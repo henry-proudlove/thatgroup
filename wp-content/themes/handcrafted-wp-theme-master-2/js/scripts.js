@@ -1,12 +1,12 @@
 loader = '<div id="loader"><div class="loader-sec left"></div><div class="loader-sec middle"></div><div class="loader-sec right"></div></div>';
 
-jQuery.fn.cycleInit = function(){
+/*jQuery.fn.cycleInit = function(){
 	if(this.children().size() > 1){	
 		$(this).addClass('cycle').after('<nav id="pager">').cycle({
 			pager:  '#pager'
 		});
 	}
-};
+};*/
 
 // Move home about link to #site-description
 
@@ -81,7 +81,7 @@ function pageTrans(data , home, external){
 					if($('#content.about').length > 0){
 						$(document).trigger('aboutpage');
 					}
-					$('#carousel-images').cycleInit();
+					//$('#carousel-images').cycleInit();
 				});
 			window.scrollTo(0,0);
 		}else{
@@ -93,7 +93,7 @@ function pageTrans(data , home, external){
 					if($('#content.about').length > 0){
 						$(document).trigger('aboutpage');
 					}
-					$('#carousel-images').cycleInit();
+					//$('#carousel-images').cycleInit();
 				});
 			window.scrollTo(0,0);
 		}
@@ -106,7 +106,7 @@ function pageTrans(data , home, external){
 				if($('#content.about').length > 0){
 					$(document).trigger('aboutpage');
 				}
-				$('#carousel-images').cycleInit();
+				//$('#carousel-images').cycleInit();
 			});
 			window.scrollTo(0,0);
 	}
