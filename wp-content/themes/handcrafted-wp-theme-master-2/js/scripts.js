@@ -1,9 +1,11 @@
 loader = '<div id="loader"><div class="loader-sec left"></div><div class="loader-sec middle"></div><div class="loader-sec right"></div></div>';
 
 jQuery.fn.cycleInit = function(){
-	$(this).addClass('cycle').after('<nav id="pager">').cycle({
-		pager:  '#pager'
-	});
+	if(this.children().size() > 1){	
+		$(this).addClass('cycle').after('<nav id="pager">').cycle({
+			pager:  '#pager'
+		});
+	}
 };
 
 // Move home about link to #site-description
@@ -12,6 +14,9 @@ $(document).on('navswitch' , function(){
 	$('#nav-container.home')
 		.find('.nav-holder.about')
 		.appendTo('#site-description');
+	$('a').click(function(){
+		console.log('balls');
+	});
 });
 
 $(document).on('aboutpage' , function(){
@@ -64,29 +69,7 @@ function getPos(el, direction){
 	}else{
 		return parseInt(load.css('left')) < 0;
 	}
-}
-
-function cycleValid(){
-	$('#carousel-images').cycle('destroy').cycleInit();
-	$("#contactform").validate({
-		rules: {
-		select: "required" }
-	});
-	$(".contact-submit").click(function(e) {  
-		e.preventDefault();
-		var dataString = 'name='+ $('input#contactname').val() + '&email=' + $('input#email').val() + '&subject=' + $('select#subject').val() + '&message=' + $('textarea#message').val();
-		$.ajax({
-			type: "POST",
-			url: "http://www.thatgroup.henryproudlove.com/wp-content/themes/handcrafted-wp-theme-master-2/mail.php",
-			data: dataString,
-			success: function() {
-				$('#contactform').after('<div id="form-response" class="success">Thanks ' + $('input#contactname').val() + '! your email has been sent</div>');
-				$('#contactform')[0].reset();
-			}
-		});  
-	});
-}
-
+}	
 function pageTrans(data , home, external){
 	if(!external){
 		if(!home){
@@ -98,8 +81,8 @@ function pageTrans(data , home, external){
 					if($('#content.about').length > 0){
 						$(document).trigger('aboutpage');
 					}
+					$('#carousel-images').cycleInit();
 				});
-			cycleValid();
 			window.scrollTo(0,0);
 		}else{
 			$('#main')
@@ -110,21 +93,21 @@ function pageTrans(data , home, external){
 					if($('#content.about').length > 0){
 						$(document).trigger('aboutpage');
 					}
+					$('#carousel-images').cycleInit();
 				});
-			cycleValid();
 			window.scrollTo(0,0);
 		}
 	}else{
 		$('#main')
-				.children()
-				.fadeOut('fast', function(){
-					$(this).remove().parent();
-					$('#main').append($(data).find('#primary'));
-					if($('#content.about').length > 0){
-						$(document).trigger('aboutpage');
-					}
-				});
-			cycleValid();
+			.children()
+			.fadeOut('fast', function(){
+				$(this).remove().parent();
+				$('#main').append($(data).find('#primary'));
+				if($('#content.about').length > 0){
+					$(document).trigger('aboutpage');
+				}
+				$('#carousel-images').cycleInit();
+			});
 			window.scrollTo(0,0);
 	}
 	$('body')
@@ -178,6 +161,7 @@ $.address.init(function(event) {
 	});    
 }).bind('externalChange', function(event) {
 	var target = $.address.path();
+	console.log(target);
 	if (target == '/about/'){
 		$(document).trigger('aboutpage');
 	}
@@ -198,9 +182,7 @@ $.address.init(function(event) {
 
 $(document).ready(function(){
 
-	var internalA = '#branding a:not("a.nav-pag , a.current, a.map, input[type="submit""), #nav-below a';
-    
-	cycleValid();
+	var internalA = '#branding a:[href^="http://thatgroup"], #nav-below a';
 
 	$('#nav-container')
 		.addClass('home')

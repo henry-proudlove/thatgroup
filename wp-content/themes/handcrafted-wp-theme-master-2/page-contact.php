@@ -27,7 +27,7 @@ get_header(); ?>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-map.svg');
 							?>
-							<a class="map" href="http://goo.gl/maps/K2UkO" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Find Us</span></a>
+							<a class="map" href="http://google.com" target="_blank"><span class="ico"><?php echo $ico; ?></span><span class="txt">Find Us</span></a>
 							<?php 
 								$ico = file_get_contents(get_template_directory_uri() . '/images/ico-mail.svg');
 							?>
@@ -54,7 +54,9 @@ get_header(); ?>
 								</a></h1>
 							</header><!-- .entry-header -->
 						<div id="contact-wrapper">
-							<form method="post" action="<?php echo get_template_directory_uri();?>/mail.php" id="contactform">
+							<?php echo do_shortcode('[contact-form-7 id="254" title="Contact form 1"]'); ?>
+						</div><!--.contact-wrapper-->
+						<!--<div id="contact-wrapper">
 								<div class="input">
 									<label for="name">Name</label>
 									<input type="text" placeholder="Your name" class="required" name="contactname" id="contactname" value="" />
@@ -70,8 +72,10 @@ get_header(); ?>
 									  <option value="">What is the nature of your contact</label>
 									  <option value="neighbour">Neighbour</option>
 									  <option value="supplier">Supplier</option>
-									  <option value="professional">Professional</option>
-									  <option value="investor">Investor</option>
+									  <option value="professional">Professional Service</option>
+									  <option value="investor">Investor/Funder</option>
+									  <option value="pressmedia">Press/Media</option>
+									  <option value="fan">Fan</option>
 									  <option value="general">Other</option>
 									</select>
 								</div>
@@ -80,8 +84,7 @@ get_header(); ?>
 									<textarea rows="3" cols="80" placeholder="Your message" class="required" name="message" id="message"></textarea>
 								</div>
 								<input type="submit" class="contact-submit" value="Send Email" name="submit" />
-							</form>
-						</div>
+						</div>-->
 					</article>
 			</div><!-- #content -->
 		</div><!-- #primary -->

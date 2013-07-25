@@ -1,5 +1,4 @@
 <?php 
-	var_dump($_POST);
 	if(trim($_POST['contactname']) == '') {
 		$hasError = true;
 	} else {

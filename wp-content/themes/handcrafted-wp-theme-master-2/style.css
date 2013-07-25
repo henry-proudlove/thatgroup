@@ -96,7 +96,7 @@ body {
   /* font-family: Georgia, serif;  */   
 }
 
-input[type="text"], textarea{
+input[type="text"], input[type="email"], textarea{
 	color: white;
 	background: #323232;
 }
@@ -1566,7 +1566,9 @@ input, textarea, .contact-back{
 	margin-bottom: 10px;
 }
 
-#contact-wrapper input[type="text"], #contact-wrapper textarea{
+#contact-wrapper input[type="text"],
+#contact-wrapper input[type="email"],
+#contact-wrapper textarea{
 	width: 100%;
 	display: block;
 }
@@ -1575,23 +1577,23 @@ div.input{
 	margin-bottom: 20px;
 }
 
-.input label.error, #form-response{
-	font-size: 0.5em;
-	padding: 10px 20px;
-	margin: 20px 0;
+.input label.error, .wpcf7-response-output, .wpcf7-not-valid-tip{
+	padding: 10px 20px !important;
+	margin: 20px 0 !important;
+	border: none !important;
+	color: white !important;
 }
 
-.input label.error{
-	display: block !important;
-	margin: 0 0 15px;
+.input label.error, .wpcf7-validation-errors, .wpcf7-not-valid-tip{
+	background: #e70a0c !important;
+	border: none !important;
+	color: white !important;
 }
 
-.input label.error, #form-response.error{
-	background: #e70a0c;
-}
-
-#form-response.success{
-	background: #38da7d;
+.wpcf7-mail-sent-ok{
+	background: #38da7d !important;
+	border: none !important;
+	color: white !important;
 }
 
 
