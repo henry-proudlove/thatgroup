@@ -446,4 +446,19 @@ function address_rel($permalink){
 	echo 'rel="address:' . str_replace($base_url, '' , $permalink) . '"';
 }
 
+function load_jquery() {
+    if (!is_admin()) {
+        wp_deregister_script('jquery');
+        $protocol='http:';
+        if($_SERVER['HTTPS']=='on') {
+            $protocol='https:';
+        }
+        wp_register_script('jquery', $protocol.'//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js', false, '1.7.2');
+        wp_enqueue_script('jquery');
+
+    }
+
+}
+add_action('template_redirect', 'load_jquery');
+
 ?>

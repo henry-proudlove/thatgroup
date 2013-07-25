@@ -1,22 +1,26 @@
+
 loader = '<div id="loader"><div class="loader-sec left"></div><div class="loader-sec middle"></div><div class="loader-sec right"></div></div>';
 
-/*jQuery.fn.cycleInit = function(){
+jQuery.fn.cycleInit = function(){
 	if(this.children().size() > 1){	
 		$(this).addClass('cycle').after('<nav id="pager">').cycle({
-			pager:  '#pager'
+			pager:  '#pager',
+			
 		});
 	}
-};*/
+};
+
 
 // Move home about link to #site-description
+
+$(document).on('carousel' , function(e){
+	console.log('fuck');
+});
 
 $(document).on('navswitch' , function(){
 	$('#nav-container.home')
 		.find('.nav-holder.about')
 		.appendTo('#site-description');
-	$('a').click(function(){
-		console.log('balls');
-	});
 });
 
 $(document).on('aboutpage' , function(){
@@ -71,45 +75,29 @@ function getPos(el, direction){
 	}
 }	
 function pageTrans(data , home, external){
+	$('#carousel-images').cycle('destroy');
+	var addedClass = '';
 	if(!external){
 		if(!home){
-			$('#main')
-				.children()
-				.fadeOut('fast', function(){
-					$(this).remove().parent();
-					$('#main').append($(data).find('#primary').addClass('incoming'));
-					if($('#content.about').length > 0){
-						$(document).trigger('aboutpage');
-					}
-					//$('#carousel-images').cycleInit();
-				});
-			window.scrollTo(0,0);
+			addedClass = 'incoming';
 		}else{
-			$('#main')
-				.children()
-				.fadeOut('fast', function(){
-					$(this).remove().parent();
-					$('#main').append($(data).find('#primary').addClass('incoming-home'));
-					if($('#content.about').length > 0){
-						$(document).trigger('aboutpage');
-					}
-					//$('#carousel-images').cycleInit();
-				});
-			window.scrollTo(0,0);
+			addedClass = 'incoming-home';
 		}
 	}else{
-		$('#main')
-			.children()
-			.fadeOut('fast', function(){
-				$(this).remove().parent();
-				$('#main').append($(data).find('#primary'));
-				if($('#content.about').length > 0){
-					$(document).trigger('aboutpage');
-				}
-				//$('#carousel-images').cycleInit();
-			});
-			window.scrollTo(0,0);
+		addedClass = '';
 	}
+	$('#main')
+		.children()
+		.fadeOut('fast', function(){
+			$(this).remove().parent();
+			$('#main').append($(data).find('#primary').addClass(addedClass));
+			if($('#content.about').length > 0){
+				$(document).trigger('aboutpage');
+			}else if($('#content.project').length > 0){
+				$('#carousel-images').cycleInit();
+			}
+		});
+	window.scrollTo(0,0);
 	$('body')
 		.removeClass()
 		.addClass($(data).find('#main').attr('data'));
@@ -181,9 +169,7 @@ $.address.init(function(event) {
 });
 
 $(document).ready(function(){
-
-	var internalA = '#branding a:[href^="http://thatgroup"], #nav-below a';
-
+	$('#carousel-images').cycleInit();
 	$('#nav-container')
 		.addClass('home')
 		.clone()

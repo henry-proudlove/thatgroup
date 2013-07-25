@@ -59,11 +59,11 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); echo '?' . filemtime( get_stylesheet_directory() . '/style.css'); ?>" type="text/css" media="screen, projection" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>-->
 	<script src="<?php echo get_template_directory_uri();?>/js/modernizr.custom.43351.js"></script>
 	<script type="text/javascript" src="http://fast.fonts.com/jsapi/1abaa99c-ef54-4ae8-83b7-dcb11503cf62.js"></script>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/jquery.address-1.5.min.js?strict=false"></script>
 	<?php wp_head(); ?>
+	<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/jquery.address-1.5.min.js?strict=false"></script>
 	</head>
 	<?php
 		$page = get_page_by_path('home');
